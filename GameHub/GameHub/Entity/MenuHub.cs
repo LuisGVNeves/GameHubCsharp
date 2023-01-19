@@ -70,7 +70,7 @@ namespace GameHub.Entity
             switch (respostaUsuario)
             {
                 case 1:
-                    //FazerCadastro();
+                    Cadastro.FazerCadastro();
                     break;
                 case 2:
                     System.Environment.Exit(0);
