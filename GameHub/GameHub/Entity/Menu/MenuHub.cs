@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameHub.JogoDeXadrez.Controller;
 using GameHub.Entity.CadastroUsuarioHub;
 
 namespace GameHub.Entity.Menu
@@ -35,6 +36,23 @@ namespace GameHub.Entity.Menu
             AdicionarTexto("\n\n            ╚════════════════════════════════════════════════════════════════════╝");
             AdicionarTexto("\n\n\n\n\n                                        Digite aqui: ");
 
+            short respostaUsuario = short.Parse(Console.ReadLine());
+
+            switch (respostaUsuario)
+            {
+                case 1:
+                    //IniciarJogoDaVelha();
+                    break;
+                case 2:
+                    JogoXadrez.IniciarJogoXadrez();
+                    break;
+                case 3:
+                    //IniciarOutroJogo();
+                    break;
+                default:
+                    System.Environment.Exit(0);
+                    break;
+            }
         }
 
         // # Método que adiciona texto recebe parâmetro opcional, caso eu não queira estilizar com outra cor no futuro

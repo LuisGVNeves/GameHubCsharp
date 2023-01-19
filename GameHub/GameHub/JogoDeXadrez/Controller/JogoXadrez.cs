@@ -8,7 +8,10 @@ namespace GameHub.JogoDeXadrez.Controller
 {
     class JogoXadrez
     {
+        public static void IniciarJogoXadrez()
+        {
 
+        }
 
     }
 }
