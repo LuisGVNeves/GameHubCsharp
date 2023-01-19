@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <Folder Include="Entity\Serializacao\" />
+    <Folder Include="JogoDeXadrez\Model\" />
+    <Folder Include="JogoDeXadrez\View\" />
   </ItemGroup>
 
   <ItemGroup>

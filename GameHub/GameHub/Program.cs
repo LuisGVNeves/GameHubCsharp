@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿using GameHub.Entity;
 using GameHub.Entity.CadastroUsuarioHub;
+=======
+﻿using GameHub.Entity.Menu;
+>>>>>>> development-branch
 
 namespace GameHub
 {
