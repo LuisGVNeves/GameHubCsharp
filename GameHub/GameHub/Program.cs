@@ -1,4 +1,5 @@
-﻿using GameHub.Entity.Menu;
+﻿using GameHub.Entity.CadastroUsuarioHub;
+using GameHub.Entity.Menu;
 
 namespace GameHub
 {
@@ -7,7 +8,7 @@ namespace GameHub
         public static void Main(string[] args) 
         {
 
-            MenuHub.MostrarMenuCadastro();
+            Cadastro.MostrarMenuCadastro();
 
         }
     }
