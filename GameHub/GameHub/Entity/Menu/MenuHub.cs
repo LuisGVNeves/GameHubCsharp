@@ -60,7 +60,7 @@ namespace GameHub.Entity.Menu
 
 
         // Método para mostrar o menu de cadastro
-        public static int MostrarMenuCadastro()
+        public static void MostrarMenuCadastro()
         {
             EstilizarMenu("HubJogos SharpCoders", ConsoleColor.DarkRed);
             AdicionarTexto("            Olá seja bem-vindo ao hub de jogos da Sharp Coders !\n\n");
@@ -71,8 +71,11 @@ namespace GameHub.Entity.Menu
             switch (respostaUsuario)
             {
                 case 1:
+
                     // Fazer cadastro do usuário que está na posição[0] do arquivo json
                     Cadastro.FazerCadastro(0);
+
+                    MenuInicialHub();
                     break;
                 case 2:
                     Environment.Exit(0);
@@ -81,7 +84,6 @@ namespace GameHub.Entity.Menu
                     Environment.Exit(0);
                     break;
             }
-            return 2;
         }
     }
 }

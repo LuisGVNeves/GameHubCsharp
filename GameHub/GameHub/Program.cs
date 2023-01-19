@@ -7,10 +7,7 @@ namespace GameHub
         public static void Main(string[] args) 
         {
 
-            do
-            {
-                MenuHub.MostrarMenuCadastro();
-            } while (MenuHub.MostrarMenuCadastro() != 2);
+            MenuHub.MostrarMenuCadastro();
 
         }
     }
