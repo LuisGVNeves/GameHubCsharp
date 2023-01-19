@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameHub.Entity.UsuarioHub;
+using GameHub.Entity.Menu;
 
 namespace GameHub.Entity.CadastroUsuarioHub
 {
