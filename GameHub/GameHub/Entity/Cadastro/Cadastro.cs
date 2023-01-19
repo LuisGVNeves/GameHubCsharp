@@ -15,6 +15,9 @@ namespace GameHub.Entity.CadastroUsuarioHub
         // Método para fazer o cadastro do usuario
         public static void FazerCadastro(int indiceUsuario)
         {
+            Console.Clear();
+            MenuHub.EstilizarMenu("AREA DE CADASTRO", ConsoleColor.Red);
+
             using (StreamReader arquivoJson = new StreamReader("../../../Entity/Serializacao/jogadores.json"))
             {
                 // # Vai ler o arquivo json até o final
@@ -23,17 +26,17 @@ namespace GameHub.Entity.CadastroUsuarioHub
                 // # Pegando os dados do json e colocando em um lista dinamica
                 var data = JsonConvert.DeserializeObject<dynamic[]>(json);
 
-                Console.Write("\n                                   Digite seu nome: ");
+                Console.Write("\n                           Digite seu nome: ");
                 data[indiceUsuario].nome = Console.ReadLine();
 
-                Console.Write("\n                                   Digite sua senha: ");
+                Console.Write("\n                           Digite sua senha: ");
                 data[indiceUsuario].senha = Console.ReadLine();
 
 
                 listaUsuarios.Add(new Usuario((string)data[0].nome, 0, (string)data[0].senha));
 
 
-                Console.WriteLine("\n                               Cadastro criado com sucesso !\n\n");
+                Console.WriteLine("\n                         Cadastro criado com sucesso !\n\n");
                 Thread.Sleep(1000);
                 Console.Clear();
             }

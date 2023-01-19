@@ -37,6 +37,8 @@ namespace GameHub.Entity
         // Menu com Hub inicial
         public static void MenuInicialHub()
         {
+            Console.Clear();
+
             // # Menu inicial
             EstilizarMenu("BEM-VINDO AO HUB DE JOGOS SHARP CODERS", ConsoleColor.DarkRed);
 
@@ -73,6 +75,9 @@ namespace GameHub.Entity
                 case 1:
                     // Fazer cadastro do usuário que está na posição[0] do arquivo json
                     Cadastro.FazerCadastro(0);
+
+                    // Após fazer o cadastro do primeiro usuário, vou iniciar o menu do hub
+                    MenuInicialHub();
                     break;
                 case 2:
                     System.Environment.Exit(0);
