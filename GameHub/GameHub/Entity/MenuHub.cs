@@ -9,30 +9,6 @@ namespace GameHub.Entity
 {
     class MenuHub
     {
-        // # Método que adiciona texto recebe parâmetro opcional, caso eu não queira estilizar com outra cor no futuro
-        public static void AdicionarTexto(string texto, ConsoleColor corLetra = ConsoleColor.White)
-        {
-            Console.ForegroundColor = corLetra;
-            Console.Write(@$"{texto}");
-        }
-
-        // # Método para estilizar a interface do terminal
-        public static void EstilizarMenu(string texto, ConsoleColor cor)
-        {
-            Console.Clear();
-            Console.BackgroundColor = cor;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("                     ");
-            Console.Write("┌─┐");
-            Console.Write("└─┘");
-            Console.Write($"  {texto}  ");
-            Console.Write("┌─┐");
-            Console.Write("└─┘");
-            Console.Write("                     ");
-            Console.WriteLine("\n");
-            Console.ResetColor();
-        }
-
 
         // Menu com Hub inicial
         public static void MenuInicialHub()
@@ -60,33 +36,29 @@ namespace GameHub.Entity
             AdicionarTexto("\n\n\n\n\n                                        Digite aqui: ");
         }
 
-        
-        // Método para mostrar o menu de cadastro
-        public static int MostrarMenuCadastro()
+        // # Método que adiciona texto recebe parâmetro opcional, caso eu não queira estilizar com outra cor no futuro
+        public static void AdicionarTexto(string texto, ConsoleColor corLetra = ConsoleColor.White)
         {
-            MenuHub.EstilizarMenu("HubJogos SharpCoders", ConsoleColor.DarkRed);
-            MenuHub.AdicionarTexto("            Olá seja bem-vindo ao hub de jogos da Sharp Coders !\n\n");
-            MenuHub.AdicionarTexto("                        Deseja realizar um cadastro ?\n\n                             1 - Sim   2 - Não");
-            MenuHub.AdicionarTexto("\n\n                                Digite aqui: ");
-            short respostaUsuario = short.Parse(Console.ReadLine());
-
-            switch (respostaUsuario)
-            {
-                case 1:
-                    // Fazer cadastro do usuário que está na posição[0] do arquivo json
-                    Cadastro.FazerCadastro(0);
-
-                    // Após fazer o cadastro do primeiro usuário, vou iniciar o menu do hub
-                    MenuInicialHub();
-                    break;
-                case 2:
-                    System.Environment.Exit(0);
-                    break;
-                default:
-                    System.Environment.Exit(0);
-                    break;
-            }
-            return 2;
+            Console.ForegroundColor = corLetra;
+            Console.Write(@$"{texto}");
         }
+
+        // # Método para estilizar a interface do terminal
+        public static void EstilizarMenu(string texto, ConsoleColor cor)
+        {
+            Console.Clear();
+            Console.BackgroundColor = cor;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("                     ");
+            Console.Write("┌─┐");
+            Console.Write("└─┘");
+            Console.Write($"  {texto}  ");
+            Console.Write("┌─┐");
+            Console.Write("└─┘");
+            Console.Write("                     ");
+            Console.WriteLine("\n");
+            Console.ResetColor();
+        }
+
     }
 }
