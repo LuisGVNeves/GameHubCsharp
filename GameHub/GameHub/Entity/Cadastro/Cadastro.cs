@@ -37,11 +37,8 @@ namespace GameHub.Entity.CadastroUsuarioHub
                 data[0].senha = Console.ReadLine();
                 Usuario.usuario1.setNovaSenha((string)data[0].senha);
 
-                //xingou mt o luis?
-
-                Console.WriteLine(Usuario.usuario1.getNome());
                 Console.WriteLine("\n                       Cadastro criado com sucesso !\n\n");
-                Thread.Sleep(10000);
+                Thread.Sleep(2000);
                 Console.Clear();
             }
 

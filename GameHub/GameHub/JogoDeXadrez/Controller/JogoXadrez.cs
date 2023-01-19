@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using GameHub.Entity.UsuarioHub;
 using Newtonsoft.Json;
 using GameHub.Entity.CadastroUsuarioHub;
+using GameHub.JogoDeXadrez.View;
 
 namespace GameHub.JogoDeXadrez.Controller
 {
@@ -28,7 +29,7 @@ namespace GameHub.JogoDeXadrez.Controller
                 var data = JsonConvert.DeserializeObject<dynamic[]>(json);
 
                 Console.Clear();
-                MenuHub.EstilizarMenu("AREA CADASTRO", ConsoleColor.DarkRed);
+                MenuHub.EstilizarMenu($"Quem vai jogar com o jogador {Usuario.usuario1.getNome()}", ConsoleColor.DarkRed);
                 MenuHub.AdicionarTexto("Para jogar xadrez, precisamos de mais um usuário no sistema, então cadastre mais um usuário\n\n");
                 MenuHub.AdicionarTexto("Aperte alguma tecla para prosseguir com o cadastro: \n\n");
                 Console.ReadKey();
@@ -48,9 +49,20 @@ namespace GameHub.JogoDeXadrez.Controller
                 Console.Clear();
             }
 
+            TabuleiroXadrez.PreencherTabuleiroXadrez();
 
-            MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()}} informe a linha da peça vermelha que você vai utilizar", ConsoleColor.DarkRed);
-            linhaOrigemJogador1 = int.Parse(Console.ReadLine());
+            while (true)
+            {
+                // # Decorar o menu antes de iniciar o game
+                MenuHub.EstilizarMenu(" Xadrez", ConsoleColor.Blue);
+
+                // Mostrar o tabuleiro
+                TabuleiroXadrez.MostrarTabuleiro(8);
+
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a linha da peça vermelha que você vai utilizar", ConsoleColor.DarkRed);
+                linhaOrigemJogador1 = int.Parse(Console.ReadLine());
+            }
+
 
 
         }
