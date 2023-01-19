@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameHub.Entity.CadastroUsuarioHub;
 
 namespace GameHub.Entity
 {
@@ -70,7 +71,8 @@ namespace GameHub.Entity
             switch (respostaUsuario)
             {
                 case 1:
-                    Cadastro.FazerCadastro();
+                    // Fazer cadastro do usuário que está na posição[0] do arquivo json
+                    Cadastro.FazerCadastro(0);
                     break;
                 case 2:
                     System.Environment.Exit(0);

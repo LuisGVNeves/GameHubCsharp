@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameHub.Entity.Cadastro
+namespace GameHub.Entity.UsuarioHub
 {
     class Usuario
     {
-        private string Nome;
-        private int Idade;
+        private static string Nome;
+        private static int Idade;
+        private static string Senha;
 
-        public Usuario(string nome, int idade)
+        public Usuario(string nome, int idade,string senha)
         {
-            this.Nome = nome;
-            this.Idade = idade;
+            Nome = nome;
+            Idade = idade;
+            Senha = senha;
         }
 
 
@@ -22,5 +24,8 @@ namespace GameHub.Entity.Cadastro
         public void setNovaIdade(int novaIdade) { Idade = novaIdade; }
         public int getIdade() { return Idade; }
         public string getNome() { return Nome; }
+
+        public void setNovaSenha(string novaSenha) { Senha = novaSenha; }
+        public string getSenha() { return Senha; }
     }
 }
