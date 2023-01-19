@@ -87,6 +87,7 @@ namespace GameHub.Entity.Menu
             AdicionarTexto("\n\n\n\n\n                                        Digite aqui: ");
         }
 
+<<<<<<< HEAD
 
         // Método para mostrar o menu de cadastro
         public static void MostrarMenuCadastro()
@@ -114,6 +115,8 @@ namespace GameHub.Entity.Menu
                     break;
             }
         }
+>>>>>>> development-branch
+=======
 >>>>>>> development-branch
     }
 }

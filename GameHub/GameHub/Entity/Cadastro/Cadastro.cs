@@ -69,6 +69,6 @@ namespace GameHub.Entity.CadastroUsuarioHub
             }
             return 2;
         }
-
+   
     }
 }
