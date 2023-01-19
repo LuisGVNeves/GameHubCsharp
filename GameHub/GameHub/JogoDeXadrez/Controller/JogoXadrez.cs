@@ -12,7 +12,10 @@ namespace GameHub.JogoDeXadrez.Controller
         // Criação do tabuleiro de Xadrez
         Tabuleiro tabuleiroXadrez = new Tabuleiro(8, 8);
 
+        static void PreencherTabuleiroXadrez()
+        {
 
+        }
 
     }
 }
