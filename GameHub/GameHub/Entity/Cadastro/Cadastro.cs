@@ -14,13 +14,14 @@ namespace GameHub.Entity.CadastroUsuarioHub
         public static List<Usuario> listaUsuarios = new List<Usuario>();
 
         // Método para fazer o cadastro do usuario, pego indice no parâmetro que vai servir para acessar os objetos na minha lista de objetos no json, e com isso instancio um novo usuario da classe usuario e já jogos os dados no json
-        public static void FazerCadastro(int indiceUsuario)
+        public static void FazerCadastro()
         {
             Console.Clear();
             MenuHub.EstilizarMenu("AREA CADASTRO",ConsoleColor.DarkRed);
 
-            using (StreamReader arquivoJson = new StreamReader("../../../Entity/Serializacao/jogadores.json"))
+            using (StreamReader arquivoJson = new StreamReader("../../../Entity/Serializacao/objetosJogadores.json"))
             {
+
                 // # Vai ler o arquivo json até o final
                 var json = arquivoJson.ReadToEnd();
 
@@ -28,17 +29,19 @@ namespace GameHub.Entity.CadastroUsuarioHub
                 var data = JsonConvert.DeserializeObject<dynamic[]>(json);
 
                 Console.Write("\n                           Digite seu nome: ");
-                data[indiceUsuario].nome = Console.ReadLine();
+                data[0].nome = Console.ReadLine();
+                Usuario.usuario1.setNovoNome((string)data[0].nome);
+
 
                 Console.Write("\n                           Digite sua senha: ");
-                data[indiceUsuario].senha = Console.ReadLine();
+                data[0].senha = Console.ReadLine();
+                Usuario.usuario1.setNovaSenha((string)data[0].senha);
 
+                //xingou mt o luis?
 
-                listaUsuarios.Add(new Usuario((string)data[0].nome, 0, (string)data[0].senha));
-
-
+                Console.WriteLine(Usuario.usuario1.getNome());
                 Console.WriteLine("\n                       Cadastro criado com sucesso !\n\n");
-                Thread.Sleep(1000);
+                Thread.Sleep(10000);
                 Console.Clear();
             }
 
@@ -58,7 +61,7 @@ namespace GameHub.Entity.CadastroUsuarioHub
             {
                 case 1:
                     // Fazer cadastro do usuário que está na posição[0] do arquivo json
-                    FazerCadastro(0);
+                    FazerCadastro();
 
                     // Após fazer o cadastro do primeiro usuário, vou iniciar o menu do hub
                     MenuHub.MenuInicialHub();
