@@ -34,6 +34,7 @@ namespace GameHub.Entity.Menu
 
             AdicionarTexto("\n\n            ╚════════════════════════════════════════════════════════════════════╝");
             AdicionarTexto("\n\n\n\n\n                                        Digite aqui: ");
+
         }
 
         // # Método que adiciona texto recebe parâmetro opcional, caso eu não queira estilizar com outra cor no futuro
