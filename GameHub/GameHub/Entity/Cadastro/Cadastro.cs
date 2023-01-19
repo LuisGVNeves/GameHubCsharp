@@ -16,6 +16,9 @@ namespace GameHub.Entity.CadastroUsuarioHub
         // Método para fazer o cadastro do usuario, pego indice no parâmetro que vai servir para acessar os objetos na minha lista de objetos no json, e com isso instancio um novo usuario da classe usuario e já jogos os dados no json
         public static void FazerCadastro(int indiceUsuario)
         {
+            Console.Clear();
+            MenuHub.EstilizarMenu("AREA CADASTRO",ConsoleColor.DarkRed);
+
             using (StreamReader arquivoJson = new StreamReader("../../../Entity/Serializacao/jogadores.json"))
             {
                 // # Vai ler o arquivo json até o final
@@ -34,7 +37,7 @@ namespace GameHub.Entity.CadastroUsuarioHub
                 listaUsuarios.Add(new Usuario((string)data[0].nome, 0, (string)data[0].senha));
 
 
-                Console.WriteLine("\n                               Cadastro criado com sucesso !\n\n");
+                Console.WriteLine("\n                       Cadastro criado com sucesso !\n\n");
                 Thread.Sleep(1000);
                 Console.Clear();
             }
