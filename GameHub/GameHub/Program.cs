@@ -1,9 +1,8 @@
-﻿using GameHub.Entity.Menu;
-using GameHub.Entity.CadastroUsuarioHub;
+﻿using GameHub.Entity.CadastroUsuarioHub;
 
 namespace GameHub
 {
-    class Program
+    class Program 
     {
         public static void Main(string[] args) 
         {
