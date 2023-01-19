@@ -15,7 +15,6 @@ namespace GameHub.Entity
             Console.Write(@$"{texto}");
         }
 
-
         // # Método para estilizar a interface do terminal
         public static void EstilizarMenu(string texto, ConsoleColor cor)
         {
@@ -56,6 +55,31 @@ namespace GameHub.Entity
 
             AdicionarTexto("\n\n            ╚════════════════════════════════════════════════════════════════════╝");
             AdicionarTexto("\n\n\n\n\n                                        Digite aqui: ");
+        }
+
+        
+        // Método para mostrar o menu de cadastro
+        public static int MostrarMenuCadastro()
+        {
+            MenuHub.EstilizarMenu("HubJogos SharpCoders", ConsoleColor.DarkRed);
+            MenuHub.AdicionarTexto("            Olá seja bem-vindo ao hub de jogos da Sharp Coders !\n\n");
+            MenuHub.AdicionarTexto("                        Deseja realizar um cadastro ?\n\n                             1 - Sim   2 - Não");
+            MenuHub.AdicionarTexto("\n\n                                Digite aqui: ");
+            short respostaUsuario = short.Parse(Console.ReadLine());
+
+            switch (respostaUsuario)
+            {
+                case 1:
+                    //FazerCadastro();
+                    break;
+                case 2:
+                    System.Environment.Exit(0);
+                    break;
+                default:
+                    System.Environment.Exit(0);
+                    break;
+            }
+            return 2;
         }
     }
 }
