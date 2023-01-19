@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameHub.Entity.CadastroUsuarioHub;
 
-namespace GameHub.Entity
+namespace GameHub.Entity.Menu
 {
     class MenuHub
     {
@@ -58,14 +58,14 @@ namespace GameHub.Entity
             AdicionarTexto("\n\n\n\n\n                                        Digite aqui: ");
         }
 
-        
+
         // Método para mostrar o menu de cadastro
         public static int MostrarMenuCadastro()
         {
-            MenuHub.EstilizarMenu("HubJogos SharpCoders", ConsoleColor.DarkRed);
-            MenuHub.AdicionarTexto("            Olá seja bem-vindo ao hub de jogos da Sharp Coders !\n\n");
-            MenuHub.AdicionarTexto("                        Deseja realizar um cadastro ?\n\n                             1 - Sim   2 - Não");
-            MenuHub.AdicionarTexto("\n\n                                Digite aqui: ");
+            EstilizarMenu("HubJogos SharpCoders", ConsoleColor.DarkRed);
+            AdicionarTexto("            Olá seja bem-vindo ao hub de jogos da Sharp Coders !\n\n");
+            AdicionarTexto("                        Deseja realizar um cadastro ?\n\n                             1 - Sim   2 - Não");
+            AdicionarTexto("\n\n                                Digite aqui: ");
             short respostaUsuario = short.Parse(Console.ReadLine());
 
             switch (respostaUsuario)
@@ -75,10 +75,10 @@ namespace GameHub.Entity
                     Cadastro.FazerCadastro(0);
                     break;
                 case 2:
-                    System.Environment.Exit(0);
+                    Environment.Exit(0);
                     break;
                 default:
-                    System.Environment.Exit(0);
+                    Environment.Exit(0);
                     break;
             }
             return 2;

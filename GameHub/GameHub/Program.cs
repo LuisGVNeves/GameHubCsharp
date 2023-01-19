@@ -1,4 +1,4 @@
-﻿using GameHub.Entity;
+﻿using GameHub.Entity.Menu;
 
 namespace GameHub
 {
