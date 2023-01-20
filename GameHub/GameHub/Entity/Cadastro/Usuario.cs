@@ -17,8 +17,6 @@ namespace GameHub.Entity.UsuarioHub
         private string LetraJogo;
         private int Pontuacao;
 
-
-
         public Usuario(string nome, int idade,string senha, string corPecaXadrez, string letraJogo, int pontuacao)
         {
             Nome = nome;
@@ -29,8 +27,8 @@ namespace GameHub.Entity.UsuarioHub
             Pontuacao = pontuacao;
         }
 
-        public static Usuario usuario1 = new Usuario("", 0, "","","",0);
-        public static Usuario usuario2 = new Usuario("", 0, "","","",0);
+        public static Usuario usuario1 = new Usuario("", 0, "", "", "", 0);
+        public static Usuario usuario2 = new Usuario("", 0, "", "", "", 0);
 
         public string getLetraJogo()
         {
