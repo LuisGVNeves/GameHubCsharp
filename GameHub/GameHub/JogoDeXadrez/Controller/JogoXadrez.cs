@@ -8,6 +8,7 @@ using GameHub.Entity.UsuarioHub;
 using Newtonsoft.Json;
 using GameHub.Entity.CadastroUsuarioHub;
 using GameHub.JogoDeXadrez.View;
+using GameHub.Entity.Testes;
 
 namespace GameHub.JogoDeXadrez.Controller
 {
@@ -59,9 +60,20 @@ namespace GameHub.JogoDeXadrez.Controller
                 // Mostrar o tabuleiro
                 TabuleiroXadrez.MostrarTabuleiro(8);
 
-                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a linha da peça vermelha que você vai utilizar", ConsoleColor.DarkRed);
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a linha da peça vermelha que você vai utilizar: ", ConsoleColor.DarkRed);
                 linhaOrigemJogador1 = int.Parse(Console.ReadLine());
+
+                // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
+                linhaOrigemJogador1 = Testes.TratarCaracteresLinha(linhaOrigemJogador1);
+
+                
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a coluna da peça que você quer pegar: ");
+                colunaOrigemJogador1 = int.Parse(Console.ReadLine());
+
+                // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
+                colunaOrigemJogador1 = Testes.TratarCaracteresColuna(colunaOrigemJogador1);
             }
+
 
 
 
