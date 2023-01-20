@@ -34,7 +34,7 @@ namespace GameHub.JogoDeXadrez.Controller
 
 
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
-            colunaOrigemJogador1 = Testes.TratarCaracteresColuna(colunaOrigemJogador1);
+            colunaOrigemJogador1 = Testes.TratarCaracteresColuna(colunaOrigemJogador1,1);
 
 
             // # Método vai verificar se o jogador  está pegando alguma peça do tabuleiro adversário
@@ -63,7 +63,7 @@ namespace GameHub.JogoDeXadrez.Controller
 
 
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
-            colunaDestinoJogador1 = Testes.TratarCaracteresColuna(colunaDestinoJogador1);
+            colunaDestinoJogador1 = Testes.TratarCaracteresColuna(colunaDestinoJogador1,1);
 
 
 
@@ -94,8 +94,8 @@ namespace GameHub.JogoDeXadrez.Controller
             MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()} informe a coluna da peça que você quer pegar: ");
             colunaOrigemJogador2 = int.Parse(Console.ReadLine());
 
-            // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
-            colunaOrigemJogador2 = Testes.TratarCaracteresColuna(colunaOrigemJogador2);
+            // # Tratamento para não deixar o jogador 2 colocar caracteres acima de 8 ou menor que 0
+            colunaOrigemJogador2 = Testes.TratarCaracteresColuna(colunaOrigemJogador2,2);
 
 
             // # Método vai verificar se o jogador 2 está pegando alguma peça do tabuleiro adversário
@@ -126,7 +126,7 @@ namespace GameHub.JogoDeXadrez.Controller
             colunaDestinoJogador2 = int.Parse(Console.ReadLine());
 
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
-            colunaDestinoJogador2 = Testes.TratarCaracteresColuna(colunaDestinoJogador2);
+            colunaDestinoJogador2 = Testes.TratarCaracteresColuna(colunaDestinoJogador2,2);
 
 
             // # Verificar se a peça que o usuário digitou está no intervalo [0-7]
