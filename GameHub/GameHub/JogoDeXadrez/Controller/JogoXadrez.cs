@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using GameHub.Entity.CadastroUsuarioHub;
 using GameHub.JogoDeXadrez.View;
 using GameHub.Entity.Testes;
+using GameHub.JogoDeXadrez.Model;
 
 namespace GameHub.JogoDeXadrez.Controller
 {
@@ -60,14 +61,15 @@ namespace GameHub.JogoDeXadrez.Controller
                 // Mostrar o tabuleiro
                 TabuleiroXadrez.MostrarTabuleiro(8);
 
-                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a linha da peça vermelha que você vai utilizar: ", ConsoleColor.DarkRed);
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()}", ConsoleColor.DarkRed);
+                MenuHub.AdicionarTexto($" informe a linha da peça vermelha que você vai utilizar: ");
                 linhaOrigemJogador1 = int.Parse(Console.ReadLine());
 
                 // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
                 linhaOrigemJogador1 = Testes.TratarCaracteresLinha(linhaOrigemJogador1);
 
-                
-                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a coluna da peça que você quer pegar: ");
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()}", ConsoleColor.DarkRed);
+                MenuHub.AdicionarTexto($" informe a coluna da peça que você quer pegar: ");
                 colunaOrigemJogador1 = int.Parse(Console.ReadLine());
 
 
@@ -87,6 +89,35 @@ namespace GameHub.JogoDeXadrez.Controller
                     colunaOrigemJogador1 = int.Parse(Console.ReadLine());
                 }
 
+
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a linha que você quer colocar a peça: ");
+                linhaDestinoJogador1 = int.Parse(Console.ReadLine());
+
+                // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
+                linhaDestinoJogador1 = Testes.TratarCaracteresLinha(linhaDestinoJogador1);
+
+
+
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a coluna que você quer colocar a peça: ");
+                colunaDestinoJogador1 = int.Parse(Console.ReadLine());
+
+
+                // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
+                colunaDestinoJogador1 = Testes.TratarCaracteresColuna(colunaDestinoJogador1);
+
+
+
+                // # Verificar se a peça que o usuário digitou está no intervalo [0-7] e acontece a lógica de movimentar a peça
+
+                if (Pecas.MoverPeca(linhaOrigemJogador1, colunaOrigemJogador1, linhaDestinoJogador1, colunaDestinoJogador1) != true)
+                {
+                    MenuHub.AdicionarTexto("\nERRO Coordenadas inválidas\n\nPressione alguma tecla para digitar as coordenadas novamente: ", ConsoleColor.DarkRed);
+                    Console.ReadKey();
+                }
+
+
+                // # Mostra o tabuleiro pro usuario a cada peça digitada
+                TabuleiroXadrez.MostrarTabuleiro(8);
 
             }
 
