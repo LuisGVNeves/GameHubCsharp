@@ -1001,7 +1001,6 @@ namespace GameHub.JogoDeXadrez.Model
             }
         }
 
-
         // # Se o movimento da peça Rainha tiver a mesma quantidade de vezes que for o movimento horizontal ou vertical
         public static void VerificarPecaRainha(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
@@ -1151,6 +1150,24 @@ namespace GameHub.JogoDeXadrez.Model
                     return;
                 }
 
+
+                // Tratamento caso o jogador coma a própria peça
+                while (pecaInimiga == 'p' || pecaInimiga == 'T' || pecaInimiga == 'C' || pecaInimiga == 'B' || pecaInimiga == 'Q' || pecaInimiga == 'K')
+                {
+                    // Mostrar o tabuleiro
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+
+                    // Input do usuario novamente
+                    JogoXadrez.VezJogador1();
+
+                    if (pecaInimiga != 'p' || pecaInimiga != 'T' || pecaInimiga != 'C' || pecaInimiga != 'B' || pecaInimiga != 'Q' || pecaInimiga != 'K')
+                    {
+                        JogoXadrez.VezJogador2();
+                    }
+
+                }
+
+
                 // Torre vai chegar
                 tabuleiroXadrez[linhaDestino, colunaDestino] = tabuleiroXadrez[linhaOrigem, colunaOrigem];
 
@@ -1289,6 +1306,23 @@ namespace GameHub.JogoDeXadrez.Model
                     return;
                 }
 
+                // Tratamento caso o jogador coma a própria peça
+                while (pecaInimiga == 'P' || pecaInimiga == 't' || pecaInimiga == 'c' || pecaInimiga == 'b' || pecaInimiga == 'q' || pecaInimiga == 'k')
+                {
+                    // Mostrar o tabuleiro
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+
+                    // Input do usuario novamente
+                    JogoXadrez.VezJogador2();
+
+                    if (pecaInimiga == 'P' || pecaInimiga == 't' || pecaInimiga == 'c' || pecaInimiga == 'b' || pecaInimiga == 'q' || pecaInimiga == 'k')
+                    {
+                        JogoXadrez.VezJogador1();
+                    }
+
+                }
+
+
                 // Cavalo vai chegar
                 tabuleiroXadrez[linhaDestino, colunaDestino] = tabuleiroXadrez[linhaOrigem, colunaOrigem];
 
@@ -1296,6 +1330,8 @@ namespace GameHub.JogoDeXadrez.Model
                 tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
             }
         }
+
+
 
         // # Se o movimento da peça Rei andar apenas 1 casa
         public static void VerificarPecaRei(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
@@ -1575,6 +1611,8 @@ namespace GameHub.JogoDeXadrez.Model
 
         }
 
+        
+        
         // # Se o movimento da peça Peoao andar apenas pra frente 1 casa
         public static void VerificarPecaPeao(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
