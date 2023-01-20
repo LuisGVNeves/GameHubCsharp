@@ -195,8 +195,12 @@ namespace GameHub.JogoDeXadrez.Controller
                 // # Decorar o menu antes de iniciar o game
                 MenuHub.EstilizarMenu(" Xadrez", ConsoleColor.Blue);
 
+                // Mostrar pontuação do jogador
+                Pontuacao.MostrarPontuacaoJogoDeXadrez();
+
                 // Mostrar o tabuleiro
                 TabuleiroXadrez.MostrarTabuleiro(8);
+
 
                 // Começa a partida com o jogador 1 e depois jogador2
                 VezJogador1();
