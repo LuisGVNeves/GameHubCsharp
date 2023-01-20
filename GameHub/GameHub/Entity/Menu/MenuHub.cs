@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameHub.JogoDeXadrez.Controller;
 using GameHub.Entity.CadastroUsuarioHub;
+using GameHub.JogoDaVelha;
 
 namespace GameHub.Entity.Menu
 {
@@ -41,7 +42,7 @@ namespace GameHub.Entity.Menu
             switch (respostaUsuario)
             {
                 case 1:
-                    //IniciarJogoDaVelha();
+                    JogoDaVelha.JogoDaVelha.IniciarJogoDaVelha();
                     break;
                 case 2:
                     JogoXadrez.IniciarJogoXadrez();

@@ -11,7 +11,7 @@ namespace GameHub.Entity.Tabuleiro
         // # Criar a Matriz - 8 linhas e 8 colunas
         public static char[,] tabuleiroXadrez = new char[8, 8];
 
-        public static string[,] tabuleiroJogoDaVelha = new char[3, 3];
+        public static string[,] tabuleiroJogoDaVelha = new string[3, 3];
 
     }
 }
