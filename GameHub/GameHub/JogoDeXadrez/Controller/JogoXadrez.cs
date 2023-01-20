@@ -26,10 +26,10 @@ namespace GameHub.JogoDeXadrez.Controller
             linhaOrigemJogador1 = int.Parse(Console.ReadLine());
 
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
-            linhaOrigemJogador1 = Testes.TratarCaracteresLinha(linhaOrigemJogador1);
+            linhaOrigemJogador1 = Testes.TratarCaracteresLinha(linhaOrigemJogador1,1);
 
             MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()}", ConsoleColor.DarkRed);
-            MenuHub.AdicionarTexto($" informe a coluna da peça que você quer pegar: ");
+            MenuHub.AdicionarTexto($" informe a coluna da peça vermelha que você vai utilizar: ");
             colunaOrigemJogador1 = int.Parse(Console.ReadLine());
 
 
@@ -42,23 +42,27 @@ namespace GameHub.JogoDeXadrez.Controller
             {
                 MenuHub.AdicionarTexto("\nA peça do Inimigo não pode ser usada !\n\n", ConsoleColor.DarkRed);
 
-                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a linha da peça que você quer pegar: ");
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()}", ConsoleColor.DarkRed);
+                MenuHub.AdicionarTexto($" informe a linha da peça vermelha que você vai utilizar: ");
                 linhaOrigemJogador1 = int.Parse(Console.ReadLine());
 
-                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a coluna da peça que você quer pegar: ");
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()}", ConsoleColor.DarkRed);
+                MenuHub.AdicionarTexto($" informe a coluna da peça vermelha que você vai utilizar: ");
                 colunaOrigemJogador1 = int.Parse(Console.ReadLine());
             }
 
 
-            MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a linha que você quer colocar a peça: ");
+            MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()}", ConsoleColor.DarkRed);
+            MenuHub.AdicionarTexto($" informe a linha que você quer colocar a peça vermelha: ");
             linhaDestinoJogador1 = int.Parse(Console.ReadLine());
 
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
-            linhaDestinoJogador1 = Testes.TratarCaracteresLinha(linhaDestinoJogador1);
+            linhaDestinoJogador1 = Testes.TratarCaracteresLinha(linhaDestinoJogador1,1);
 
 
 
-            MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a coluna que você quer colocar a peça: ");
+            MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()}", ConsoleColor.DarkRed);
+            MenuHub.AdicionarTexto($" informe a coluna que você quer colocar a peça vermelha: ");
             colunaDestinoJogador1 = int.Parse(Console.ReadLine());
 
 
@@ -87,11 +91,11 @@ namespace GameHub.JogoDeXadrez.Controller
             linhaOrigemJogador2 = int.Parse(Console.ReadLine());
 
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
-            linhaOrigemJogador2 = Testes.TratarCaracteresLinha(linhaOrigemJogador2);
+            linhaOrigemJogador2 = Testes.TratarCaracteresLinha(linhaOrigemJogador2,2);
 
 
-
-            MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()} informe a coluna da peça que você quer pegar: ");
+            MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()}");
+            MenuHub.AdicionarTexto($" informe a coluna da peça branca que você vai utilizar: ");
             colunaOrigemJogador2 = int.Parse(Console.ReadLine());
 
             // # Tratamento para não deixar o jogador 2 colocar caracteres acima de 8 ou menor que 0
@@ -104,25 +108,28 @@ namespace GameHub.JogoDeXadrez.Controller
             {
                 MenuHub.AdicionarTexto("\nA peça do Inimigo não pode ser usada !\n\n", ConsoleColor.DarkRed);
 
-                MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()} informe a linha da peça que você quer pegar: ");
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()}");
+                MenuHub.AdicionarTexto($" informe a linha da peça branca que você vai utilizar: ");
                 linhaOrigemJogador2 = int.Parse(Console.ReadLine());
 
-                MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()} informe a coluna da peça que você quer pegar: ");
+                MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()}");
+                MenuHub.AdicionarTexto($" informe a coluna da peça branca que você vai utilizar: ");
                 colunaOrigemJogador2 = int.Parse(Console.ReadLine());
 
             }
 
 
 
-
-            MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()} informe a linha que você quer colocar a peça: ");
+            MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()}");
+            MenuHub.AdicionarTexto($" informe a linha que você quer colocar a peça branca: ");
             linhaDestinoJogador2 = int.Parse(Console.ReadLine());
 
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
-            linhaDestinoJogador2 = Testes.TratarCaracteresLinha(linhaDestinoJogador2);
+            linhaDestinoJogador2 = Testes.TratarCaracteresLinha(linhaDestinoJogador2,2);
 
 
-            MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()} informe a coluna que você quer colocar a peça: ");
+            MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()}");
+            MenuHub.AdicionarTexto($" informe a coluna que você quer colocar a peça branca: ");
             colunaDestinoJogador2 = int.Parse(Console.ReadLine());
 
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
