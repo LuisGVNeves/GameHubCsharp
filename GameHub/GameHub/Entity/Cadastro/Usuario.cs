@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameHub.Entity.Menu;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,19 +15,22 @@ namespace GameHub.Entity.UsuarioHub
         private string Senha;
         private string CorPecaXadrez;
         private string LetraJogo;
+        private int Pontuacao;
 
 
-        public Usuario(string nome, int idade,string senha, string corPecaXadrez, string letraJogo)
+
+        public Usuario(string nome, int idade,string senha, string corPecaXadrez, string letraJogo, int pontuacao)
         {
             Nome = nome;
             Idade = idade;
             Senha = senha;
             CorPecaXadrez = corPecaXadrez;
             LetraJogo = letraJogo;
+            Pontuacao = pontuacao;
         }
 
-        public static Usuario usuario1 = new Usuario("", 0, "","","");
-        public static Usuario usuario2 = new Usuario("", 0, "","","");
+        public static Usuario usuario1 = new Usuario("", 0, "","","",0);
+        public static Usuario usuario2 = new Usuario("", 0, "","","",0);
 
         public string getLetraJogo()
         {
@@ -58,6 +63,37 @@ namespace GameHub.Entity.UsuarioHub
         public void setCorPecaXadrez(string novaCor)
         {
             CorPecaXadrez = novaCor;
+        }
+
+
+        public int getPontuacaoJogador()
+        {
+            return Pontuacao;
+        }
+        public void setPontuacaoJogador(int novaPontuacao, int indiceJogador)
+        {
+            using (StreamReader arquivoJson = new StreamReader("../../../Entity/Serializacao/objetosJogadores.json"))
+            {
+                // # Vai ler o arquivo json até o final
+                var json = arquivoJson.ReadToEnd();
+
+                // # Pegando os dados do json e colocando em um lista dinamica
+                var data = JsonConvert.DeserializeObject<dynamic[]>(json);
+
+                // Jogador 1 recebe os pontos, e altero no arquivo json também os pontos do 1 jogador
+                if(indiceJogador == 1)
+                {
+                    data[0].pontos = novaPontuacao;
+                }
+
+                // Jogador 2 recebe os pontos, e altero no arquivo json também os pontos do 2 jogador
+                if (indiceJogador == 2)
+                {
+                    data[1].pontos = novaPontuacao;
+                }
+            }
+
+            Pontuacao += novaPontuacao;
         }
 
     }
