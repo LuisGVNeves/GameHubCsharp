@@ -70,8 +70,24 @@ namespace GameHub.JogoDeXadrez.Controller
                 MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a coluna da peça que você quer pegar: ");
                 colunaOrigemJogador1 = int.Parse(Console.ReadLine());
 
+
                 // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
                 colunaOrigemJogador1 = Testes.TratarCaracteresColuna(colunaOrigemJogador1);
+
+
+                // # Método vai verificar se o jogador  está pegando alguma peça do tabuleiro adversário
+                while (Testes.VerificarPecaIgualJogador1(linhaOrigemJogador1, colunaOrigemJogador1, linhaDestinoJogador1, colunaDestinoJogador1) == true)
+                {
+                    MenuHub.AdicionarTexto("\nA peça do Inimigo não pode ser usada !\n\n", ConsoleColor.DarkRed);
+
+                    MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a linha da peça que você quer pegar: ");
+                    linhaOrigemJogador1 = int.Parse(Console.ReadLine());
+
+                    MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} informe a coluna da peça que você quer pegar: ");
+                    colunaOrigemJogador1 = int.Parse(Console.ReadLine());
+                }
+
+
             }
 
 

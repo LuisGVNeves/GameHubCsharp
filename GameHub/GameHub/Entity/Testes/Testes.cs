@@ -26,7 +26,7 @@ namespace GameHub.Entity.Testes
             return linhaOrigemJogador;
         }
 
-        // # Tratamento pa ra não deixar o jogador colocar caracteres acima de 8 ou menor que 0
+        // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
         public static int TratarCaracteresColuna(int colunaOrigemJogador)
         {
             while (colunaOrigemJogador > 8 || colunaOrigemJogador < 0)
