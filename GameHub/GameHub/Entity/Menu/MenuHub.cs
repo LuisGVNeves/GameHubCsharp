@@ -55,11 +55,6 @@ namespace GameHub.Entity.Menu
             }
         }
         
-
-
-
-
-
         // # Método que adiciona texto recebe parâmetro opcional, caso eu não queira estilizar com outra cor no futuro
         public static void AdicionarTexto(string texto, ConsoleColor corLetra = ConsoleColor.White)
         {

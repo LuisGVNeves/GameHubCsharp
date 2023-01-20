@@ -10,6 +10,7 @@ namespace GameHub.JogoDeXadrez.View
 {
     class TabuleiroXadrez : Tabuleiros
     {
+
         // # Método para preencher o tabuleiro de Xadrez
         public static void PreencherTabuleiroXadrez()
         {
@@ -95,12 +96,14 @@ namespace GameHub.JogoDeXadrez.View
             tabuleiroXadrez[7, 7] = 't'; // Torre
         }
 
-
         // # Método que exibe o tabuleiro de Xadrez
         public static void MostrarTabuleiro(int linhas)
         {
             // # Decorar o menu assim que começar o game
             MenuHub.EstilizarMenu("Jogando Xadrez", ConsoleColor.DarkRed);
+
+            // Mostrar pontuação do jogador
+            Pontuacao.MostrarPontuacaoJogoDeXadrez();
 
             // # Mostra a pontuação pro usuario a cada peça digitada
             //Pontuacao.MostrarPontuacaoJogoDeXadrez();

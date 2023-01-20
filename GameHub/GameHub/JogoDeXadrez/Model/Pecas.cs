@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameHub.JogoDeXadrez.View;
+using GameHub.Entity.Menu;
 
 namespace GameHub.JogoDeXadrez.Model
 {
@@ -454,6 +456,23 @@ namespace GameHub.JogoDeXadrez.Model
                     return;
                 }
 
+
+                // Tratamento caso o jogador coma a própria peça
+                while (pecaInimiga == 'p' || pecaInimiga == 'T' || pecaInimiga == 'C' || pecaInimiga == 'B' || pecaInimiga == 'Q' || pecaInimiga == 'K')
+                {
+                    // Mostrar o tabuleiro
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+
+                    // Input do usuario novamente
+                    JogoXadrez.VezJogador1();
+
+                    if(pecaInimiga != 'p' || pecaInimiga != 'T' || pecaInimiga != 'C' || pecaInimiga != 'B' || pecaInimiga != 'Q' || pecaInimiga != 'K')
+                    {
+                        JogoXadrez.VezJogador2();
+                    }
+
+                }
+
                 // Torre vai chegar
                 tabuleiroXadrez[linhaDestino, colunaDestino] = tabuleiroXadrez[linhaOrigem, colunaOrigem];
 
@@ -590,6 +609,7 @@ namespace GameHub.JogoDeXadrez.Model
                     Usuario.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
+
 
                 // Torre vai chegar
                 tabuleiroXadrez[linhaDestino, colunaDestino] = tabuleiroXadrez[linhaOrigem, colunaOrigem];

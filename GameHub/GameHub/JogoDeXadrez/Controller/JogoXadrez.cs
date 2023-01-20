@@ -19,7 +19,7 @@ namespace GameHub.JogoDeXadrez.Controller
         public static int linhaOrigemJogador1, linhaDestinoJogador1, colunaOrigemJogador1, colunaDestinoJogador1;
         public static int linhaOrigemJogador2, linhaDestinoJogador2, colunaOrigemJogador2, colunaDestinoJogador2;
 
-        static void VezJogador1()
+        public static void VezJogador1()
         {
             MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()}", ConsoleColor.DarkRed);
             MenuHub.AdicionarTexto($" informe a linha da peça vermelha que você vai utilizar: ");
@@ -84,7 +84,7 @@ namespace GameHub.JogoDeXadrez.Controller
             TabuleiroXadrez.MostrarTabuleiro(8);
         }
 
-        static void VezJogador2()
+        public static void VezJogador2()
         {
             MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()}");
             MenuHub.AdicionarTexto(" informe a linha da peça branca que você vai utilizar:");
@@ -165,38 +165,41 @@ namespace GameHub.JogoDeXadrez.Controller
                 MenuHub.AdicionarTexto("Para jogar xadrez, precisamos de mais um usuário no sistema, então cadastre mais um usuário\n\n");
                 MenuHub.AdicionarTexto("Aperte alguma tecla para prosseguir com o cadastro: \n\n");
                 Console.ReadKey();
+                Console.Clear();
 
-                Console.Write("\n                           Digite seu nome: ");
+                MenuHub.EstilizarMenu("AREA CADASTRO", ConsoleColor.DarkRed);
+                Console.Write("\n                          Digite seu nome: ");
                 data[1].nome = Console.ReadLine();
                 Usuario.usuario2.setNovoNome((string)data[1].nome);
 
-                Console.Write("\n                           Digite sua senha: ");
+                Console.Write("\n                          Digite sua senha: ");
                 data[1].senha = Console.ReadLine();
 
 
                 listaUsuarios.Add(Usuario.usuario2);
 
                 Console.WriteLine("\n                       Cadastro criado com sucesso !\n\n");
+                Thread.Sleep(1000);
+                Console.Clear();
 
-                Console.WriteLine($"\n                          Jogador {Usuario.usuario1.getNome()} vai jogar com as peças escuras !");
+                MenuHub.EstilizarMenu("Xadrez",ConsoleColor.DarkRed);
+                Console.WriteLine($"\n      Jogador {Usuario.usuario1.getNome()} vai jogar com as peças escuras !");
                 Usuario.usuario1.setCorPecaXadrez("red");
 
-                Console.WriteLine($"\n                          Jogador {Usuario.usuario2.getNome()} vai jogar com as peças claras !");
+                Console.WriteLine($"\n      Jogador {Usuario.usuario2.getNome()} vai jogar com as peças claras !");
                 Usuario.usuario2.setCorPecaXadrez("white");
 
-                Thread.Sleep(1500);
+                Thread.Sleep(2500);
                 Console.Clear();
             }
 
+            // Preencher os valores da matriz
             TabuleiroXadrez.PreencherTabuleiroXadrez();
 
             while (true)
             {
                 // # Decorar o menu antes de iniciar o game
                 MenuHub.EstilizarMenu(" Xadrez", ConsoleColor.Blue);
-
-                // Mostrar pontuação do jogador
-                Pontuacao.MostrarPontuacaoJogoDeXadrez();
 
                 // Mostrar o tabuleiro
                 TabuleiroXadrez.MostrarTabuleiro(8);
