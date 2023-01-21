@@ -175,10 +175,10 @@ namespace GameHub.JogoDeXadrez.Controller
             Console.Clear();
 
             MenuHub.EstilizarMenu("Xadrez",ConsoleColor.DarkRed);
-            Console.WriteLine($"\n      Jogador {Cadastro.usuario1.getNome()} vai jogar com as peças escuras !");
+            Console.WriteLine($"\n        Jogador {Cadastro.usuario1.getNome()} vai jogar com as peças escuras !");
             Cadastro.usuario1.setCorPecaXadrez("red");
 
-            Console.WriteLine($"\n      Jogador {Cadastro.usuario2.getNome()} vai jogar com as peças claras !");
+            Console.WriteLine($"\n        Jogador {Cadastro.usuario2.getNome()} vai jogar com as peças claras !");
             Cadastro.usuario2.setCorPecaXadrez("white");
 
             Thread.Sleep(2500);

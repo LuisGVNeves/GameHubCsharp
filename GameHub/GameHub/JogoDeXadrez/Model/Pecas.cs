@@ -1655,12 +1655,12 @@ namespace GameHub.JogoDeXadrez.Model
 
             // #  O peão só pode andar apenas 1 casa para frente na mesma coluna
 
-            if (peca == 'p' && linhaDestino - linhaOrigem == 1 && deslocamentoHorizontal == 0)
+            if (peca == 'P' && linhaOrigem - linhaDestino == 1 && deslocamentoHorizontal == 0)
             {
                 // Se onde a torre for ficar, tiver os peões do inimigo, usuario 1 ganha 5 pontos
                 if (pecaInimiga == 'p')
                 {
-                    listaDePecasBrancas.Add('p');
+                    listaDePecasVermelhas.Add('p');
 
                     // Reseto a peça inimiga
                     pecaInimiga = ' ';
@@ -1674,16 +1674,35 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
+                }
 
+                // Se houver torres inimigas
+                if (pecaInimiga == 'B')
+                {
+                    listaDePecasVermelhas.Add('B');
+
+                    // Reseto a peça inimiga
+                    pecaInimiga = ' ';
+
+                    // O destino vai receber a peça inimiga vazia
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                    // Depois vai receber a torre
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                    // Lugar onde a torre saiu vai ficar vazio
+                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
+                    return;
                 }
 
                 // Se houver torres inimigas
                 if (pecaInimiga == 'T')
                 {
-                    listaDePecasBrancas.Add('T');
-
+                    listaDePecasVermelhas.Add('T');
 
                     // Reseto a peça inimiga
                     pecaInimiga = ' ';
@@ -1697,14 +1716,14 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario2.setPontuacaoJogador(1, 2);
                     return;
                 }
 
                 // Se houver cavalos inimigos
                 if (pecaInimiga == 'C')
                 {
-                    listaDePecasBrancas.Add('C');
+                    listaDePecasVermelhas.Add('C');
 
                     // Reseto a peça inimiga
                     pecaInimiga = ' ';
@@ -1718,14 +1737,14 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
                 }
 
                 // Se houver bispos inimigos
                 if (pecaInimiga == 'B')
                 {
-                    listaDePecasBrancas.Add('B');
+                    listaDePecasVermelhas.Add('B');
 
                     // Reseto a peça inimiga
                     pecaInimiga = ' ';
@@ -1739,14 +1758,14 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
                 }
 
                 // Se houver queen inimigos
                 if (pecaInimiga == 'Q')
                 {
-                    listaDePecasBrancas.Add('Q');
+                    listaDePecasVermelhas.Add('Q');
 
                     // Reseto a peça inimiga
                     pecaInimiga = ' ';
@@ -1760,165 +1779,14 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
                 }
 
                 // Se houver king inimigos
                 if (pecaInimiga == 'K')
                 {
-                    listaDePecasBrancas.Add('K');
-
-                    // Reseto a peça inimiga
-                    pecaInimiga = ' ';
-
-                    // O destino vai receber a peça inimiga vazia
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
-
-                    // Depois vai receber a torre
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
-
-                    // Lugar onde a torre saiu vai ficar vazio
-                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
-
-                    Cadastro.usuario1.setPontuacaoJogador(1,1);
-                    return;
-                }
-
-                // Tratamento caso o jogador coma a própria peça
-                while (pecaInimiga == 'p' || pecaInimiga == 'T' || pecaInimiga == 'C' || pecaInimiga == 'B' || pecaInimiga == 'Q' || pecaInimiga == 'K')
-                {
-                    // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
-
-                    // Input do usuario novamente
-                    JogoXadrez.VezJogador1();
-
-                    if (pecaInimiga != 'p' || pecaInimiga != 'T' || pecaInimiga != 'C' || pecaInimiga != 'B' || pecaInimiga != 'Q' || pecaInimiga != 'K')
-                    {
-                        JogoXadrez.VezJogador2();
-                    }
-
-                }
-
-                // Cavalo vai chegar
-                tabuleiroXadrez[linhaDestino, colunaDestino] = tabuleiroXadrez[linhaOrigem, colunaOrigem];
-
-                // Lugar onde a peça saiu vai ficar vazio
-                tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
-            }
-            if (peca == 'P' && linhaOrigem - linhaDestino == 1 && deslocamentoHorizontal == 0)
-            {
-                // Se onde a torre for ficar, tiver os peões do inimigo, usuario 1 ganha 5 pontos
-                if (pecaInimiga == 'P')
-                {
-                    listaDePecasVermelhas.Add('P');
-
-                    // Reseto a peça inimiga
-                    pecaInimiga = ' ';
-
-                    // O destino vai receber a peça inimiga vazia
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
-
-                    // Depois vai receber a torre
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
-
-                    // Lugar onde a torre saiu vai ficar vazio
-                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
-
-                    Cadastro.usuario2.setPontuacaoJogador(1,2);
-                    return;
-
-                }
-
-                // Se houver torres inimigas
-                if (pecaInimiga == 't')
-                {
-                    listaDePecasVermelhas.Add('t');
-
-                    // Reseto a peça inimiga
-                    pecaInimiga = ' ';
-
-                    // O destino vai receber a peça inimiga vazia
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
-
-                    // Depois vai receber a torre
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
-
-                    // Lugar onde a torre saiu vai ficar vazio
-                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
-
-                    Cadastro.usuario2.setPontuacaoJogador(1,2);
-                    return;
-                }
-
-                // Se houver cavalos inimigos
-                if (pecaInimiga == 'c')
-                {
-                    listaDePecasVermelhas.Add('c');
-
-                    // Reseto a peça inimiga
-                    pecaInimiga = ' ';
-
-                    // O destino vai receber a peça inimiga vazia
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
-
-                    // Depois vai receber a torre
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
-
-                    // Lugar onde a torre saiu vai ficar vazio
-                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
-
-                    Cadastro.usuario2.setPontuacaoJogador(1,2);
-                    return;
-                }
-
-                // Se houver bispos inimigos
-                if (pecaInimiga == 'b')
-                {
-                    listaDePecasVermelhas.Add('b');
-
-                    // Reseto a peça inimiga
-                    pecaInimiga = ' ';
-
-                    // O destino vai receber a peça inimiga vazia
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
-
-                    // Depois vai receber a torre
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
-
-                    // Lugar onde a torre saiu vai ficar vazio
-                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
-
-                    Cadastro.usuario2.setPontuacaoJogador(1,2);
-                    return;
-                }
-
-                // Se houver queen inimigos
-                if (pecaInimiga == 'q')
-                {
-                    listaDePecasVermelhas.Add('q');
-
-                    // Reseto a peça inimiga
-                    pecaInimiga = ' ';
-
-                    // O destino vai receber a peça inimiga vazia
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
-
-                    // Depois vai receber a torre
-                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
-
-                    // Lugar onde a torre saiu vai ficar vazio
-                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
-
-                    Cadastro.usuario2.setPontuacaoJogador(1,2);
-                    return;
-                }
-
-                // Se houver king inimigos
-                if (pecaInimiga == 'k')
-                {
-                    listaDePecasVermelhas.Add('k');
+                    listaDePecasVermelhas.Add('K');
 
                     // Reseto a peça inimiga
                     pecaInimiga = ' ';
@@ -1953,6 +1821,157 @@ namespace GameHub.JogoDeXadrez.Model
                 }
 
                 // Torre vai chegar
+                tabuleiroXadrez[linhaDestino, colunaDestino] = tabuleiroXadrez[linhaOrigem, colunaOrigem];
+
+                // Lugar onde a peça saiu vai ficar vazio
+                tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+            }
+            if (peca == 'p' && linhaDestino - linhaOrigem == 1 && deslocamentoHorizontal == 0)
+            {
+                // Se onde a torre for ficar, tiver os peões do inimigo, usuario 1 ganha 5 pontos
+                if (pecaInimiga == 'P')
+                {
+                    listaDePecasBrancas.Add('P');
+
+                    // Reseto a peça inimiga
+                    pecaInimiga = ' ';
+
+                    // O destino vai receber a peça inimiga vazia
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                    // Depois vai receber a torre
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                    // Lugar onde a torre saiu vai ficar vazio
+                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    return;
+
+                }
+
+                // Se houver torres inimigas
+                if (pecaInimiga == 't')
+                {
+                    listaDePecasBrancas.Add('t');
+
+                    // Reseto a peça inimiga
+                    pecaInimiga = ' ';
+
+                    // O destino vai receber a peça inimiga vazia
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                    // Depois vai receber a torre
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                    // Lugar onde a torre saiu vai ficar vazio
+                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    return;
+                }
+
+                // Se houver cavalos inimigos
+                if (pecaInimiga == 'c')
+                {
+                    listaDePecasBrancas.Add('c');
+
+                    // Reseto a peça inimiga
+                    pecaInimiga = ' ';
+
+                    // O destino vai receber a peça inimiga vazia
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                    // Depois vai receber a torre
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                    // Lugar onde a torre saiu vai ficar vazio
+                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    return;
+                }
+
+                // Se houver bispos inimigos
+                if (pecaInimiga == 'b')
+                {
+                    listaDePecasBrancas.Add('b');
+
+                    // Reseto a peça inimiga
+                    pecaInimiga = ' ';
+
+                    // O destino vai receber a peça inimiga vazia
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                    // Depois vai receber a torre
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                    // Lugar onde a torre saiu vai ficar vazio
+                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    return;
+                }
+
+                // Se houver queen inimigos
+                if (pecaInimiga == 'q')
+                {
+                    listaDePecasBrancas.Add('q');
+
+                    // Reseto a peça inimiga
+                    pecaInimiga = ' ';
+
+                    // O destino vai receber a peça inimiga vazia
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                    // Depois vai receber a torre
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                    // Lugar onde a torre saiu vai ficar vazio
+                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    return;
+                }
+
+                // Se houver king inimigos
+                if (pecaInimiga == 'k')
+                {
+                    listaDePecasBrancas.Add('k');
+
+                    // Reseto a peça inimiga
+                    pecaInimiga = ' ';
+
+                    // O destino vai receber a peça inimiga vazia
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                    // Depois vai receber a torre
+                    tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                    // Lugar onde a torre saiu vai ficar vazio
+                    tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
+                    return;
+                }
+
+                // Tratamento caso o jogador coma a própria peça
+                while (pecaInimiga == 'p' || pecaInimiga == 'T' || pecaInimiga == 'C' || pecaInimiga == 'B' || pecaInimiga == 'Q' || pecaInimiga == 'K')
+                {
+                    // Mostrar o tabuleiro
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+
+                    // Input do usuario novamente
+                    JogoXadrez.VezJogador1();
+
+                    if (pecaInimiga != 'p' || pecaInimiga != 'T' || pecaInimiga != 'C' || pecaInimiga != 'B' || pecaInimiga != 'Q' || pecaInimiga != 'K')
+                    {
+                        JogoXadrez.VezJogador2();
+                    }
+
+                }
+
+                // Cavalo vai chegar
                 tabuleiroXadrez[linhaDestino, colunaDestino] = tabuleiroXadrez[linhaOrigem, colunaOrigem];
 
                 // Lugar onde a peça saiu vai ficar vazio
