@@ -20,28 +20,56 @@ namespace GameHub.JogoDeXadrez.Model
             Pecas.deslocamentoVertical = Math.Abs(linhaDestino - linhaOrigem);
             Pecas.deslocamentoHorizontal = Math.Abs(colunaDestino - colunaOrigem);
 
-            // Se o peão tiver algum deslocamento horizontal, então vou fazer com que o jogador atual, jogue novamente
-            if (peca == 'p' && Pecas.deslocamentoHorizontal == 1 || Pecas.deslocamentoHorizontal > 1)
+            // # Tratamento - Se o peão tiver algum deslocamento horizontal, então vou fazer com que o jogador atual, jogue novamente
+            while((peca == 'p' || peca == 'P') && Pecas.deslocamentoHorizontal >= 1)
             {
-                MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
-                Thread.Sleep(2000);
-                Console.Clear();
-                TabuleiroXadrez.MostrarTabuleiro(8);
-                JogoXadrez.VezJogador1();
+                if(peca == 'p')
+                {
+                    MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    JogoXadrez.VezJogador1();
+                }
+
+                if(peca == 'P')
+                {
+                    MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+
+                    JogoXadrez.VezJogador2();
+                }
             }
-            if (peca == 'P' && Pecas.deslocamentoHorizontal == 1 || Pecas.deslocamentoHorizontal > 1)
+
+
+            // # Tratamento - Se o peão quiser se mover acima de 2 casas na vertical, então vai ser um movimento invalido porque o peão só pode mover 2 casas na primeira jogada, e depois apenas 1 casa para cada peão
+            while((peca == 'p' || peca == 'P') && Pecas.deslocamentoVertical <= 2 && Pecas.deslocamentoHorizontal == 0)
             {
-                MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
-                Thread.Sleep(2000);
-                Console.Clear();
-                TabuleiroXadrez.MostrarTabuleiro(8);
+                if (peca == 'p')
+                {
+                    MenuHub.AdicionarTexto("\n\nMovimento inválido da peça peão\n\n", ConsoleColor.DarkRed);
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    JogoXadrez.VezJogador1();
+                }
 
-                JogoXadrez.VezJogador2();
+                if (peca == 'P')
+                {
+                    MenuHub.AdicionarTexto("\n\nMovimento inválido da peça peão\n\n", ConsoleColor.DarkRed);
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+
+                    JogoXadrez.VezJogador2();
+                }
             }
 
 
-            // #  Se o peão se deslocar apenas na vertical, então só pode andar apenas 1 casa para frente na mesma coluna
-            if (peca == 'P' && linhaOrigem - linhaDestino == 1 && Pecas.deslocamentoHorizontal == 0)
+            // # Tratamento - Se o peão se deslocar apenas na vertical, então só pode andar apenas 1 casa para frente na mesma coluna
+            if (peca == 'P' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 0)
             {
                 // Se onde a torre for ficar, tiver os peões do inimigo, usuario 1 ganha 5 pontos
                 if (pecaInimiga == 'p')
@@ -199,6 +227,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Input do usuario novamente
                     JogoXadrez.VezJogador2();
 
+                    // Se a peça for inimiga, ai o jogador inimigo pode jogar
                     if (pecaInimiga == 'P' || pecaInimiga == 't' || pecaInimiga == 'c' || pecaInimiga == 'b' || pecaInimiga == 'q' || pecaInimiga == 'k')
                     {
                         JogoXadrez.VezJogador1();
@@ -212,7 +241,7 @@ namespace GameHub.JogoDeXadrez.Model
                 // Lugar onde a peça saiu vai ficar vazio
                 TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
             }
-            if (peca == 'p' && linhaDestino - linhaOrigem == 1 && Pecas.deslocamentoHorizontal == 0)
+            if (peca == 'p' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 0)
             {
                 // Se onde a torre for ficar, tiver os peões do inimigo, usuario 1 ganha 5 pontos
                 if (pecaInimiga == 'P')
@@ -363,8 +392,6 @@ namespace GameHub.JogoDeXadrez.Model
                 // Lugar onde a peça saiu vai ficar vazio
                 TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
             }
-
-
 
 
         }
