@@ -1,25 +1,19 @@
-﻿using GameHub.Entity.Menu;
-using GameHub.Entity.UsuarioHub;
-using GameHub.JogoDeXadrez.Controller;
+﻿using GameHub.HubAssets.Model;
+using GameHub.HubAssets.View;
 using GameHub.JogoDeXadrez.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GameHub.Entity.Testes
+namespace GameHub.test
 {
-    class Testes : TabuleiroXadrez
+    internal class Testes : TabuleiroXadrez
     {
         // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
         public static int TratarCaracteresLinha(int linhaOrigemJogador, int indiceJogador)
         {
-            if(indiceJogador == 1)
+            if (indiceJogador == 1)
             {
                 while (linhaOrigemJogador > 8 || linhaOrigemJogador < 0)
                 {
-                    MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} não existe esse número no tabuleiro de Xadrez, apenas números no intervalo [0-7]", ConsoleColor.DarkRed);
+                    MenuHub.AdicionarTexto($"\n{Cadastro.usuario1.getNome()} não existe esse número no tabuleiro de Xadrez, apenas números no intervalo [0-7]", ConsoleColor.DarkRed);
 
                     MenuHub.AdicionarTexto("\n\nInforme a linha da peça que você quer pegar: ");
                     linhaOrigemJogador = int.Parse(Console.ReadLine());
@@ -29,7 +23,7 @@ namespace GameHub.Entity.Testes
             {
                 while (linhaOrigemJogador > 8 || linhaOrigemJogador < 0)
                 {
-                    MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()} não existe esse número no tabuleiro de Xadrez, apenas números no intervalo [0-7]", ConsoleColor.DarkRed);
+                    MenuHub.AdicionarTexto($"\n{Cadastro.usuario2.getNome()} não existe esse número no tabuleiro de Xadrez, apenas números no intervalo [0-7]", ConsoleColor.DarkRed);
 
                     MenuHub.AdicionarTexto("\n\nInforme a linha da peça que você quer pegar: ");
                     linhaOrigemJogador = int.Parse(Console.ReadLine());
@@ -42,11 +36,11 @@ namespace GameHub.Entity.Testes
         // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
         public static int TratarCaracteresColuna(int colunaOrigemJogador, int indiceJogador)
         {
-            if (indiceJogador == 1) 
-            { 
+            if (indiceJogador == 1)
+            {
                 while (colunaOrigemJogador > 8 || colunaOrigemJogador < 0)
                 {
-                    MenuHub.AdicionarTexto($"\n{Usuario.usuario1.getNome()} não existe esse número no tabuleiro de Xadrez, apenas números no intervalo [0-7]", ConsoleColor.DarkRed);
+                    MenuHub.AdicionarTexto($"\n{Cadastro.usuario1.getNome()} não existe esse número no tabuleiro de Xadrez, apenas números no intervalo [0-7]", ConsoleColor.DarkRed);
 
                     MenuHub.AdicionarTexto("\n\nInforme a coluna da peça que você quer pegar: ");
                     colunaOrigemJogador = int.Parse(Console.ReadLine());
@@ -56,7 +50,7 @@ namespace GameHub.Entity.Testes
             {
                 while (colunaOrigemJogador > 8 || colunaOrigemJogador < 0)
                 {
-                    MenuHub.AdicionarTexto($"\n{Usuario.usuario2.getNome()} não existe esse número no tabuleiro de Xadrez, apenas números no intervalo [0-7]", ConsoleColor.DarkRed);
+                    MenuHub.AdicionarTexto($"\n{Cadastro.usuario2.getNome()} não existe esse número no tabuleiro de Xadrez, apenas números no intervalo [0-7]", ConsoleColor.DarkRed);
 
                     MenuHub.AdicionarTexto("\n\nInforme a coluna da peça que você quer pegar: ");
                     colunaOrigemJogador = int.Parse(Console.ReadLine());

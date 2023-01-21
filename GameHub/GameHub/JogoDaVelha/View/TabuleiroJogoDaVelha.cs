@@ -1,4 +1,4 @@
-﻿using GameHub.Entity.Tabuleiro;
+﻿using GameHub.HubAssets.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameHub.JogoDaVelha.View
 {
-    class TabuleiroJogoDaVelha : Tabuleiros
+    class TabuleiroJogoDaVelha : Tabuleiro
     {
         // # Método que preenche tabuleiro com números, para o usuário preencher com X ou O
         public static void PreencherTabuleiro()

@@ -1,17 +1,11 @@
 ﻿using GameHub.JogoDeXadrez.Controller;
-using GameHub.Entity.UsuarioHub;
-using System;
-using GameHub.Entity.Tabuleiro;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GameHub.JogoDeXadrez.View;
-using GameHub.Entity.Menu;
+using GameHub.HubAssets.View;
+using GameHub.HubAssets.Model;
 
 namespace GameHub.JogoDeXadrez.Model
 {
-    class Pecas : Tabuleiros
+    class Pecas : Tabuleiro
     {
         // # Variavel pra calcular deslocamento das peças no tabuleiro
         static int deslocamentoVertical;
@@ -56,7 +50,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(5, 1);
+                    Cadastro.usuario1.setPontuacaoJogador(5, 1);
                     return;
 
                 }
@@ -78,7 +72,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(5, 1);
+                    Cadastro.usuario1.setPontuacaoJogador(5, 1);
                     return;
                 }
 
@@ -99,7 +93,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(5, 1);
+                    Cadastro.usuario1.setPontuacaoJogador(5, 1);
                     return;
                 }
 
@@ -120,7 +114,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(5, 1);
+                    Cadastro.usuario1.setPontuacaoJogador(5, 1);
                     return;
                 }
 
@@ -141,7 +135,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(5, 1);
+                    Cadastro.usuario1.setPontuacaoJogador(5, 1);
                     return;
                 }
 
@@ -162,7 +156,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(5, 1);
+                    Cadastro.usuario1.setPontuacaoJogador(5, 1);
                     return;
                 }
 
@@ -210,7 +204,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(5,2);
+                    Cadastro.usuario2.setPontuacaoJogador(5,2);
                     return;
 
                 }
@@ -232,7 +226,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(5,2);
+                    Cadastro.usuario2.setPontuacaoJogador(5,2);
                     return;
                 }
 
@@ -253,7 +247,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(5,2);
+                    Cadastro.usuario2.setPontuacaoJogador(5,2);
                     return;
                 }
 
@@ -274,7 +268,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(5,2);
+                    Cadastro.usuario2.setPontuacaoJogador(5,2);
                     return;
                 }
 
@@ -295,7 +289,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(5,2);
+                    Cadastro.usuario2.setPontuacaoJogador(5,2);
                     return;
                 }
 
@@ -316,7 +310,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(5,2);
+                    Cadastro.usuario2.setPontuacaoJogador(5,2);
                     return;
                 }
 
@@ -380,7 +374,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
 
                 }
@@ -402,7 +396,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -423,7 +417,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -444,7 +438,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -465,7 +459,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -486,7 +480,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -535,7 +529,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
 
                 }
@@ -558,7 +552,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -579,7 +573,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -600,7 +594,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -621,7 +615,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -642,7 +636,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -708,7 +702,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
 
                 }
@@ -730,7 +724,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -751,7 +745,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -772,7 +766,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -793,7 +787,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -814,7 +808,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(3,1);
+                    Cadastro.usuario1.setPontuacaoJogador(3,1);
                     return;
                 }
 
@@ -864,7 +858,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
 
                 }
@@ -887,7 +881,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -908,7 +902,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -929,7 +923,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -950,7 +944,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -971,7 +965,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(3,2);
+                    Cadastro.usuario2.setPontuacaoJogador(3,2);
                     return;
                 }
 
@@ -1041,7 +1035,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(9,1);
+                    Cadastro.usuario1.setPontuacaoJogador(9,1);
                     return;
 
                 }
@@ -1063,7 +1057,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(9,1);
+                    Cadastro.usuario1.setPontuacaoJogador(9,1);
                     return;
                 }
 
@@ -1084,7 +1078,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(9,1);
+                    Cadastro.usuario1.setPontuacaoJogador(9,1);
                     return;
                 }
 
@@ -1105,7 +1099,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(9,1);
+                    Cadastro.usuario1.setPontuacaoJogador(9,1);
                     return;
                 }
 
@@ -1126,7 +1120,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(9,1);
+                    Cadastro.usuario1.setPontuacaoJogador(9,1);
                     return;
                 }
 
@@ -1147,7 +1141,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(9,1);
+                    Cadastro.usuario1.setPontuacaoJogador(9,1);
                     return;
                 }
 
@@ -1196,7 +1190,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(9,2);
+                    Cadastro.usuario2.setPontuacaoJogador(9,2);
                     return;
 
                 }
@@ -1219,7 +1213,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(9,2);
+                    Cadastro.usuario2.setPontuacaoJogador(9,2);
                     return;
                 }
 
@@ -1240,7 +1234,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(9,2);
+                    Cadastro.usuario2.setPontuacaoJogador(9,2);
                     return;
                 }
 
@@ -1261,7 +1255,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(9,2);
+                    Cadastro.usuario2.setPontuacaoJogador(9,2);
                     return;
                 }
 
@@ -1282,7 +1276,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(9,2);
+                    Cadastro.usuario2.setPontuacaoJogador(9,2);
                     return;
                 }
 
@@ -1303,7 +1297,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(9,2);
+                    Cadastro.usuario2.setPontuacaoJogador(9,2);
                     return;
                 }
 
@@ -1680,7 +1674,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
                     return;
 
                 }
@@ -1703,7 +1697,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
                     return;
                 }
 
@@ -1724,7 +1718,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
                     return;
                 }
 
@@ -1745,7 +1739,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
                     return;
                 }
 
@@ -1766,7 +1760,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
                     return;
                 }
 
@@ -1787,7 +1781,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario1.setPontuacaoJogador(1,1);
+                    Cadastro.usuario1.setPontuacaoJogador(1,1);
                     return;
                 }
 
@@ -1832,7 +1826,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(1,2);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
 
                 }
@@ -1854,7 +1848,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(1,2);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
                 }
 
@@ -1875,7 +1869,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(1,2);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
                 }
 
@@ -1896,7 +1890,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(1,2);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
                 }
 
@@ -1917,7 +1911,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(1,2);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
                 }
 
@@ -1938,7 +1932,7 @@ namespace GameHub.JogoDeXadrez.Model
                     // Lugar onde a torre saiu vai ficar vazio
                     tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                    Usuario.usuario2.setPontuacaoJogador(1,2);
+                    Cadastro.usuario2.setPontuacaoJogador(1,2);
                     return;
                 }
 

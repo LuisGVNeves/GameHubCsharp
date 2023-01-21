@@ -1,11 +1,11 @@
-﻿using GameHub.Entity.Menu;
-using GameHub.JogoDeXadrez.Model;
-using GameHub.Entity.UsuarioHub;
+﻿using GameHub.JogoDeXadrez.Model;
+using GameHub.HubAssets.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameHub.HubAssets.View;
 
 namespace GameHub.JogoDeXadrez.View
 {
@@ -17,7 +17,7 @@ namespace GameHub.JogoDeXadrez.View
             Console.Write("         [ ");
             Console.ResetColor();
 
-            Console.Write($"Jogador {Usuario.usuario1.getNome()} está com {Usuario.usuario1.getPontuacaoJogador()} pontos");
+            Console.Write($"Jogador {Cadastro.usuario1.getNome()} está com {Cadastro.usuario1.getPontuacaoJogador()} pontos");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write(" ]");
@@ -34,7 +34,7 @@ namespace GameHub.JogoDeXadrez.View
             Console.ResetColor();
 
 
-            Console.Write($"Jogador {Usuario.usuario2.getNome()} está com {Usuario.usuario2.getPontuacaoJogador()} pontos");
+            Console.Write($"Jogador {Cadastro.usuario2.getNome()} está com {Cadastro.usuario2.getPontuacaoJogador()} pontos");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write(" ]");

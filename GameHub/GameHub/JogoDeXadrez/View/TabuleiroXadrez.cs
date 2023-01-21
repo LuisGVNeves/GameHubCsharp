@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameHub.Entity.Menu;
-using GameHub.Entity.Tabuleiro;
+using GameHub.HubAssets.View;
 
 namespace GameHub.JogoDeXadrez.View
 {
-    class TabuleiroXadrez : Tabuleiros
+    class TabuleiroXadrez : Tabuleiro
     {
 
         // # Método para preencher o tabuleiro de Xadrez

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameHub.JogoDeXadrez.Controller;
-using GameHub.Entity.CadastroUsuarioHub;
+using GameHub.HubAssets.Model;
 using GameHub.JogoDaVelha;
 
-namespace GameHub.Entity.Menu
+namespace GameHub.HubAssets.View
 {
     class MenuHub
     {
@@ -51,11 +51,11 @@ namespace GameHub.Entity.Menu
                     //IniciarOutroJogo();
                     break;
                 default:
-                    System.Environment.Exit(0);
+                    Environment.Exit(0);
                     break;
             }
         }
-        
+
         // # Método que adiciona texto recebe parâmetro opcional, caso eu não queira estilizar com outra cor no futuro
         public static void AdicionarTexto(string texto, ConsoleColor corLetra = ConsoleColor.White)
         {

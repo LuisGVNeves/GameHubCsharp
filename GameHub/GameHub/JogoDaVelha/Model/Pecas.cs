@@ -1,11 +1,11 @@
-﻿using GameHub.Entity.Menu;
-using GameHub.Entity.Tabuleiro;
-using GameHub.Entity.UsuarioHub;
-using GameHub.JogoDaVelha.View;
+﻿using GameHub.JogoDaVelha.View;
+using System;
+using GameHub.HubAssets.View;
+using GameHub.HubAssets.Model;
 
 namespace GameHub.JogoDaVelha.Model
 {
-    internal class Pecas : Tabuleiros
+    internal class Pecas : Tabuleiro
     {
         // # Método para verificar matriz na horizontal e ver se teve X X X ou O O O  na horizontal
         public static void VerificaVitoriaHorizontal(string jogarDeNovo)
@@ -29,49 +29,47 @@ namespace GameHub.JogoDaVelha.Model
 
 
             // # Mostra mensagem caso a vitória tenha sido horizontal tanto de X como de O
-            if (Usuario.usuario1.getLetraJogo() == "X" && linhaHorizontalX)
+            if (Cadastro.usuario1.getLetraJogo() == "X" && linhaHorizontalX)
             {
-                MenuHub.AdicionarTexto($"\n\nJogador {Usuario.usuario1.getNome()} Venceu a partida !", ConsoleColor.Green);
+                MenuHub.AdicionarTexto($"\n\nJogador {Cadastro.usuario1.getNome()} Venceu a partida !", ConsoleColor.Green);
                 Console.ResetColor();
 
-                Usuario.usuario1.setPontuacaoJogador(1, 1);
+                Cadastro.usuario1.setPontuacaoJogador(1, 1);
 
                 TabuleiroJogoDaVelha.MostrarTabuleiro();
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
             }
-            if (Usuario.usuario1.getLetraJogo() == "O" && linhaHorizontalO)
+            if (Cadastro.usuario1.getLetraJogo() == "O" && linhaHorizontalO)
             {
-                MenuHub.AdicionarTexto($"\n\nJogador {Usuario.usuario1.getNome()} Venceu a partida !", ConsoleColor.Green);
+                MenuHub.AdicionarTexto($"\n\nJogador {Cadastro.usuario1.getNome()} Venceu a partida !", ConsoleColor.Green);
                 Console.ResetColor();
 
-                Usuario.usuario1.setPontuacaoJogador(1, 1);
+                Cadastro.usuario1.setPontuacaoJogador(1, 1);
                 TabuleiroJogoDaVelha.MostrarTabuleiro();
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
-
             }
-            if (Usuario.usuario2.getLetraJogo() == "X" && linhaHorizontalX)
+            if (Cadastro.usuario2.getLetraJogo() == "X" && linhaHorizontalX)
             {
-                MenuHub.AdicionarTexto($"\n\nJogador {Usuario.usuario2.getNome()} Venceu a partida !", ConsoleColor.Green);
+                MenuHub.AdicionarTexto($"\n\nJogador {Cadastro.usuario2.getNome()} Venceu a partida !", ConsoleColor.Green);
                 Console.ResetColor();
 
-                Usuario.usuario2.setPontuacaoJogador(1, 2);
+                Cadastro.usuario2.setPontuacaoJogador(1, 2);
 
                 TabuleiroJogoDaVelha.MostrarTabuleiro();
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
-
             }
-            if (Usuario.usuario2.getLetraJogo() == "O" && linhaHorizontalO)
+            if (Cadastro.usuario2.getLetraJogo() == "O" && linhaHorizontalO)
             {
-                MenuHub.AdicionarTexto($"\n\nJogador {Usuario.usuario2.getNome()} Venceu a partida !", ConsoleColor.Green);
+                MenuHub.AdicionarTexto($"\n\nJogador {Cadastro.usuario2.getNome()} Venceu a partida !", ConsoleColor.Green);
                 Console.ResetColor();
 
-                Usuario.usuario2.setPontuacaoJogador(1, 2);
+                Cadastro.usuario2.setPontuacaoJogador(1, 2);
 
                 TabuleiroJogoDaVelha.MostrarTabuleiro();
 
@@ -100,38 +98,13 @@ namespace GameHub.JogoDaVelha.Model
 
 
             // # Mostra mensagem caso a vitória tenha sido vertical tanto de X como de O
-            if (Usuario.usuario1.getLetraJogo() == "X" && linhaVerticalX)
+            if (Cadastro.usuario1.getLetraJogo() == "X" && linhaVerticalX)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n\nJogador {Usuario.usuario1.getNome()} Venceu a partida :D");
+                Console.WriteLine($"\n\nJogador {Cadastro.usuario1.getNome()} Venceu a partida :D");
                 Console.ResetColor();
 
-                Usuario.usuario1.setPontuacaoJogador(1, 1);
-
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
-
-                System.Threading.Thread.Sleep(3000);
-                Console.Clear();
-            }
-            if (Usuario.usuario1.getLetraJogo() == "O" && linhaVerticalO)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n\nJogador {Usuario.usuario1.getNome()} Venceu a partida :D");
-                Console.ResetColor();
-
-                Usuario.usuario1.setPontuacaoJogador(1, 1);
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
-
-                System.Threading.Thread.Sleep(3000);
-                Console.Clear();
-            }
-            if (Usuario.usuario2.getLetraJogo() == "X" && linhaVerticalX)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n\nJogador {Usuario.usuario2.getNome()} Venceu a partida :D");
-                Console.ResetColor();
-
-                Usuario.usuario2.setPontuacaoJogador(1, 2);
+                Cadastro.usuario1.setPontuacaoJogador(1, 1);
 
                 TabuleiroJogoDaVelha.MostrarTabuleiro();
 
@@ -139,19 +112,44 @@ namespace GameHub.JogoDaVelha.Model
                 Console.Clear();
 
             }
-            if (Usuario.usuario2.getLetraJogo() == "O" && linhaVerticalO)
+            if (Cadastro.usuario1.getLetraJogo() == "O" && linhaVerticalO)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n\nJogador {Usuario.usuario2.getNome()} Venceu a partida :D");
+                Console.WriteLine($"\n\nJogador {Cadastro.usuario1.getNome()} Venceu a partida :D");
                 Console.ResetColor();
 
-                Usuario.usuario2.setPontuacaoJogador(1, 2);
+                Cadastro.usuario1.setPontuacaoJogador(1, 1);
+                TabuleiroJogoDaVelha.MostrarTabuleiro();
+
+                System.Threading.Thread.Sleep(3000);
+                Console.Clear();
+            }
+            if (Cadastro.usuario2.getLetraJogo() == "X" && linhaVerticalX)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\n\nJogador {Cadastro.usuario2.getNome()} Venceu a partida :D");
+                Console.ResetColor();
+
+                Cadastro.usuario2.setPontuacaoJogador(1, 2);
 
                 TabuleiroJogoDaVelha.MostrarTabuleiro();
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
 
+            }
+            if (Cadastro.usuario2.getLetraJogo() == "O" && linhaVerticalO)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\n\nJogador {Cadastro.usuario2.getNome()} Venceu a partida :D");
+                Console.ResetColor();
+
+                Cadastro.usuario2.setPontuacaoJogador(1, 2);
+
+                TabuleiroJogoDaVelha.MostrarTabuleiro();
+
+                System.Threading.Thread.Sleep(3000);
+                Console.Clear();
             }
 
         }
@@ -178,66 +176,59 @@ namespace GameHub.JogoDaVelha.Model
 
 
             // # Mostra mensagem caso a vitória tenha sido vertical tanto de X como de O
-            if (Usuario.usuario1.getLetraJogo() == "X" && linhaDiagonalX)
+            if (Cadastro.usuario1.getLetraJogo() == "X" && linhaDiagonalX)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n\nJogador {Usuario.usuario1.getNome()} Venceu a partida :D");
+                Console.WriteLine($"\n\nJogador {Cadastro.usuario1.getNome()} Venceu a partida :D");
                 Console.ResetColor();
 
-                Usuario.usuario1.setPontuacaoJogador(1, 1);
+                Cadastro.usuario1.setPontuacaoJogador(1, 1);
 
                 TabuleiroJogoDaVelha.MostrarTabuleiro();
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+            }
+            if (Cadastro.usuario1.getLetraJogo() == "O" && linhaDiagonalO)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\n\nJogador {Cadastro.usuario1.getNome()} Venceu a partida :D");
+                Console.ResetColor();
 
+                Cadastro.usuario1.setPontuacaoJogador(1, 1);
+
+                TabuleiroJogoDaVelha.MostrarTabuleiro();
+
+                System.Threading.Thread.Sleep(3000);
+                Console.Clear();
 
             }
-            if (Usuario.usuario1.getLetraJogo() == "O" && linhaDiagonalO)
+            if (Cadastro.usuario2.getLetraJogo() == "X" && linhaDiagonalX)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n\nJogador {Usuario.usuario1.getNome()} Venceu a partida :D");
+                Console.WriteLine($"\n\nJogador {Cadastro.usuario2.getNome()} Venceu a partida :D");
                 Console.ResetColor();
 
-                Usuario.usuario1.setPontuacaoJogador(1, 1);
+                Cadastro.usuario2.setPontuacaoJogador(1, 1);
+
 
                 TabuleiroJogoDaVelha.MostrarTabuleiro();
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
-
-
             }
-            if (Usuario.usuario2.getLetraJogo() == "X" && linhaDiagonalX)
+            if (Cadastro.usuario2.getLetraJogo() == "O" && linhaDiagonalO)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n\nJogador {Usuario.usuario2.getNome()} Venceu a partida :D");
+                Console.WriteLine($"\n\nJogador {Cadastro.usuario2.getNome()} Venceu a partida :D");
                 Console.ResetColor();
 
-                Usuario.usuario2.setPontuacaoJogador(1, 1);
-
+                Cadastro.usuario2.setPontuacaoJogador(1, 2);
 
                 TabuleiroJogoDaVelha.MostrarTabuleiro();
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
-
-
-            }
-            if (Usuario.usuario2.getLetraJogo() == "O" && linhaDiagonalO)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n\nJogador {Usuario.usuario2.getNome()} Venceu a partida :D");
-                Console.ResetColor();
-
-                Usuario.usuario2.setPontuacaoJogador(1, 2);
-
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
-
-                System.Threading.Thread.Sleep(3000);
-                Console.Clear();
-
-
             }
 
         }

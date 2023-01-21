@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameHub.Entity.UsuarioHub;
+﻿using GameHub.HubAssets.Model;
 
 namespace GameHub.JogoDaVelha.View
 {
@@ -15,7 +10,7 @@ namespace GameHub.JogoDaVelha.View
             Console.Write("[ ");
             Console.ResetColor();
 
-            Console.Write($"Jogador {Usuario.usuario1.getNome()} está com {Usuario.usuario1.getPontuacaoJogador()} pontos");
+            Console.Write($"Jogador {Cadastro.usuario1.getNome()} está com {Cadastro.usuario1.getPontuacaoJogador()} pontos");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(" ]");
@@ -26,7 +21,7 @@ namespace GameHub.JogoDaVelha.View
             Console.ResetColor();
 
 
-            Console.Write($"Jogador {Usuario.usuario2.getNome()} está com {Usuario.usuario2.getPontuacaoJogador()} pontos");
+            Console.Write($"Jogador {Cadastro.usuario2.getNome()} está com {Cadastro.usuario2.getPontuacaoJogador()} pontos");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(" ]");
@@ -49,7 +44,7 @@ namespace GameHub.JogoDaVelha.View
             Console.Write("   [ ");
             Console.ResetColor();
 
-            Console.Write($"Quantidade de jogadas: {JogoDaVelha.qtdEmpate + Usuario.usuario1.getPontuacaoJogador() + Usuario.usuario2.getPontuacaoJogador()}");
+            Console.Write($"Quantidade de jogadas: {JogoDaVelha.qtdEmpate + Cadastro.usuario1.getPontuacaoJogador() + Cadastro.usuario2.getPontuacaoJogador()}");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(" ]");
@@ -59,7 +54,6 @@ namespace GameHub.JogoDaVelha.View
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n\n------------------------------------------------------------------\n");
             Console.ResetColor();
-
         }
 
     }

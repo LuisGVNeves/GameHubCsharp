@@ -1,5 +1,6 @@
-﻿using GameHub.Entity.CadastroUsuarioHub;
-using GameHub.JogoDeXadrez.View;
+﻿using GameHub.JogoDeXadrez.View;
+using Newtonsoft.Json;
+using GameHub.HubAssets.Model;
 
 namespace GameHub
 {
@@ -7,8 +8,19 @@ namespace GameHub
     {
         public static void Main(string[] args) 
         {
-            // Caso usuário não queira fazer o cadastro inicial, programa encerra, caso contrário vai fazer um cadastro
             Cadastro.MostrarMenuCadastro();
+            
+            /*
+            if(Cadastro.listaUsuarios.Count() < 0)
+            {
+                // Caso usuário não queira fazer o cadastro inicial, programa encerra, caso contrário vai fazer um cadastro
+            }
+            else
+            {
+                Login.FazerLogin();
+            }
+            */
+
         }
     }
 }
