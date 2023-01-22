@@ -8,44 +8,39 @@ namespace GameHub.JogoDeXadrez.Model
 {
     class Peao
     {
+        public static char peca;
+        public static char pecaInimiga;
+
         // # Se o movimento da peça Peoao andar apenas pra frente 1 casa
         public static void VerificarPecaPeao(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
             // # Pegar a peça que o usuário vai alterar no tabuleiro
-            char peca = TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem];
+            peca = TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem];
 
             // # Pegar a peça inimiga que vai estar no destino que o usuário vai querer colocar
-            char pecaInimiga = TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino];
+            pecaInimiga = TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino];
 
             Pecas.deslocamentoVertical = Math.Abs(linhaDestino - linhaOrigem);
             Pecas.deslocamentoHorizontal = Math.Abs(colunaDestino - colunaOrigem);
 
-            // # Tratamento - Se o peão tiver algum deslocamento horizontal, então vou fazer com que o jogador atual, jogue novamente
-            while((peca == 'p' || peca == 'P') && Pecas.deslocamentoHorizontal >= 1)
-            {
-                if(peca == 'p')
-                {
-                    MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
-                    Thread.Sleep(2000);
-                    Console.Clear();
-                    TabuleiroXadrez.MostrarTabuleiro(8);
-                    JogoXadrez.VezJogador1();
-                }
 
-                if(peca == 'P')
-                {
-                    MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
-                    Thread.Sleep(2000);
-                    Console.Clear();
-                    TabuleiroXadrez.MostrarTabuleiro(8);
-
-                    JogoXadrez.VezJogador2();
-                }
-            }
+            // # Verifica se o movimento da peça pra horizontal é mais de 1 casa, se for vai proibir
+            VerificarMovimentoHorizontal();
 
 
+            // # Verifica se o movimento da peça pra vertical é mais de uma 1 casa, se for vai proibir
+            VerificarMovimentoVerticalPeao(linhaOrigem,colunaOrigem,linhaDestino,colunaDestino);
+
+
+            // # Verifica se o movimento do peão da pra abater a peça inimiga
+            AbaterPecas(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
+        }
+
+
+        public static void VerificarMovimentoVerticalPeao(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
+        {
             // # Tratamento - Se o peão quiser se mover acima de 2 casas na vertical, então vai ser um movimento invalido porque o peão só pode mover 2 casas na primeira jogada, e depois apenas 1 casa para cada peão
-            while((peca == 'p' || peca == 'P') && Pecas.deslocamentoVertical >= 2 && Pecas.deslocamentoHorizontal == 0)
+            while ((peca == 'p' || peca == 'P') && Pecas.deslocamentoVertical >= 2 && Pecas.deslocamentoHorizontal == 0)
             {
                 if (peca == 'p')
                 {
@@ -66,6 +61,7 @@ namespace GameHub.JogoDeXadrez.Model
                     JogoXadrez.VezJogador2();
                 }
             }
+
 
 
             // # Tratamento - Se o peão se deslocar apenas na vertical, então só pode andar apenas 1 casa para frente na mesma coluna
@@ -218,6 +214,7 @@ namespace GameHub.JogoDeXadrez.Model
                     return;
                 }
 
+
                 // Tratamento caso o jogador coma a própria peça
                 while (pecaInimiga == 'P' || pecaInimiga == 't' || pecaInimiga == 'c' || pecaInimiga == 'b' || pecaInimiga == 'q' || pecaInimiga == 'k')
                 {
@@ -235,13 +232,14 @@ namespace GameHub.JogoDeXadrez.Model
 
                 }
 
+
                 // Torre vai chegar
                 TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem];
 
                 // Lugar onde a peça saiu vai ficar vazio
                 TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
             }
-            
+
             if (peca == 'p' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 0)
             {
                 // Se onde a torre for ficar, tiver os peões do inimigo, usuario 1 ganha 1 pontos
@@ -393,8 +391,58 @@ namespace GameHub.JogoDeXadrez.Model
                 // Lugar onde a peça saiu vai ficar vazio
                 TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
             }
-
-
         }
+
+        public static void VerificarMovimentoHorizontal()
+        {
+            // # Tratamento - Se o peão tiver algum deslocamento horizontal, então vou fazer com que o jogador atual, jogue novamente
+            while ((peca == 'p' || peca == 'P') && Pecas.deslocamentoHorizontal > 1)
+            {
+                // Peça Peão
+                if (peca == 'P')
+                {
+                    MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    JogoXadrez.VezJogador2();
+                }
+
+                // Peça peão
+                if (peca == 'p')
+                {
+                    MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    JogoXadrez.VezJogador1();
+                }
+
+                return;
+            }
+        }
+
+        public static void AbaterPecas(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
+        {
+            if (peca == 'P' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 1)
+            {
+                // O destino vai receber a peça inimiga vazia
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                // Depois vai receber a peça atual
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                // Lugar onde a torre saiu vai ficar vazio
+                TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                // Peão vai se mover, uma casa anterior a esquerda dele, vai ser a peça comida
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                Cadastro.usuario2.setPontuacaoJogador(1, 2);
+            }
+        }
+
+
     }
 }

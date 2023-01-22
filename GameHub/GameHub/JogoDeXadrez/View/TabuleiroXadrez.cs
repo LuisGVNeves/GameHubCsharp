@@ -4,6 +4,7 @@ namespace GameHub.JogoDeXadrez.View
 {
     class TabuleiroXadrez : Tabuleiro
     {
+
         // # Método para preencher o tabuleiro de Xadrez
         public static void PreencherTabuleiroXadrez()
         {
