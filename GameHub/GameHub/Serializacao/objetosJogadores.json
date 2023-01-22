@@ -14,7 +14,14 @@
     "pontos": 0,
     "CorPeca": "",
     "LetraJogoDaVelha": ""
-
+  },
+  {
+    "nome": "",
+    "idade": 20,
+    "senha": "",
+    "pontos": 0,
+    "CorPeca": "",
+    "LetraJogoDaVelha": ""
   }
 
 ]

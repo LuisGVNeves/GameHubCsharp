@@ -23,7 +23,6 @@ namespace GameHub.HubAssets.Model
             switch (respostaUsuario)
             {
                 case 1:
-                    // Fazer cadastro do usuário que está na posição[0] do arquivo json
                     FazerCadastro();
 
                     // Após fazer o cadastro do primeiro usuário, vou iniciar o menu do hub
@@ -52,12 +51,12 @@ namespace GameHub.HubAssets.Model
 
             Console.Write("\n                           Digite seu nome: ");
             usuario1.setNovoNome(Console.ReadLine());
-            data[0].nome = usuario1.getNome();
+            data[1].nome = usuario1.getNome();
 
 
             Console.Write("\n                           Digite sua senha: ");
             usuario1.setNovaSenha(Console.ReadLine());
-            data[0].senha = usuario1.getSenha();
+            data[1].senha = usuario1.getSenha();
 
 
             listaUsuarios.Add(usuario1);
