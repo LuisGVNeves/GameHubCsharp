@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using GameHub.JogoDeXadrez.Controller;
 using GameHub.HubAssets.Model;
-using GameHub.JogoDaVelha;
 
 namespace GameHub.HubAssets.View
 {
@@ -42,7 +41,7 @@ namespace GameHub.HubAssets.View
             switch (respostaUsuario)
             {
                 case 1:
-                    JogoDaVelha.JogoDaVelha.IniciarJogoDaVelha();
+                    //JogoDaVelha.JogoDaVelha.IniciarJogoDaVelha();
                     break;
                 case 2:
                     JogoXadrez.IniciarJogoXadrez();
@@ -64,11 +63,11 @@ namespace GameHub.HubAssets.View
         }
 
         // # Método para estilizar a interface do terminal
-        public static void EstilizarMenu(string texto, ConsoleColor cor)
+        public static void EstilizarMenu(string texto, ConsoleColor corBackGround, ConsoleColor corTexto = ConsoleColor.White)
         {
             Console.Clear();
-            Console.BackgroundColor = cor;
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = corBackGround;
+            Console.ForegroundColor = corTexto;
             Console.Write("                     ");
             Console.Write("┌─┐");
             Console.Write("└─┘");

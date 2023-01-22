@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameHub.HubAssets.View;
+﻿using GameHub.HubAssets.View;
 
 namespace GameHub.JogoDeXadrez.View
 {
     class TabuleiroXadrez : Tabuleiro
     {
-
         // # Método para preencher o tabuleiro de Xadrez
         public static void PreencherTabuleiroXadrez()
         {

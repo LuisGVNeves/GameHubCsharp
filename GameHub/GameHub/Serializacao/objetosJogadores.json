@@ -1,8 +1,8 @@
 ﻿[
   {
-    "nome": "",
+    "nome": "ADMIN",
     "idade": 20,
-    "senha": "",
+    "senha": "12345",
     "pontos": 0,
     "CorPeca": "",
     "LetraJogoDaVelha":  ""
