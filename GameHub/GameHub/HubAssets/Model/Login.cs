@@ -8,7 +8,7 @@ namespace GameHub.HubAssets.Model
 
         public static void FazerLogin()
         {
-            MenuHub.EstilizarMenu("Já detectamos um acesso anterior, deseja fazer login?", ConsoleColor.DarkGray, ConsoleColor.Black);
+            MenuHub.EstilizarMenu("Já detectamos um acesso anterior, deseja fazer login?", ConsoleColor.Red, ConsoleColor.Black);
             MenuHub.AdicionarTexto("\n                                            1 - Sim | 2 - Não");
             MenuHub.AdicionarTexto("\n\n                                              Digite aqui: ");
             short respostaUsuario = short.Parse(Console.ReadLine());

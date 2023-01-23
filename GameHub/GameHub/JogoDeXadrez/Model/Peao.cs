@@ -38,7 +38,7 @@ namespace GameHub.JogoDeXadrez.Model
         public static void VerificarMovimentoVerticalPeao(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
             // # Tratamento - Se o peão quiser se mover acima de 2 casas na vertical, então vai ser um movimento invalido porque o peão só pode mover 2 casas na primeira jogada, e depois apenas 1 casa para cada peão
-            while ((peca == 'p' || peca == 'P') && Pecas.deslocamentoVertical >= 2 && Pecas.deslocamentoHorizontal == 0)
+            while ((peca == 'p' || peca == 'P') && Pecas.deslocamentoVertical > 1 && Pecas.deslocamentoHorizontal == 0)
             {
                 if (peca == 'p')
                 {
