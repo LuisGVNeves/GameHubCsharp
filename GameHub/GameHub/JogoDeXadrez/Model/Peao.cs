@@ -22,8 +22,10 @@ namespace GameHub.JogoDeXadrez.Model
             Pecas.deslocamentoVertical = Math.Abs(linhaDestino - linhaOrigem);
             Pecas.deslocamentoHorizontal = Math.Abs(colunaDestino - colunaOrigem);
 
+            MovimentoPromocaoPeao(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
+
             // # Verifica se o movimento do peão da pra abater a peça inimiga
-            AbaterPecas(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
+            MovimentoEnPassant(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 
             // # Verifica se o movimento da peça pra horizontal é mais de 1 casa, se for vai proibir
             VerificarMovimentoHorizontal();
@@ -86,7 +88,7 @@ namespace GameHub.JogoDeXadrez.Model
                 else
                 {
                     // # Verifica se o movimento do peão da pra abater a peça inimiga
-                    AbaterPecas(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
+                    MovimentoEnPassant(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 
                     // Peão vai chegar
                     TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem];
@@ -122,7 +124,7 @@ namespace GameHub.JogoDeXadrez.Model
                 else
                 {
                     // # Verifica se o movimento do peão da pra abater a peça inimiga
-                    AbaterPecas(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
+                    MovimentoEnPassant(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 
                     // Peão vai chegar
                     TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem];
@@ -163,7 +165,7 @@ namespace GameHub.JogoDeXadrez.Model
             }
         }
 
-        public static void AbaterPecas(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
+        public static void MovimentoEnPassant(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
             // # Se a peça for igual a P e o deslocamento diagonal for igual a 1 tanto pro lado direito como pro esquerdo, e se no lado direito e esquerdo for vazio, eu posso realizar o movimento
 
@@ -377,6 +379,38 @@ namespace GameHub.JogoDeXadrez.Model
             }
         }
 
+        public static void MovimentoPromocaoPeao(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
+        {
+            if (peca == 'P' && tabuleiroXadrez[0, 0] == 'P' || peca == 'P' && tabuleiroXadrez[0, 1] == 'P' ||
+                peca == 'P' && tabuleiroXadrez[0, 2] == 'P' || peca == 'P' && tabuleiroXadrez[0, 3] == 'P' ||
+                peca == 'P' && tabuleiroXadrez[0, 4] == 'P' || peca == 'P' && tabuleiroXadrez[0, 5] == 'P' ||
+                peca == 'P' && tabuleiroXadrez[0, 6] == 'P' || peca == 'P' && tabuleiroXadrez[0, 7] == 'P')
+            {
+                // O destino vai receber a peça inimiga vazia
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                // Depois vai receber a peça atual
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                // Lugar onde a torre saiu vai ficar vazio
+                TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                // - Se quando o peão for pra esquerda ou direita tiver a peça em questão, vou fazer a substituição
+
+            }
+
+
+            if (peca == 'p' && tabuleiroXadrez[7, 0] == 'p' || peca == 'p' && tabuleiroXadrez[7, 1] == 'p' ||
+                peca == 'p' && tabuleiroXadrez[7, 2] == 'p' || peca == 'p' && tabuleiroXadrez[7, 3] == 'p' ||
+                peca == 'p' && tabuleiroXadrez[7, 4] == 'p' || peca == 'p' && tabuleiroXadrez[7, 5] == 'p' ||
+                peca == 'p' && tabuleiroXadrez[7, 6] == 'p' || peca == 'p' && tabuleiroXadrez[7, 7] == 'p')
+            {
+
+                MenuHub.AdicionarTexto("\n\nPromoção de peão ativada, peão agora é rainha", ConsoleColor.DarkGreen);
+                peca = 'Q';
+                
+            }
+        }
 
     }
 }
