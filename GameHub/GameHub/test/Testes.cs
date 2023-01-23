@@ -9,6 +9,9 @@ namespace GameHub.test
         // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
         public static int TratarCaracteresLinha(int linhaOrigemJogador, int indiceJogador)
         {
+            /*
+                # O indice do jogador serve pra pegar o indice na lista do JSON, pra eu conseguir diferenciar qual usuário está cometendo o erro no input
+            */
             if (indiceJogador == 1)
             {
                 while (linhaOrigemJogador > 8 || linhaOrigemJogador < 0)
@@ -18,6 +21,7 @@ namespace GameHub.test
                     MenuHub.AdicionarTexto("\n\nInforme a linha da peça que você quer pegar: ");
                     linhaOrigemJogador = int.Parse(Console.ReadLine());
                 }
+
             }
             if (indiceJogador == 2)
             {
@@ -29,7 +33,6 @@ namespace GameHub.test
                     linhaOrigemJogador = int.Parse(Console.ReadLine());
                 }
             }
-
             return linhaOrigemJogador;
         }
 

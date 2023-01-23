@@ -60,8 +60,6 @@ namespace GameHub.JogoDeXadrez.Model
                 }
             }
 
-
-
             // # Tratamento - Se o peão se deslocar apenas na vertical, e tiver peças na frente, o movimento não vai acontecer
             if (peca == 'P' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 0)
             {
@@ -168,9 +166,9 @@ namespace GameHub.JogoDeXadrez.Model
 
         public static void AbaterPecas(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
-            // # Se a peça for igual a P e o deslocamento diagonal for igual a 1 tanto pro lado direito como pro esquerdo
+            // # Se a peça for igual a P e o deslocamento diagonal for igual a 1 tanto pro lado direito como pro esquerdo, e se no lado direito e esquerdo for vazio, eu posso realizar o movimento
 
-            if (peca == 'P' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 1)
+            if (peca == 'P' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 1 && TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] == ' ')
             {
                 // O destino vai receber a peça inimiga vazia
                 TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
@@ -182,7 +180,7 @@ namespace GameHub.JogoDeXadrez.Model
                 TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
                 // - Se quando o peão for pra esquerda ou direita tiver a peça em questão, vou fazer a substituição
-                
+
                 if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'p' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'p')
                 {
                     Pecas.listaDePecasBrancas.Add('p');
@@ -254,8 +252,22 @@ namespace GameHub.JogoDeXadrez.Model
                 }
 
             }
+            else
+            {
+                while (peca == 'P' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 1 && TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] != ' ')
+                {
+                    MenuHub.AdicionarTexto("Não é possivel realizar o movimento En Passant, porque já está ocupado", ConsoleColor.DarkRed);
+                    Thread.Sleep(2000);
 
-            if (peca == 'p' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 1)
+                    // Mostrar o tabuleiro
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+
+                    JogoXadrez.VezJogador2();
+                }
+            }
+
+
+            if (peca == 'p' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 1 && TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] == ' ')
             {
                 // O destino vai receber a peça inimiga vazia
                 TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
@@ -270,77 +282,89 @@ namespace GameHub.JogoDeXadrez.Model
 
                 if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'P' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'P')
                 {
-                    Pecas.listaDePecasVermelhas.Add('P');
+                Pecas.listaDePecasVermelhas.Add('P');
 
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
 
-                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
-                    return;
-                }
-
-                // Se houver torres inimigas
-                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 't' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 't')
-                {
-                    Pecas.listaDePecasVermelhas.Add('t');
-
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
-
-                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
-                    return;
-                }
-
-                // Se houver cavalos inimigos
-                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'c' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'c')
-                {
-                    Pecas.listaDePecasVermelhas.Add('c');
-
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
-
-                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
-                    return;
-                }
-
-                // // Quando o peão se mover pra esquerda ou direita, se a peça que fica no meio for o bispo, vou substituir por ' '
-                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'b' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'b')
-                {
-                    Pecas.listaDePecasVermelhas.Add('b');
-
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
-
-                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
-                    return;
-                }
-
-                // Quando o peão se mover pra esquerda ou direita, se a peça que fica no meio for a rainha, vou substituir por ' '
-                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'q' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'q')
-                {
-                    Pecas.listaDePecasVermelhas.Add('q');
-
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
-
-                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
-                    return;
-                }
-
-                // Quando o peão se mover pra esquerda ou direita, se a peça que fica no meio for o king, vou substituir por ' '
-                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'k' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'k')
-                {
-                    Pecas.listaDePecasVermelhas.Add('k');
-
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
-                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
-
-                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
-                    return;
-                }
-
+                Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                return;
             }
 
+            // Se houver torres inimigas
+            if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 't' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 't')
+            {
+                Pecas.listaDePecasVermelhas.Add('t');
+
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                return;
+            }
+
+            // Se houver cavalos inimigos
+            if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'c' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'c')
+            {
+                Pecas.listaDePecasVermelhas.Add('c');
+
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                return;
+            }
+
+            // // Quando o peão se mover pra esquerda ou direita, se a peça que fica no meio for o bispo, vou substituir por ' '
+            if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'b' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'b')
+            {
+                Pecas.listaDePecasVermelhas.Add('b');
+
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                return;
+            }
+
+            // Quando o peão se mover pra esquerda ou direita, se a peça que fica no meio for a rainha, vou substituir por ' '
+            if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'q' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'q')
+            {
+                Pecas.listaDePecasVermelhas.Add('q');
+
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                return;
+            }
+
+            // Quando o peão se mover pra esquerda ou direita, se a peça que fica no meio for o king, vou substituir por ' '
+            if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'k' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'k')
+            {
+                Pecas.listaDePecasVermelhas.Add('k');
+
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                return;
+            }
+
+        }
+            else
+            {
+                while (peca == 'p' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 1 && TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] != ' ')
+                {
+                    MenuHub.AdicionarTexto("Não é possivel realizar o movimento En Passant, porque já está ocupado", ConsoleColor.DarkRed);
+                    Thread.Sleep(2000);
+
+                    // Mostrar o tabuleiro
+                    TabuleiroXadrez.MostrarTabuleiro(8);
+
+                    JogoXadrez.VezJogador1();
+                }
+            }
         }
 
 
