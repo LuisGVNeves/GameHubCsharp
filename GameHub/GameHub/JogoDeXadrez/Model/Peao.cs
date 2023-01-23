@@ -36,7 +36,6 @@ namespace GameHub.JogoDeXadrez.Model
             AbaterPecas(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
         }
 
-
         public static void VerificarMovimentoVerticalPeao(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
             // # Tratamento - Se o peão quiser se mover acima de 2 casas na vertical, então vai ser um movimento invalido porque o peão só pode mover 2 casas na primeira jogada, e depois apenas 1 casa para cada peão
@@ -424,6 +423,8 @@ namespace GameHub.JogoDeXadrez.Model
 
         public static void AbaterPecas(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
+            // # Se a peça for igual a P e o deslocamento diagonal for igual a 1 tanto pro lado direito como pro esquerdo
+
             if (peca == 'P' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 1)
             {
                 // O destino vai receber a peça inimiga vazia
@@ -435,12 +436,166 @@ namespace GameHub.JogoDeXadrez.Model
                 // Lugar onde a torre saiu vai ficar vazio
                 TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
 
-                // Peão vai se mover, uma casa anterior a esquerda dele, vai ser a peça comida
-                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
-                TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+                // - Se quando o peão for pra esquerda ou direita tiver a peça em questão, vou fazer a substituição
+                
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'p' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'p')
+                {
+                    Pecas.listaDePecasBrancas.Add('p');
 
-                Cadastro.usuario2.setPontuacaoJogador(1, 2);
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario2.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'B' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'B')
+                {
+                    Pecas.listaDePecasBrancas.Add('B');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario2.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                // Se houver torres inimigas
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'T' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'T')
+                {
+                    Pecas.listaDePecasBrancas.Add('T');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario2.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                // Se houver cavalos inimigos
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'C' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'C')
+                {
+                    Pecas.listaDePecasBrancas.Add('C');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario2.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                // Se houver queen inimigos
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'Q' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'Q')
+                {
+                    Pecas.listaDePecasBrancas.Add('Q');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario2.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                // Se houver king inimigos
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'K' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'K')
+                {
+                    Pecas.listaDePecasBrancas.Add('K');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario2.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
             }
+
+            if (peca == 'p' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 1)
+            {
+                // O destino vai receber a peça inimiga vazia
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+
+                // Depois vai receber a peça atual
+                TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
+
+                // Lugar onde a torre saiu vai ficar vazio
+                TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
+
+                // Se quando o peão for pra esquerda ou direita tiver a peça em questão, vou fazer a substituição
+
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'P' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'P')
+                {
+                    Pecas.listaDePecasVermelhas.Add('P');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                // Se houver torres inimigas
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 't' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 't')
+                {
+                    Pecas.listaDePecasVermelhas.Add('t');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                // Se houver cavalos inimigos
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'c' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'c')
+                {
+                    Pecas.listaDePecasVermelhas.Add('c');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                // // Quando o peão se mover pra esquerda ou direita, se a peça que fica no meio for o bispo, vou substituir por ' '
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'b' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'b')
+                {
+                    Pecas.listaDePecasVermelhas.Add('b');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                // Quando o peão se mover pra esquerda ou direita, se a peça que fica no meio for a rainha, vou substituir por ' '
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'q' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'q')
+                {
+                    Pecas.listaDePecasVermelhas.Add('q');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+                // Quando o peão se mover pra esquerda ou direita, se a peça que fica no meio for o king, vou substituir por ' '
+                if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 'k' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 'k')
+                {
+                    Pecas.listaDePecasVermelhas.Add('k');
+
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] = ' ';
+                    TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
+
+                    Cadastro.usuario1.setPontuacaoJogador(1, 2);
+                    return;
+                }
+
+            }
+
         }
 
 
