@@ -2,6 +2,7 @@
 using GameHub.HubAssets.Model;
 using GameHub.HubAssets.View;
 using GameHub.GameHubAssets.View;
+using Newtonsoft.Json;
 
 namespace GameHub.JogoDaVelha.Controller
 {
@@ -21,19 +22,53 @@ namespace GameHub.JogoDaVelha.Controller
 
         public static void iniciarCadastro()
         {
-            MenuHub.EstilizarMenu($"Quem vai jogar com o {Cadastro.usuario1.getNome()}", ConsoleColor.DarkRed);
+            Console.Clear();
+            MenuHub.EstilizarMenu("AREA CADASTRO", ConsoleColor.DarkRed);
+
+            StreamReader arquivoJson = new StreamReader("../../../Serializacao/objetosJogadores.json");
+            // # Vai ler o arquivo json até o final
+            var json = arquivoJson.ReadToEnd();
+
+            // # Pegando os dados do json e colocando em um lista dinamica
+            var data = JsonConvert.DeserializeObject<dynamic[]>(json);
+
+            Console.Write("\n                           Digite seu nome: ");
+            Cadastro.usuario1.setNovoNome(Console.ReadLine());
+            data[1].nome = Cadastro.usuario1.getNome();
+
+
+            Console.Write("\n                           Digite sua senha: ");
+            Cadastro.usuario1.setNovaSenha(Console.ReadLine());
+            data[1].senha = Cadastro.usuario1.getSenha();
+
+
+            Cadastro.listaUsuarios.Add(Cadastro.usuario1);
+            Console.WriteLine("\n                       Usuario criado com sucesso !\n\n");
+
+            Thread.Sleep(1000);
+            Console.Clear();
+            MenuHub.EstilizarMenu($"Quem vai jogar com o {Cadastro.usuario1.getNome()} ?", ConsoleColor.DarkRed);
+
+
+            // @ Cadastro segundo jogador
+            Console.Write("\n                           Digite seu nome: ");
+            Cadastro.usuario2.setNovoNome(Console.ReadLine());
+            data[2].nome = Cadastro.usuario1.getNome();
+
+
+            Console.Write("\n                           Digite sua senha: ");
+            Cadastro.usuario1.setNovaSenha(Console.ReadLine());
+            data[2].senha = Cadastro.usuario1.getSenha();
+
+
+            Cadastro.listaUsuarios.Add(Cadastro.usuario1);
+            Console.WriteLine("\n                       Usuario criado com sucesso !\n\n");
+
+            Thread.Sleep(1000);
+            Console.Clear();
 
             Console.Write($"\nJogador 1 {Cadastro.usuario1.getNome()} qual você quer ser? letra X ou O: ");
             Cadastro.usuario1.setLetraJogo(Console.ReadLine().ToUpper());
-
-
-
-            MenuHub.AdicionarTexto("\nDigite o nome do 2 jogador: ");
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Cadastro.usuario2.setNovoNome(Console.ReadLine());
-            Console.ResetColor();
-
             if (Cadastro.usuario1.getLetraJogo() == "X")
             {
                 Cadastro.usuario2.setLetraJogo("O");
@@ -294,8 +329,6 @@ namespace GameHub.JogoDaVelha.Controller
         // # Método que inicia o jogo
         public static void IniciarJogoDaVelha()
         {
-            iniciarCadastro();
-
             // Preenche a matriz com números [0-9]
             PreencherTabuleiro();
 

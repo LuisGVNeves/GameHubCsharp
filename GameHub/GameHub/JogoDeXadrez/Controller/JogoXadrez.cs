@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 using GameHub.JogoDeXadrez.Model;
-using GameHub.test;
 using GameHub.HubAssets.View;
 using GameHub.HubAssets.Model;
+using GameHub.JogoDeXadrez.test;
 
 namespace GameHub.JogoDeXadrez.Controller
 {

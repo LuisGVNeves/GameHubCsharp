@@ -39,6 +39,8 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
             }
             if (Cadastro.usuario1.getLetraJogo() == "O" && linhaHorizontalO)
             {
@@ -50,6 +52,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
             }
             if (Cadastro.usuario2.getLetraJogo() == "X" && linhaHorizontalX)
             {
@@ -62,6 +65,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
             }
             if (Cadastro.usuario2.getLetraJogo() == "O" && linhaHorizontalO)
             {
@@ -74,6 +78,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
             }
 
         }
@@ -109,6 +114,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
 
             }
             if (Cadastro.usuario1.getLetraJogo() == "O" && linhaVerticalO)
@@ -122,6 +128,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
             }
             if (Cadastro.usuario2.getLetraJogo() == "X" && linhaVerticalX)
             {
@@ -135,6 +142,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
 
             }
             if (Cadastro.usuario2.getLetraJogo() == "O" && linhaVerticalO)
@@ -149,6 +157,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
             }
 
         }
@@ -187,6 +196,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
             }
             if (Cadastro.usuario1.getLetraJogo() == "O" && linhaDiagonalO)
             {
@@ -200,6 +210,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
 
             }
             if (Cadastro.usuario2.getLetraJogo() == "X" && linhaDiagonalX)
@@ -215,6 +226,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
             }
             if (Cadastro.usuario2.getLetraJogo() == "O" && linhaDiagonalO)
             {
@@ -228,6 +240,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
             }
 
         }
@@ -263,6 +276,8 @@ namespace GameHub.JogoDaVelha.Model
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
+                JogoDaVelha.Controller.JogoDaVelha.SubMenu();
+
             }
 
 

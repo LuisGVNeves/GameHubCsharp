@@ -1,7 +1,7 @@
 ﻿using GameHub.HubAssets.Model;
 using GameHub.HubAssets.View;
 
-namespace GameHub.test
+namespace GameHub.JogoDeXadrez.test
 {
     internal class Testes : TabuleiroXadrez
     {

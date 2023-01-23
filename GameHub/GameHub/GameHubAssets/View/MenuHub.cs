@@ -39,6 +39,7 @@ namespace GameHub.HubAssets.View
             switch (respostaUsuario)
             {
                 case 1:
+                    JogoDaVelha.Controller.JogoDaVelha.iniciarCadastro();
                     JogoDaVelha.Controller.JogoDaVelha.IniciarJogoDaVelha();
                     break;
                 case 2:
