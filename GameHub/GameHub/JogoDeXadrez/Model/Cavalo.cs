@@ -1,6 +1,6 @@
 ﻿using GameHub.HubAssets.Model;
+using GameHub.HubAssets.View;
 using GameHub.JogoDeXadrez.Controller;
-using GameHub.JogoDeXadrez.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameHub.JogoDeXadrez.Model
 {
-    class Cavalo
+    class Cavalo : TabuleiroXadrez
     {
         // # Se o movimento da peça cavalo simular a letra L
         public static void VerificarPecaCavalo(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)

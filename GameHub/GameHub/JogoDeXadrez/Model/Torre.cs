@@ -1,11 +1,12 @@
 ﻿using GameHub.HubAssets.Model;
+using GameHub.HubAssets.View;
 using GameHub.JogoDeXadrez.Controller;
-using GameHub.JogoDeXadrez.View;
+
 
 
 namespace GameHub.JogoDeXadrez.Model
 {
-    class Torre
+    class Torre : TabuleiroXadrez
     {
 
         // # Se o movimento da peça torre estiver no deslocamento vertical da linha 0 ou no deslocamento horizontal da coluna 0

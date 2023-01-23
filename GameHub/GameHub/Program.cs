@@ -1,6 +1,4 @@
-﻿using GameHub.JogoDeXadrez.View;
-using Newtonsoft.Json;
-using GameHub.HubAssets.Model;
+﻿using GameHub.HubAssets.Model;
 
 namespace GameHub
 {

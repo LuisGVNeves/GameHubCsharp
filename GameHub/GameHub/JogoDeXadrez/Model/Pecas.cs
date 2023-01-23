@@ -1,11 +1,10 @@
 ﻿using GameHub.JogoDeXadrez.Controller;
-using GameHub.JogoDeXadrez.View;
 using GameHub.HubAssets.View;
 using GameHub.HubAssets.Model;
 
 namespace GameHub.JogoDeXadrez.Model
 {
-    class Pecas : Tabuleiro
+    class Pecas : Tabuleiros
     {
         // # Variavel pra calcular deslocamento das peças no tabuleiro
         public static int deslocamentoVertical;

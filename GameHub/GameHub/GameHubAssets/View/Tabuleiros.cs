@@ -1,12 +1,82 @@
-﻿using GameHub.HubAssets.View;
+﻿using GameHub.GameHubAssets.View;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace GameHub.JogoDeXadrez.View
+namespace GameHub.HubAssets.View
 {
-    class TabuleiroXadrez : Tabuleiro
+    // @ Assinaturas de métodos para as classes TabuleiroJogoDaVelha e TabuleiroXadrez
+    public abstract class Tabuleiros
     {
+        // # Criar a Matriz - 8 linhas e 8 colunas
+        public static char[,] tabuleiroXadrez = new char[8, 8];
+        public static string[,] tabuleiroJogoDaVelha = new string[3, 3];
 
+        // Classe abstrata não tem métodos estáticos, eu teria que declarar esses métodos como abstratos e fazer um override lá no tabuleiroXadrez, mas como eu preciso da assinatura desses métodos em outras classes, e não vai ser necessário criar um objeto pra pegar esses métodos, então eu setei a assinatura desses aqui como static.
+
+        // https://methodpoet.com/abstract-static-methods/
+
+        public static void PreencherTabuleiro() { }
+
+        public static void MostrarTabuleiro(int linhas) { }
+
+    }
+
+    public class TabuleiroJogoDaVelha : Tabuleiros
+    {
+        // # Método que preenche tabuleiro com números, para o usuário preencher com X ou O
+        public static void PreencherTabuleiro()
+        {
+            // # Linha 1
+            tabuleiroJogoDaVelha[0, 0] = "1";
+            tabuleiroJogoDaVelha[0, 1] = "2";
+            tabuleiroJogoDaVelha[0, 2] = "3";
+
+            // # Linha 2
+            tabuleiroJogoDaVelha[1, 0] = "4";
+            tabuleiroJogoDaVelha[1, 1] = "5";
+            tabuleiroJogoDaVelha[1, 2] = "6";
+
+
+            // # Linha 3
+            tabuleiroJogoDaVelha[2, 0] = "7";
+            tabuleiroJogoDaVelha[2, 1] = "8";
+            tabuleiroJogoDaVelha[2, 2] = "9";
+        }
+
+        // # Método Mostrar Tabuleiros
+        public static void MostrarTabuleiro()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(@"
+                              ╔═══════════╗");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"                                {tabuleiroJogoDaVelha[0, 0]} | {tabuleiroJogoDaVelha[0, 1]} | {tabuleiroJogoDaVelha[0, 2]} ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("                               -----------");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"                                {tabuleiroJogoDaVelha[1, 0]} | {tabuleiroJogoDaVelha[1, 1]} | {tabuleiroJogoDaVelha[1, 2]} ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("                               -----------\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($"                                {tabuleiroJogoDaVelha[2, 0]} | {tabuleiroJogoDaVelha[2, 1]} | {tabuleiroJogoDaVelha[2, 2]} ");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(@"
+                              ╚═══════════╝");
+            Console.ResetColor();
+        }
+    }
+
+    public class TabuleiroXadrez : Tabuleiros
+    {
         // # Método para preencher o tabuleiro de Xadrez
-        public static void PreencherTabuleiroXadrez()
+        public static void PreencherTabuleiro()
         {
             // # Linha 1
             tabuleiroXadrez[0, 0] = 'T'; // Torre
@@ -93,17 +163,11 @@ namespace GameHub.JogoDeXadrez.View
         // # Método que exibe o tabuleiro de Xadrez
         public static void MostrarTabuleiro(int linhas)
         {
-            // # Decorar o menu assim que começar o game
-            MenuHub.EstilizarMenu("Jogando Xadrez", ConsoleColor.DarkRed);
 
-            // Mostrar pontuação do jogador
-            Pontuacao.MostrarPontuacaoJogoDeXadrez();
-
-            // # Mostra a pontuação pro usuario a cada peça digitada
-            //Pontuacao.MostrarPontuacaoJogoDeXadrez();
+            Ranking.MostrarPontuacaoJogoDeXadrez();
 
             MenuHub.AdicionarTexto("                    ╔═════════════════════════════════╗\n", ConsoleColor.DarkRed);
-            
+
             for (int i = 0; i < linhas; i++)
             {
                 if (i == 0)
@@ -157,7 +221,6 @@ namespace GameHub.JogoDeXadrez.View
             Console.ResetColor();
 
         }
-
 
     }
 }

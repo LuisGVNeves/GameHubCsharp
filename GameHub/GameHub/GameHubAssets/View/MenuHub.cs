@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GameHub.GameHubAssets.View;
 using GameHub.JogoDeXadrez.Controller;
-using GameHub.HubAssets.Model;
-using GameHub.JogoDeXadrez.View;
 
 namespace GameHub.HubAssets.View
 {
@@ -45,13 +39,13 @@ namespace GameHub.HubAssets.View
             switch (respostaUsuario)
             {
                 case 1:
-                    //JogoDaVelha.JogoDaVelha.IniciarJogoDaVelha();
+                    JogoDaVelha.Controller.JogoDaVelha.IniciarJogoDaVelha();
                     break;
                 case 2:
                     JogoXadrez.IniciarJogoXadrez();
                     break;
                 case 3:
-                    Pontuacao.MostrarPontuacaoJogoDeXadrez();
+                    Ranking.MostrarPontuacaoJogoDeXadrez();
                     break;
                 default:
                     Environment.Exit(0);

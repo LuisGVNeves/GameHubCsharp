@@ -1,12 +1,11 @@
 ﻿using GameHub.HubAssets.Model;
 using GameHub.HubAssets.View;
 using GameHub.JogoDeXadrez.Controller;
-using GameHub.JogoDeXadrez.View;
 
 
 namespace GameHub.JogoDeXadrez.Model
 {
-    class Peao
+    class Peao : TabuleiroXadrez
     {
         public static char peca;
         public static char pecaInimiga;

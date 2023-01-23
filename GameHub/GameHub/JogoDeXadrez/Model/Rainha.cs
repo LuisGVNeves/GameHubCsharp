@@ -1,11 +1,11 @@
 ﻿using GameHub.HubAssets.Model;
+using GameHub.HubAssets.View;
 using GameHub.JogoDeXadrez.Controller;
-using GameHub.JogoDeXadrez.View;
 
 
 namespace GameHub.JogoDeXadrez.Model
 {
-    class Rainha
+    class Rainha : TabuleiroXadrez
     {
         // # Se o movimento da peça Rainha tiver a mesma quantidade de vezes que for o movimento horizontal ou vertical
         public static void VerificarPecaRainha(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)

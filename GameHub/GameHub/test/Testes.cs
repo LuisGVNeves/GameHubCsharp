@@ -1,6 +1,5 @@
 ﻿using GameHub.HubAssets.Model;
 using GameHub.HubAssets.View;
-using GameHub.JogoDeXadrez.View;
 
 namespace GameHub.test
 {

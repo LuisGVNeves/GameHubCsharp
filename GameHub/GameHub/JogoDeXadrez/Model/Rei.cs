@@ -1,5 +1,5 @@
-﻿using GameHub.JogoDeXadrez.Controller;
-using GameHub.JogoDeXadrez.View;
+﻿using GameHub.HubAssets.View;
+using GameHub.JogoDeXadrez.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameHub.JogoDeXadrez.Model
 {
-    class Rei
+    class Rei : TabuleiroXadrez
     {
         // # Se o movimento da peça Rei andar apenas 1 casa
         public static void VerificarPecaRei(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)

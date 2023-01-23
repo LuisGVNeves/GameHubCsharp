@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using GameHub.JogoDeXadrez.View;
 using GameHub.JogoDeXadrez.Model;
 using GameHub.test;
 using GameHub.HubAssets.View;
@@ -200,7 +199,7 @@ namespace GameHub.JogoDeXadrez.Controller
             Console.Clear();
 
             // Preencher os valores da matriz
-            TabuleiroXadrez.PreencherTabuleiroXadrez();
+            TabuleiroXadrez.PreencherTabuleiro();
 
             while (true)
             {
