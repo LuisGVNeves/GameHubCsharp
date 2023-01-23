@@ -8,12 +8,16 @@ namespace GameHub.HubAssets.Model
 
         public static void FazerLogin()
         {
-            MenuHub.EstilizarMenu("Já detectamos um acesso anterior, deseja fazer login?", ConsoleColor.Red, ConsoleColor.Black);
-            MenuHub.AdicionarTexto("\n                                            1 - Sim | 2 - Não");
-            MenuHub.AdicionarTexto("\n\n                                              Digite aqui: ");
+            MenuHub.EstilizarMenu("         Login         ", ConsoleColor.DarkRed);
+            MenuHub.AdicionarTexto("\n\n    ╔════════════════════════  Deseja fazer login?  ═══════════════════════╗\n\n\n");
+
+            MenuHub.AdicionarTexto("\n                                 1 - Sim | 2 - Não\n");
+            MenuHub.AdicionarTexto("\n\n           ╚══════════════════════════════════════════════════════════╝");
+            MenuHub.AdicionarTexto("\n\n\n\n\n                                    Digite aqui: ");
             short respostaUsuario = short.Parse(Console.ReadLine());
 
             StreamReader arquivoJson = new StreamReader("../../../Serializacao/objetosJogadores.json");
+
             // # Vai ler o arquivo json até o final
             var json = arquivoJson.ReadToEnd();
 
@@ -23,17 +27,75 @@ namespace GameHub.HubAssets.Model
 
             if (respostaUsuario == 1)
             {
-                MenuHub.AdicionarTexto("\n\n                                        Digite o nome do usuário: ");
-                string nomeUsuario = Console.ReadLine();
+                Console.Clear();
+                MenuHub.EstilizarMenu("Login", ConsoleColor.DarkRed);
 
-                MenuHub.AdicionarTexto("\n\n                                        Digite a senha do usuário: ");
+                MenuHub.AdicionarTexto("\n                  Digite o nome do usuário: ");
+                string nomeUsuario = Console.ReadLine().ToUpper();
+
+                while (nomeUsuario != "ADMIN")
+                {
+                    MenuHub.AdicionarTexto("\n\nUsuário não encontrado no sistema, deseja tentar novamente?\n\n",ConsoleColor.DarkRed);
+                    MenuHub.AdicionarTexto("                       1 - Sim | 2 - NÃO");
+
+                    MenuHub.AdicionarTexto("\n\n\n                         Digite aqui: ");
+
+
+                    short novaResposta = short.Parse(Console.ReadLine());
+
+                    Console.Clear();
+                    MenuHub.EstilizarMenu("Login", ConsoleColor.DarkRed);
+                    if (novaResposta == 1)
+                    {
+                        MenuHub.AdicionarTexto("\n                  Digite o nome do usuário: ");
+                        nomeUsuario = Console.ReadLine().ToUpper();
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        MenuHub.AdicionarTexto("\n\n                            Finalizando programa\n\n", ConsoleColor.DarkRed);
+                        Thread.Sleep(2000);
+                        System.Environment.Exit(0);
+                    }
+
+                }
+
+
+
+
+
+                MenuHub.AdicionarTexto("\n\n                  Digite a senha do usuário: ");
                 string senhaUsuario = Console.ReadLine();
+                while (senhaUsuario != "12345")
+                {
+                    MenuHub.AdicionarTexto("\n\nUsuário não encontrado no sistema, deseja tentar novamente?\n\n", ConsoleColor.DarkRed);
+                    MenuHub.AdicionarTexto("                       1 - Sim | 2 - NÃO");
 
-                if(nomeUsuario == (string)data[0].nome && senhaUsuario == (string)data[0].senha)
+                    MenuHub.AdicionarTexto("\n\n\n                         Digite aqui: ");
+
+                    short novaResposta = short.Parse(Console.ReadLine());
+                    if (novaResposta == 1)
+                    {
+                        MenuHub.AdicionarTexto("\n               Digite a senha do usuário: ");
+                        senhaUsuario = Console.ReadLine().ToUpper();
+                    }
+                    else
+                    {
+                        MenuHub.AdicionarTexto("\n\n                    Finalizando programa\n\n", ConsoleColor.DarkRed);
+                        Thread.Sleep(2000);
+                        System.Environment.Exit(0);
+                    }
+
+                }
+
+
+                if (nomeUsuario == (string)data[0].nome && senhaUsuario == (string)data[0].senha)
                 {
                     // Após fazer o cadastro do primeiro usuário, vou iniciar o menu do hub
                     MenuHub.MenuInicialHub();
                 }
+
+
             }
             else
             {
