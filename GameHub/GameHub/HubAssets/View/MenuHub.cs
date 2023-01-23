@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameHub.JogoDeXadrez.Controller;
 using GameHub.HubAssets.Model;
+using GameHub.JogoDeXadrez.View;
 
 namespace GameHub.HubAssets.View
 {
@@ -28,10 +29,13 @@ namespace GameHub.HubAssets.View
             AdicionarTexto("                                       2 - Xadrez ");
 
             AdicionarTexto("\n                                   ════════════════════════\n");
-            AdicionarTexto("                                       3 - Outro jogo ");
+            AdicionarTexto("                                       3 - Ranking ");
 
             AdicionarTexto("\n                                   ════════════════════════\n");
-            AdicionarTexto("                                       4 - Sair");
+            AdicionarTexto("                                       4 - Outro jogo ");
+
+            AdicionarTexto("\n                                   ════════════════════════\n");
+            AdicionarTexto("                                       5 - Sair");
 
             AdicionarTexto("\n\n            ╚════════════════════════════════════════════════════════════════════╝");
             AdicionarTexto("\n\n\n\n\n                                        Digite aqui: ");
@@ -47,7 +51,7 @@ namespace GameHub.HubAssets.View
                     JogoXadrez.IniciarJogoXadrez();
                     break;
                 case 3:
-                    //IniciarOutroJogo();
+                    Pontuacao.MostrarPontuacaoJogoDeXadrez();
                     break;
                 default:
                     Environment.Exit(0);

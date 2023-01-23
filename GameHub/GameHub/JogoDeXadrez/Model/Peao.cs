@@ -189,6 +189,7 @@ namespace GameHub.JogoDeXadrez.Model
                     TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
 
                     Cadastro.usuario2.setPontuacaoJogador(1, 2);
+        
                     return;
                 }
 
@@ -248,6 +249,11 @@ namespace GameHub.JogoDeXadrez.Model
                     TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
 
                     Cadastro.usuario2.setPontuacaoJogador(1, 2);
+                    
+                    Console.Clear();
+                    MenuHub.AdicionarTexto("                CHEQUE MATE !           ",ConsoleColor.DarkGreen);
+                    Thread.Sleep(2000);
+                    MenuHub.MenuInicialHub();
                     return;
                 }
 
@@ -348,6 +354,11 @@ namespace GameHub.JogoDeXadrez.Model
                 TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] = ' ';
 
                 Cadastro.usuario1.setPontuacaoJogador(1, 2);
+
+                Console.Clear();
+                MenuHub.AdicionarTexto("                CHEQUE MATE !           ", ConsoleColor.DarkGreen);
+                Thread.Sleep(2000);
+                MenuHub.MenuInicialHub();
                 return;
             }
 

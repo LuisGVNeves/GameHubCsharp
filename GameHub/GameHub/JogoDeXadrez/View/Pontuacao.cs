@@ -47,5 +47,7 @@ namespace GameHub.JogoDeXadrez.View
             }
             Console.WriteLine("\n");
         }
+
+
     }
 }

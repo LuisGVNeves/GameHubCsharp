@@ -75,6 +75,7 @@ namespace GameHub.JogoDeXadrez.Model
                     return;
                 }
 
+                /*----------------------------------------- alterar aqui pra outras peças ----------------*/
 
                 // Quando o bispo se mover, se o destino dele for uma peça inimiga, vou deslocar ele direto pra casa inimiga e comer a peça
                 if(TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] == 'P')
@@ -103,6 +104,7 @@ namespace GameHub.JogoDeXadrez.Model
                     return;
                 }
 
+                /*----------------------------------------- alterar aqui pra outras peças ----------------*/
 
 
 
@@ -163,6 +165,11 @@ namespace GameHub.JogoDeXadrez.Model
                     TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = ' ';
 
                     Cadastro.usuario1.setPontuacaoJogador(1, 2);
+
+                    Console.Clear();
+                    MenuHub.AdicionarTexto("                CHEQUE MATE !           ", ConsoleColor.DarkGreen);
+                    Thread.Sleep(2000);
+                    MenuHub.MenuInicialHub();
                     return;
                 }
 
@@ -259,6 +266,11 @@ namespace GameHub.JogoDeXadrez.Model
                     TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = ' ';
 
                     Cadastro.usuario2.setPontuacaoJogador(1, 2);
+
+                    Console.Clear();
+                    MenuHub.AdicionarTexto("                CHEQUE MATE !           ", ConsoleColor.DarkGreen);
+                    Thread.Sleep(2000);
+                    MenuHub.MenuInicialHub();
                     return;
                 }
 
