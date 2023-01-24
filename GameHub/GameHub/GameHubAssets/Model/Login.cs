@@ -8,12 +8,14 @@ namespace GameHub.HubAssets.Model
 
         public static void FazerLogin()
         {
-            MenuHub.EstilizarMenu("         Login         ", ConsoleColor.DarkRed);
-            MenuHub.AdicionarTexto("\n\n    ╔════════════════════════  Deseja fazer login?  ═══════════════════════╗\n\n\n");
+            MenuHub.EstilizarMenu("      Login       ", ConsoleColor.DarkBlue);
+            MenuHub.AdicionarTexto("\n\n╔══════════════════════ ", ConsoleColor.DarkBlue);
+            MenuHub.AdicionarTexto("    Deseja fazer login?");
+            MenuHub.AdicionarTexto("      ═════════════════════╗\n\n\n", ConsoleColor.DarkBlue);
 
-            MenuHub.AdicionarTexto("\n                                 1 - Sim | 2 - Não\n");
-            MenuHub.AdicionarTexto("\n\n           ╚══════════════════════════════════════════════════════════╝");
-            MenuHub.AdicionarTexto("\n\n\n\n\n                                    Digite aqui: ");
+            MenuHub.AdicionarTexto("\n                             1 - Sim | 2 - Não\n");
+            MenuHub.AdicionarTexto("\n\n      ╚══════════════════════════════════════════════════════════╝", ConsoleColor.DarkBlue);
+            MenuHub.AdicionarTexto("\n\n\n\n\n                              Digite aqui: ");
             short respostaUsuario = short.Parse(Console.ReadLine());
 
             StreamReader arquivoJson = new StreamReader("../../../GameHubAssets/Data/objetosJogadores.json");

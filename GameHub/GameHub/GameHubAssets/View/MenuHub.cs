@@ -46,7 +46,7 @@ namespace GameHub.HubAssets.View
                     JogoXadrez.IniciarJogoXadrez();
                     break;
                 case 3:
-                    Ranking.MostrarPontuacaoJogoDeXadrez();
+                    Ranking.MostrarRankingGlobal();
                     break;
                 default:
                     Environment.Exit(0);

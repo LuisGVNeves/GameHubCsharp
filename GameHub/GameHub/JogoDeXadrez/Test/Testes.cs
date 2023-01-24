@@ -35,6 +35,7 @@ namespace GameHub.JogoDeXadrez.test
             return linhaOrigemJogador;
         }
 
+
         // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
         public static int TratarCaracteresColuna(int colunaOrigemJogador, int indiceJogador)
         {
