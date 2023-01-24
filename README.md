@@ -134,3 +134,12 @@ $ ctrl + f5
 - [x] Não deixar o usuário pegar uma peça da cor diferente dele para jogar no turno atual (Jogar como se fosse o jogador adversário)
 - [x] Mostrar pontuação dos jogadores em tempo real com as peças capturadas
 
+
+
+### 🔴 Problemas atuais e Features incompletas
+- [ ] As peças Peão,Torre, Cavalo, Bispo, Rainha e Rei se movem corretamente no tabuleiro, mas elas podem sair da matriz [0,0] e pular direto pra matriz do adeversário mesmo que os peões enfileirados estejam barrando o caminho".
+- [ ] O movimento Promoção de peão ainda não foi testado
+- [ ] O movimento En Passant pode ocorrer em qualquer casa, precisa definir um limite de casa na matriz pro movimento ocorrer
+- [ ] As peças Torre, Cavalo, Rainha e Rei comem as peças simplesmente se a peça inimiga tiver na matriz, exemplo: se eu fizer o movimento de L do cavalo, e a peça inimiga tiver onde o cavalo vai ficar, automaticamente a peça inimiga é pega, porém, se a peça inimiga tivesse uma casa pra frente ou pra baixo, o cavalo ou qualquer outra peça não conseguiria pegar, então um dos problemas é que eu só estou conseguindo pegar a peça, se a coluna de destino e a linha de destino forem iguais a peça adversária
+- [ ] Checkmate no rei só funciona nas peças Peão e Bispo que é onde eu foquei mais, por serem movimentos mais complexos
+- [ ] Persistência dos dados poderia ser melhor
