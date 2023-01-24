@@ -22,42 +22,46 @@ namespace GameHub.JogoDaVelha.View
             MenuHub.AdicionarTexto("\n\n\n\n\n                                  Digite aqui: ");
             jogarDeNovo = Console.ReadLine();
 
-            switch (jogarDeNovo)
+            if(jogarDeNovo == "1")
             {
-                case "1":
-                    Thread.Sleep(1300);
-                    Console.Clear();
+                Thread.Sleep(1300);
+                Console.Clear();
 
-                    // Interface do xadrex
-                    MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.DarkRed);
+                // Interface do xadrex
+                MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.DarkRed);
 
-                    // # Vai iniciar o jogo e resetar o intervalo [0-9]
-                    Pecas.PreencherTabuleiro();
+                // # Vai iniciar o jogo e resetar o intervalo [0-9]
+                PreencherTabuleiro();
 
-                    JogoDaVelha.Controller.JogoDaVelha.IniciarJogoDaVelha();
-                    break;
-                case "2":
-                    Thread.Sleep(1000);
-                    Console.Clear();
+                Controller.JogoDaVelha.IniciarJogoDaVelha();
+            }
 
-                    // Interface do xadrex
-                    MenuHub.EstilizarMenu("Pontuação", ConsoleColor.DarkGreen);
+            if(jogarDeNovo == "2")
+            {
+                Thread.Sleep(1000);
+                Console.Clear();
 
-                    Ranking.MostrarPontuacaoJogoDaVelha();
-                    break;
-                case "3":
-                    Thread.Sleep(1000);
-                    Console.Clear();
+                // Interface do xadrex
+                MenuHub.EstilizarMenu("Pontuação", ConsoleColor.DarkGreen);
 
-                    MenuHub.MenuInicialHub();
-                    break;
-                case "4":
-                    Console.Clear();
+                Ranking.MostrarPontuacaoJogoDaVelha();
+            }
 
-                    MenuHub.EstilizarMenu("--------------   Encerrando aplicação  --------------", ConsoleColor.Red);
+            if(jogarDeNovo == "3")
+            {
+                Thread.Sleep(1000);
+                Console.Clear();
 
-                    Environment.Exit(0);
-                    break;
+                MenuHub.MenuInicialHub();
+            }
+
+            if(jogarDeNovo == "4")
+            {
+                Console.Clear();
+
+                MenuHub.EstilizarMenu("--------------   Encerrando aplicação  --------------", ConsoleColor.Red);
+
+                Environment.Exit(0);
             }
         }
     }

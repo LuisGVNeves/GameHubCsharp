@@ -8,6 +8,7 @@ namespace GameHub.HubAssets.Model
 
         public static void FazerLogin()
         {
+
             MenuHub.EstilizarMenu("      Login       ", ConsoleColor.DarkBlue);
             MenuHub.AdicionarTexto("\n\n╔══════════════════════ ", ConsoleColor.DarkBlue);
             MenuHub.AdicionarTexto("    Deseja fazer login?");

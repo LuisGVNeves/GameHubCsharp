@@ -17,7 +17,7 @@ namespace GameHub.HubAssets.Model
         private string LetraJogo;
         private int Pontuacao;
 
-        public Usuario(string nome, int idade, string senha, string corPecaXadrez, string letraJogo, int pontuacao)
+        public Usuario(string nome, int idade, string senha, string corPecaXadrez = "", string letraJogo = "", int pontuacao = 0)
         {
             Nome = nome;
             Idade = idade;
@@ -82,13 +82,13 @@ namespace GameHub.HubAssets.Model
             // Jogador 1 recebe os pontos, e altero no arquivo json também os pontos do 1 jogador
             if (indiceJogador == 1)
             {
-                data[0].pontos = novaPontuacao;
+                data[1].pontos = novaPontuacao;
             }
 
             // Jogador 2 recebe os pontos, e altero no arquivo json também os pontos do 2 jogador
             if (indiceJogador == 2)
             {
-                data[1].pontos = novaPontuacao;
+                data[2].pontos = novaPontuacao;
             }
 
             Pontuacao += novaPontuacao;

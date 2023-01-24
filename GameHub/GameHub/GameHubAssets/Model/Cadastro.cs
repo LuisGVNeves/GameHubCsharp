@@ -22,18 +22,15 @@ namespace GameHub.HubAssets.Model
             MenuHub.AdicionarTexto("\n\n                                Digite aqui: ");
             short respostaUsuario = short.Parse(Console.ReadLine());
 
-            switch (respostaUsuario)
+            if(respostaUsuario == 1)
             {
-                case 1:
-                    FazerCadastroXadrez();
+                FazerCadastroXadrez();
 
-                    // Após fazer o cadastro do primeiro usuário, vou iniciar o menu do hub
-                    MenuHub.MenuInicialHub();
-                    break;
-                default:
-                    Environment.Exit(0);
-                    break;
+                // Após fazer o cadastro do primeiro usuário, vou iniciar o menu do hub
+                MenuHub.MenuInicialHub();
             }
+            Environment.Exit(0);
+
             return 2;
         }
 
@@ -112,12 +109,11 @@ namespace GameHub.HubAssets.Model
 
         }
 
-
         public static void FazerCadastroJogoDaVelha()
         {
-
             Console.Clear();
             MenuHub.EstilizarMenu("AREA CADASTRO", ConsoleColor.DarkRed);
+
 
             StreamReader arquivoJson = new StreamReader("../../../GameHubAssets/Data/objetosJogadores.json");
             // # Vai ler o arquivo json até o final
@@ -159,7 +155,6 @@ namespace GameHub.HubAssets.Model
             Console.WriteLine("\n                       Usuario criado com sucesso !\n\n");
 
             Thread.Sleep(1000);
-            Console.Clear();
 
             Console.Write($"\nJogador 1 {Cadastro.usuario1.getNome()} qual você quer ser? letra X ou O: ");
             Cadastro.usuario1.setLetraJogo(Console.ReadLine().ToUpper());

@@ -10,18 +10,18 @@ namespace GameHub.JogoDaVelha.Controller
     class JogoDaVelha : TabuleiroJogoDaVelha
     {
         //  Variaveis globais para realizar a substituição do intervalo [0-9] por X ou O do método EscolhaJogador
-        public static string escolhaJogador1;
-        public static string escolhaJogador2;
+        static string escolhaJogador1;
+        static string escolhaJogador2;
         
 
-        // Variáveis para o método de pontuação
+        // Variável global para ser utilizada no menu para o método de pontuação
         public static int qtdEmpate;
 
         // Casting da escolha do jogador
-        public static int escolhaJogadorUm;
-        public static int escolhaJogadorDois;
+        static int escolhaJogadorUm;
+        static int escolhaJogadorDois;
 
-        public static void VezJogador1()
+        static void VezJogador1()
         {
             // Input do usuario
             Console.Write($"\nJogador {Cadastro.usuario1.getNome()} - Escolha o valor do tabuleiro que você quer preencher {Cadastro.usuario1.getLetraJogo()}: ");
@@ -76,7 +76,7 @@ namespace GameHub.JogoDaVelha.Controller
                 }
             }
         }
-        public static void VezJogador2()
+        static void VezJogador2()
         {
             // Input do usuario 2
             Console.Write($"\nJogador {Cadastro.usuario2.getNome()} - Escolha o valor do tabuleiro que você quer preencher com {Cadastro.usuario2.getLetraJogo()}: ");
