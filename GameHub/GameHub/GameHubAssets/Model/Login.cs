@@ -16,7 +16,7 @@ namespace GameHub.HubAssets.Model
             MenuHub.AdicionarTexto("\n\n\n\n\n                                    Digite aqui: ");
             short respostaUsuario = short.Parse(Console.ReadLine());
 
-            StreamReader arquivoJson = new StreamReader("../../../Serializacao/objetosJogadores.json");
+            StreamReader arquivoJson = new StreamReader("../../../GameHubAssets/Data/objetosJogadores.json");
 
             // # Vai ler o arquivo json até o final
             var json = arquivoJson.ReadToEnd();

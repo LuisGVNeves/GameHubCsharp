@@ -155,7 +155,7 @@ namespace GameHub.JogoDeXadrez.Controller
             FazerCadastro();
 
             // @ Cadastro jogador2
-            StreamReader arquivoJson = new StreamReader("../../../Serializacao/objetosJogadores.json");
+            StreamReader arquivoJson = new StreamReader("../../../GameHubAssets/Data/objetosJogadores.json");
 
             // # Vai ler o arquivo json até o final
             var json = arquivoJson.ReadToEnd();

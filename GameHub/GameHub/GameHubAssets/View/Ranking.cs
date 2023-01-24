@@ -12,7 +12,7 @@ namespace GameHub.GameHubAssets.View
             Console.Clear();
 
             // # Decorar o menu antes de iniciar o game
-            MenuHub.EstilizarMenu(" Xadrez", ConsoleColor.Blue);
+            MenuHub.EstilizarMenu(" Xadrez", ConsoleColor.DarkRed);
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("         [ ");

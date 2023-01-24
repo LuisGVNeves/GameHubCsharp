@@ -42,7 +42,7 @@ namespace GameHub.HubAssets.Model
             Console.Clear();
             MenuHub.EstilizarMenu("AREA CADASTRO", ConsoleColor.DarkRed);
 
-            StreamReader arquivoJson = new StreamReader("../../../Serializacao/objetosJogadores.json");
+            StreamReader arquivoJson = new StreamReader("../../../GameHubAssets/Data/objetosJogadores.json");
             // # Vai ler o arquivo json até o final
             var json = arquivoJson.ReadToEnd();
 
