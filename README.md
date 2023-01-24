@@ -127,6 +127,7 @@ $ ctrl + f5
 
 ### Features ✅
 
+- [x] Validação do input do ADMIN (usuario/senha)
 - [x] As peças Peão, Torre, Cavalo, Bispo, Rainha e Rei se movem corretamente no tabuleiro
 - [x] Movimento En Passant com os peões
 - [x] Não deixar o usuário fazer inputs com intervalos acima de [0-7] ou [-0]
