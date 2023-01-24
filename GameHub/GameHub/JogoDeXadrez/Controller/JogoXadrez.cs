@@ -152,7 +152,7 @@ namespace GameHub.JogoDeXadrez.Controller
         public static void IniciarJogoXadrez()
         {
             // @ Cadastro jogador1 e jogador2
-            FazerCadastro();
+            FazerCadastroXadrez();
 
             // Preencher os valores da matriz
             TabuleiroXadrez.PreencherTabuleiro();

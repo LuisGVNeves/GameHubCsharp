@@ -1,4 +1,5 @@
 ﻿using GameHub.GameHubAssets.View;
+using GameHub.HubAssets.Model;
 using GameHub.JogoDeXadrez.Controller;
 
 namespace GameHub.HubAssets.View
@@ -38,7 +39,6 @@ namespace GameHub.HubAssets.View
 
             if(respostaUsuario == 1)
             {
-                JogoDaVelha.Controller.JogoDaVelha.iniciarCadastro();
                 JogoDaVelha.Controller.JogoDaVelha.IniciarJogoDaVelha();
             }
             if (respostaUsuario == 2)

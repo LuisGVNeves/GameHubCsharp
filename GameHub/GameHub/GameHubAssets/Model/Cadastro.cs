@@ -25,7 +25,7 @@ namespace GameHub.HubAssets.Model
             switch (respostaUsuario)
             {
                 case 1:
-                    FazerCadastro();
+                    FazerCadastroXadrez();
 
                     // Após fazer o cadastro do primeiro usuário, vou iniciar o menu do hub
                     MenuHub.MenuInicialHub();
@@ -39,7 +39,7 @@ namespace GameHub.HubAssets.Model
 
 
         // Método para fazer o cadastro do usuario, pego indice no parâmetro que vai servir para acessar os objetos na minha lista de objetos no json, e com isso instancio um novo usuario da classe usuario e já jogos os dados no json
-        public static void FazerCadastro()
+        public static void FazerCadastroXadrez()
         {
             Console.Clear();
             MenuHub.EstilizarMenu("AREA CADASTRO", ConsoleColor.DarkRed);
@@ -110,6 +110,78 @@ namespace GameHub.HubAssets.Model
 
 
 
+        }
+
+
+        public static void FazerCadastroJogoDaVelha()
+        {
+
+            Console.Clear();
+            MenuHub.EstilizarMenu("AREA CADASTRO", ConsoleColor.DarkRed);
+
+            StreamReader arquivoJson = new StreamReader("../../../GameHubAssets/Data/objetosJogadores.json");
+            // # Vai ler o arquivo json até o final
+            var json = arquivoJson.ReadToEnd();
+
+            // # Pegando os dados do json e colocando em um lista dinamica
+            var data = JsonConvert.DeserializeObject<dynamic[]>(json);
+
+            Console.Write("\n                           Digite seu nome: ");
+            Cadastro.usuario1.setNovoNome(Console.ReadLine());
+            data[1].nome = Cadastro.usuario1.getNome();
+
+
+            Console.Write("\n                           Digite sua senha: ");
+            Cadastro.usuario1.setNovaSenha(Console.ReadLine());
+            data[1].senha = Cadastro.usuario1.getSenha();
+
+
+            Cadastro.listaUsuarios.Add(Cadastro.usuario1);
+            Console.WriteLine("\n                       Usuario criado com sucesso !\n\n");
+
+            Thread.Sleep(1000);
+            Console.Clear();
+            MenuHub.EstilizarMenu($"Quem vai jogar com o {Cadastro.usuario1.getNome()} ?", ConsoleColor.DarkRed);
+
+
+            // @ Cadastro segundo jogador
+            Console.Write("\n                           Digite seu nome: ");
+            Cadastro.usuario2.setNovoNome(Console.ReadLine());
+            data[2].nome = Cadastro.usuario1.getNome();
+
+
+            Console.Write("\n                           Digite sua senha: ");
+            Cadastro.usuario1.setNovaSenha(Console.ReadLine());
+            data[2].senha = Cadastro.usuario1.getSenha();
+
+
+            Cadastro.listaUsuarios.Add(Cadastro.usuario1);
+            Console.WriteLine("\n                       Usuario criado com sucesso !\n\n");
+
+            Thread.Sleep(1000);
+            Console.Clear();
+
+            Console.Write($"\nJogador 1 {Cadastro.usuario1.getNome()} qual você quer ser? letra X ou O: ");
+            Cadastro.usuario1.setLetraJogo(Console.ReadLine().ToUpper());
+            if (Cadastro.usuario1.getLetraJogo() == "X")
+            {
+                Cadastro.usuario2.setLetraJogo("O");
+            }
+            else
+            {
+                Cadastro.usuario2.setLetraJogo("X");
+            }
+
+
+            MenuHub.AdicionarTexto("\n------------------------------------------------------------", ConsoleColor.Red);
+
+            Console.WriteLine($"\n\nJogador {Cadastro.usuario1.getNome()} começa com: {Cadastro.usuario1.getLetraJogo()}");
+            Console.WriteLine($"\nJogador {Cadastro.usuario2.getNome()} começa com: {Cadastro.usuario2.getLetraJogo()}");
+
+            MenuHub.AdicionarTexto("\n------------------------------------------------------------", ConsoleColor.Red);
+
+            Thread.Sleep(2000);
+            Console.Clear();
         }
     }
 }

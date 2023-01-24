@@ -1,6 +1,7 @@
 ﻿using GameHub.JogoDaVelha.Model;
 using GameHub.HubAssets.Model;
 using GameHub.HubAssets.View;
+using GameHub.JogoDaVelha.View;
 using GameHub.GameHubAssets.View;
 using Newtonsoft.Json;
 
@@ -11,7 +12,7 @@ namespace GameHub.JogoDaVelha.Controller
         //  Variaveis globais para realizar a substituição do intervalo [0-9] por X ou O do método EscolhaJogador
         public static string escolhaJogador1;
         public static string escolhaJogador2;
-        public static string jogarDeNovo;
+        
 
         // Variáveis para o método de pontuação
         public static int qtdEmpate;
@@ -20,83 +21,8 @@ namespace GameHub.JogoDaVelha.Controller
         public static int escolhaJogadorUm;
         public static int escolhaJogadorDois;
 
-        public static void iniciarCadastro()
+        public static void VezJogador1()
         {
-            Console.Clear();
-            MenuHub.EstilizarMenu("AREA CADASTRO", ConsoleColor.DarkRed);
-
-            StreamReader arquivoJson = new StreamReader("../../../GameHubAssets/Data/objetosJogadores.json");
-            // # Vai ler o arquivo json até o final
-            var json = arquivoJson.ReadToEnd();
-
-            // # Pegando os dados do json e colocando em um lista dinamica
-            var data = JsonConvert.DeserializeObject<dynamic[]>(json);
-
-            Console.Write("\n                           Digite seu nome: ");
-            Cadastro.usuario1.setNovoNome(Console.ReadLine());
-            data[1].nome = Cadastro.usuario1.getNome();
-
-
-            Console.Write("\n                           Digite sua senha: ");
-            Cadastro.usuario1.setNovaSenha(Console.ReadLine());
-            data[1].senha = Cadastro.usuario1.getSenha();
-
-
-            Cadastro.listaUsuarios.Add(Cadastro.usuario1);
-            Console.WriteLine("\n                       Usuario criado com sucesso !\n\n");
-
-            Thread.Sleep(1000);
-            Console.Clear();
-            MenuHub.EstilizarMenu($"Quem vai jogar com o {Cadastro.usuario1.getNome()} ?", ConsoleColor.DarkRed);
-
-
-            // @ Cadastro segundo jogador
-            Console.Write("\n                           Digite seu nome: ");
-            Cadastro.usuario2.setNovoNome(Console.ReadLine());
-            data[2].nome = Cadastro.usuario1.getNome();
-
-
-            Console.Write("\n                           Digite sua senha: ");
-            Cadastro.usuario1.setNovaSenha(Console.ReadLine());
-            data[2].senha = Cadastro.usuario1.getSenha();
-
-
-            Cadastro.listaUsuarios.Add(Cadastro.usuario1);
-            Console.WriteLine("\n                       Usuario criado com sucesso !\n\n");
-
-            Thread.Sleep(1000);
-            Console.Clear();
-
-            Console.Write($"\nJogador 1 {Cadastro.usuario1.getNome()} qual você quer ser? letra X ou O: ");
-            Cadastro.usuario1.setLetraJogo(Console.ReadLine().ToUpper());
-            if (Cadastro.usuario1.getLetraJogo() == "X")
-            {
-                Cadastro.usuario2.setLetraJogo("O");
-            }
-            else
-            {
-                Cadastro.usuario2.setLetraJogo("X");
-            }
-
-
-            MenuHub.AdicionarTexto("\n------------------------------------------------------------", ConsoleColor.Red);
-
-            Console.WriteLine($"\n\nJogador {Cadastro.usuario1.getNome()} começa com: {Cadastro.usuario1.getLetraJogo()}");
-            Console.WriteLine($"\nJogador {Cadastro.usuario2.getNome()} começa com: {Cadastro.usuario2.getLetraJogo()}");
-
-            MenuHub.AdicionarTexto("\n------------------------------------------------------------", ConsoleColor.Red);
-
-            Thread.Sleep(2000);
-            Console.Clear();
-        }
-
-        public static void TratamentoExcessoes()
-        {
-            // # Decorar o menu antes de iniciar o game
-            MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.Red);
-
-            MostrarTabuleiro();
-
             // Input do usuario
             Console.Write($"\nJogador {Cadastro.usuario1.getNome()} - Escolha o valor do tabuleiro que você quer preencher {Cadastro.usuario1.getLetraJogo()}: ");
             escolhaJogador1 = Console.ReadLine();
@@ -132,16 +58,16 @@ namespace GameHub.JogoDaVelha.Controller
                         MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.Red);
 
                         // # Método que verifica se deu velha
-                        Pecas.VerificaEmpate(jogarDeNovo);
+                        Pecas.VerificaEmpate(Menu.jogarDeNovo);
 
                         // # Método que verifica se a vitória é horizontal e pergunta se deseja jogar de novo
-                        Pecas.VerificaVitoriaHorizontal(jogarDeNovo);
+                        Pecas.VerificaVitoriaHorizontal(Menu.jogarDeNovo);
 
                         // # Método que verifica se a vitória é vertical e pergunta se deseja jogar de novo
-                        Pecas.VerificaVitoriaVertical(jogarDeNovo);
+                        Pecas.VerificaVitoriaVertical(Menu.jogarDeNovo);
 
                         // # Método que verifica se a vitória é diagonal e pergunta se deseja jogar de novo
-                        Pecas.VerificaVitoriaDiagonal(jogarDeNovo);
+                        Pecas.VerificaVitoriaDiagonal(Menu.jogarDeNovo);
 
                         MostrarTabuleiro();
 
@@ -149,8 +75,9 @@ namespace GameHub.JogoDaVelha.Controller
 
                 }
             }
-
-
+        }
+        public static void VezJogador2()
+        {
             // Input do usuario 2
             Console.Write($"\nJogador {Cadastro.usuario2.getNome()} - Escolha o valor do tabuleiro que você quer preencher com {Cadastro.usuario2.getLetraJogo()}: ");
 
@@ -182,16 +109,16 @@ namespace GameHub.JogoDaVelha.Controller
                                 tabuleiroJogoDaVelha[linhas, colunas] = Cadastro.usuario2.getLetraJogo();
 
                                 // # Método que verifica se deu velha
-                                Pecas.VerificaEmpate(jogarDeNovo);
+                                Pecas.VerificaEmpate(Menu.jogarDeNovo);
 
                                 // # Método que verifica se a vitória é horizontal e pergunta se deseja jogar de novo
-                                Pecas.VerificaVitoriaHorizontal(jogarDeNovo);
+                                Pecas.VerificaVitoriaHorizontal(Menu.jogarDeNovo);
 
                                 // # Método que verifica se a vitória é vertical e pergunta se deseja jogar de novo
-                                Pecas.VerificaVitoriaVertical(jogarDeNovo);
+                                Pecas.VerificaVitoriaVertical(Menu.jogarDeNovo);
 
                                 // # Método que verifica se a vitória é diagonal e pergunta se deseja jogar de novo
-                                Pecas.VerificaVitoriaDiagonal(jogarDeNovo);
+                                Pecas.VerificaVitoriaDiagonal(Menu.jogarDeNovo);
                             }
 
                         }
@@ -216,16 +143,16 @@ namespace GameHub.JogoDaVelha.Controller
                                 tabuleiroJogoDaVelha[linhas, colunas] = Cadastro.usuario1.getLetraJogo();
 
                                 // # Método que verifica se deu velha
-                                Pecas.VerificaEmpate(jogarDeNovo);
+                                Pecas.VerificaEmpate(Menu.jogarDeNovo);
 
                                 // # Método que verifica se a vitória é horizontal e pergunta se deseja jogar de novo
-                                Pecas.VerificaVitoriaHorizontal(jogarDeNovo);
+                                Pecas.VerificaVitoriaHorizontal(Menu.jogarDeNovo);
 
                                 // # Método que verifica se a vitória é vertical e pergunta se deseja jogar de novo
-                                Pecas.VerificaVitoriaVertical(jogarDeNovo);
+                                Pecas.VerificaVitoriaVertical(Menu.jogarDeNovo);
 
                                 // # Método que verifica se a vitória é diagonal e pergunta se deseja jogar de novo
-                                Pecas.VerificaVitoriaDiagonal(jogarDeNovo);
+                                Pecas.VerificaVitoriaDiagonal(Menu.jogarDeNovo);
                             }
 
                         }
@@ -266,95 +193,45 @@ namespace GameHub.JogoDaVelha.Controller
                         MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.Red);
 
                         // # Método que verifica se deu velha
-                        Pecas.VerificaEmpate(jogarDeNovo);
+                        Pecas.VerificaEmpate(Menu.jogarDeNovo);
 
                         // # Método que verifica se a vitória é horizontal e pergunta se deseja jogar de novo
-                        Pecas.VerificaVitoriaHorizontal(jogarDeNovo);
+                        Pecas.VerificaVitoriaHorizontal(Menu.jogarDeNovo);
 
                         // # Método que verifica se a vitória é vertical e pergunta se deseja jogar de novo
-                        Pecas.VerificaVitoriaVertical(jogarDeNovo);
+                        Pecas.VerificaVitoriaVertical(Menu.jogarDeNovo);
 
                         // # Método que verifica se a vitória é diagonal e pergunta se deseja jogar de novo
-                        Pecas.VerificaVitoriaDiagonal(jogarDeNovo);
+                        Pecas.VerificaVitoriaDiagonal(Menu.jogarDeNovo);
                     }
 
                 }
             }
         }
 
-        public static void SubMenu()
-        {
-            // # Interface do submenu
-            MenuHub.EstilizarMenu("SubMenu Jogo da Velha", ConsoleColor.Blue);
-            Console.WriteLine("\n\n                              1 - Jogar de novo");
-            Console.WriteLine("                              2 - Ver pontuação dos jogadores");
-            Console.WriteLine("                              3 - Voltar ao Menu inicial");
-            Console.WriteLine("                              4 - Sair do jogo\n");
-
-            MenuHub.AdicionarTexto("\n\n           ╚══════════════════════════════════════════════════════════╝", ConsoleColor.DarkBlue);
-            MenuHub.AdicionarTexto("\n\n\n\n\n                                   Digite aqui: ");
-            jogarDeNovo = Console.ReadLine();
-
-            switch (jogarDeNovo)
-            {
-                case "1":
-                    Thread.Sleep(1300);
-                    Console.Clear();
-
-                    // Interface do xadrex
-                    MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.DarkRed);
-
-                    // # Vai iniciar o jogo e resetar o intervalo [0-9]
-                    PreencherTabuleiro();
-
-                    IniciarJogoDaVelha();
-                    break;
-                case "2":
-                    Thread.Sleep(1000);
-                    Console.Clear();
-
-                    // Interface do xadrex
-                    MenuHub.EstilizarMenu("Pontuação", ConsoleColor.DarkGreen);
-
-                    Ranking.MostrarPontuacaoJogoDaVelha();
-                    break;
-                case "3":
-                    Thread.Sleep(1000);
-                    Console.Clear();
-
-                    MenuHub.MenuInicialHub();
-                    break;
-                case "4":
-                    Console.Clear();
-
-                    MenuHub.EstilizarMenu("--------------   Encerrando aplicação  --------------", ConsoleColor.Red);
-
-                    Environment.Exit(0);
-                    break;
-            }
-        }
 
         // # Método que inicia o jogo
         public static void IniciarJogoDaVelha()
         {
+            Cadastro.FazerCadastroJogoDaVelha();
+
             // Preenche a matriz com números [0-9]
             PreencherTabuleiro();
 
             while (true)
             {
-                // # Quando matriz for trocada de número [0-9] por X ou O, invoco a função mostra o tabuleiro para mostrar como está o jogo atual
+                // # Decorar o menu antes de iniciar o game
+                MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.Red);
+
+                // # Mostrar tabuleiro
                 MostrarTabuleiro();
 
-                // Método para perguntar ao usuário se ele deseja X ou O para preencher na matriz e trocar os números da matriz pela escolha do jogar X ou O
-                TratamentoExcessoes();
+                // # Vez dos jogadores
+                VezJogador1();
+                VezJogador2();
             }
 
         }
-
-
-
-
-
 
 
     }
