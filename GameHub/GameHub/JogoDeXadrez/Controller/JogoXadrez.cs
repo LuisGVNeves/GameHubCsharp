@@ -151,52 +151,8 @@ namespace GameHub.JogoDeXadrez.Controller
 
         public static void IniciarJogoXadrez()
         {
-            // @ Cadastro jogador1
+            // @ Cadastro jogador1 e jogador2
             FazerCadastro();
-
-            // @ Cadastro jogador2
-            StreamReader arquivoJson = new StreamReader("../../../GameHubAssets/Data/objetosJogadores.json");
-
-            // # Vai ler o arquivo json até o final
-            var json = arquivoJson.ReadToEnd();
-
-            // # Pegando os dados do json e colocando em um lista dinamica
-            var data = JsonConvert.DeserializeObject<dynamic[]>(json);
-
-            Console.Clear();
-            MenuHub.EstilizarMenu($"Quem vai jogar com o jogador {usuario1.getNome()}", ConsoleColor.DarkRed);
-            MenuHub.AdicionarTexto("Para jogar xadrez, precisamos de mais um usuário no sistema, então cadastre mais um usuário\n\n");
-            MenuHub.AdicionarTexto("Aperte alguma tecla para prosseguir com o cadastro: \n\n");
-            Console.ReadKey();
-            Console.Clear();
-
-            MenuHub.EstilizarMenu("AREA CADASTRO", ConsoleColor.DarkRed);
-            
-            Console.Write("\n                          Digite seu nome: ");
-            usuario2.setNovoNome(Console.ReadLine());
-            data[2].nome = usuario2.getNome();
-
-
-            Console.Write("\n                          Digite sua senha: ");
-            usuario2.setNovaSenha(Console.ReadLine());
-            data[2].senha = usuario2.getSenha();
-
-
-            listaUsuarios.Add(Cadastro.usuario2);
-
-            Console.WriteLine("\n                       Usuario criado com sucesso !\n\n");
-            Thread.Sleep(1000);
-            Console.Clear();
-
-            MenuHub.EstilizarMenu("Xadrez",ConsoleColor.DarkRed);
-            Console.WriteLine($"\n        Jogador {usuario1.getNome()} vai jogar com as peças escuras !");
-            usuario1.setCorPecaXadrez("red");
-
-            Console.WriteLine($"\n        Jogador {usuario2.getNome()} vai jogar com as peças claras !");
-            usuario2.setCorPecaXadrez("white");
-
-            Thread.Sleep(2500);
-            Console.Clear();
 
             // Preencher os valores da matriz
             TabuleiroXadrez.PreencherTabuleiro();
@@ -213,6 +169,8 @@ namespace GameHub.JogoDeXadrez.Controller
                 VezJogador1();
                 VezJogador2();
             }
+
+
 
         }
 

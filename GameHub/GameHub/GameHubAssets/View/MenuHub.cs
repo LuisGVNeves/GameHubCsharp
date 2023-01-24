@@ -36,22 +36,21 @@ namespace GameHub.HubAssets.View
 
             short respostaUsuario = short.Parse(Console.ReadLine());
 
-            switch (respostaUsuario)
+            if(respostaUsuario == 1)
             {
-                case 1:
-                    JogoDaVelha.Controller.JogoDaVelha.iniciarCadastro();
-                    JogoDaVelha.Controller.JogoDaVelha.IniciarJogoDaVelha();
-                    break;
-                case 2:
-                    JogoXadrez.IniciarJogoXadrez();
-                    break;
-                case 3:
-                    Ranking.MostrarRankingGlobal();
-                    break;
-                default:
-                    Environment.Exit(0);
-                    break;
+                JogoDaVelha.Controller.JogoDaVelha.iniciarCadastro();
+                JogoDaVelha.Controller.JogoDaVelha.IniciarJogoDaVelha();
             }
+            if (respostaUsuario == 2)
+            {
+                JogoXadrez.IniciarJogoXadrez();
+            }
+            if(respostaUsuario == 3)
+            {
+                Ranking.MostrarRankingGlobal();
+
+            }
+            Environment.Exit(0);
         }
 
         // # Método que adiciona texto recebe parâmetro opcional, caso eu não queira estilizar com outra cor no futuro

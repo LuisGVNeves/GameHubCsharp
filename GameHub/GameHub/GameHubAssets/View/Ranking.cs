@@ -47,22 +47,6 @@ namespace GameHub.GameHubAssets.View
             }
             Console.WriteLine("\n");
 
-
-            MenuHub.AdicionarTexto("\n\n            Ir pro menu principal 1-SIM | 2-NÃO ");
-            MenuHub.AdicionarTexto("\n\n            Digite aqui: ");
-            short respostaUsuario = short.Parse(Console.ReadLine());
-
-            while(respostaUsuario != 1)
-            {
-                MenuHub.AdicionarTexto("\n\n            Ir pro menu principal 1-SIM | 2-NÃO ");
-                MenuHub.AdicionarTexto("\n\n            Digite aqui: ");
-                respostaUsuario = short.Parse(Console.ReadLine());
-                
-                if(respostaUsuario == 1)
-                {
-                    MenuHub.MenuInicialHub();
-                }
-            }
         }
 
         public static void MostrarPontuacaoJogoDaVelha()
@@ -148,13 +132,13 @@ namespace GameHub.GameHubAssets.View
             Console.Write(" ]");
             Console.ResetColor();
 
-
             MenuHub.AdicionarTexto("\n\n\n\n                                Ir pro menu principal");
             MenuHub.AdicionarTexto("\n\n                                    1-SIM | 2-NÃO ");
             MenuHub.AdicionarTexto("\n\n        ╚════════════════════════════════════════════════════════════════════╝",ConsoleColor.DarkGreen);
             MenuHub.AdicionarTexto("\n\n\n\n\n                                      Digite aqui: ");
             short respostaUsuario = short.Parse(Console.ReadLine());
 
+            
             if (respostaUsuario == 1)
             {
                 MenuHub.MenuInicialHub();
@@ -171,8 +155,7 @@ namespace GameHub.GameHubAssets.View
                     MenuHub.AdicionarTexto("\n\n        ╚════════════════════════════════════════════════════════════════════╝", ConsoleColor.DarkGreen);
                     MenuHub.AdicionarTexto("\n\n\n\n\n                                      Digite aqui: ");
                     respostaUsuario = short.Parse(Console.ReadLine());
-
-                    if (respostaUsuario == 1)
+                    if(respostaUsuario == 1)
                     {
                         MenuHub.MenuInicialHub();
                     }
