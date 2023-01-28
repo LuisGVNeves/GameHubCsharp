@@ -8,6 +8,7 @@ namespace GameHub.JogoDeXadrez.Model
 {
     class Torre : TabuleiroXadrez
     {
+        public static TabuleiroXadrez tabuleiroXadrez = new TabuleiroXadrez();
 
         // # Se o movimento da peça torre estiver no deslocamento vertical da linha 0 ou no deslocamento horizontal da coluna 0
         public static void VerificarPecaTorre(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
@@ -159,7 +160,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'p' || pecaInimiga == 'T' || pecaInimiga == 'C' || pecaInimiga == 'B' || pecaInimiga == 'Q' || pecaInimiga == 'K')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador1();
@@ -313,7 +314,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'P' || pecaInimiga == 't' || pecaInimiga == 'c' || pecaInimiga == 'b' || pecaInimiga == 'q' || pecaInimiga == 'k')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador2();

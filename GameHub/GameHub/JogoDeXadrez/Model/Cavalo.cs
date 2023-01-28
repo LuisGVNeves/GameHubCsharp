@@ -11,6 +11,8 @@ namespace GameHub.JogoDeXadrez.Model
 {
     class Cavalo : TabuleiroXadrez
     {
+        public static TabuleiroXadrez tabuleiroXadrez = new TabuleiroXadrez();
+
         // # Se o movimento da peça cavalo simular a letra L
         public static void VerificarPecaCavalo(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
@@ -161,7 +163,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'p' || pecaInimiga == 'T' || pecaInimiga == 'C' || pecaInimiga == 'B' || pecaInimiga == 'Q' || pecaInimiga == 'K')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador1();
@@ -318,7 +320,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'P' || pecaInimiga == 't' || pecaInimiga == 'c' || pecaInimiga == 'b' || pecaInimiga == 'q' || pecaInimiga == 'k')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador2();

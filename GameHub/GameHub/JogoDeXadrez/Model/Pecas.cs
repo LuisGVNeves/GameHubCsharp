@@ -4,8 +4,12 @@ using GameHub.HubAssets.Model;
 
 namespace GameHub.JogoDeXadrez.Model
 {
-    class Pecas : Tabuleiros
+    class Pecas
     {
+
+        public static TabuleiroXadrez tabuleiroXadrez = new TabuleiroXadrez();
+
+
         // # Variavel pra calcular deslocamento das peças no tabuleiro
         public static int deslocamentoVertical;
         public static int deslocamentoHorizontal;
@@ -13,6 +17,8 @@ namespace GameHub.JogoDeXadrez.Model
         // # Lista para guardar as peças capturadas do tabuleiro
         public static List<char> listaDePecasVermelhas = new List<char>();
         public static List<char> listaDePecasBrancas = new List<char>();
+
+
 
         // # Método para mover a peça
         public static bool MoverPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)

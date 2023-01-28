@@ -7,6 +7,8 @@ namespace GameHub.JogoDeXadrez.Model
 {
     class Peao : TabuleiroXadrez
     {
+        public static TabuleiroXadrez tabuleiroXadrez = new TabuleiroXadrez();
+
         public static char peca;
         public static char pecaInimiga;
 
@@ -19,6 +21,7 @@ namespace GameHub.JogoDeXadrez.Model
             // # Pegar a peça inimiga que vai estar no destino que o usuário vai querer colocar
             pecaInimiga = TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino];
 
+            // # Calcular o tanto de casas deslocadas, subtraio a linha de origem para linha de destino, pode gerar um numero negativo então uso o Math.absolute pra sempre gerar o numero positivo de casas andadas
             Pecas.deslocamentoVertical = Math.Abs(linhaDestino - linhaOrigem);
             Pecas.deslocamentoHorizontal = Math.Abs(colunaDestino - colunaOrigem);
 
@@ -46,7 +49,7 @@ namespace GameHub.JogoDeXadrez.Model
                     MenuHub.AdicionarTexto("\n\nMovimento inválido da peça peão\n\n", ConsoleColor.DarkRed);
                     Thread.Sleep(2000);
                     Console.Clear();
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
                     JogoXadrez.VezJogador1();
                 }
 
@@ -55,11 +58,12 @@ namespace GameHub.JogoDeXadrez.Model
                     MenuHub.AdicionarTexto("\n\nMovimento inválido da peça peão\n\n", ConsoleColor.DarkRed);
                     Thread.Sleep(2000);
                     Console.Clear();
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     JogoXadrez.VezJogador2();
                 }
             }
+
 
             // # Tratamento - Se o peão se deslocar apenas na vertical, e tiver peças na frente, o movimento não vai acontecer
             if (peca == 'P' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 0)
@@ -81,7 +85,7 @@ namespace GameHub.JogoDeXadrez.Model
                     Thread.Sleep(2000);
 
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     JogoXadrez.VezJogador2();
                 }
@@ -97,6 +101,7 @@ namespace GameHub.JogoDeXadrez.Model
                     TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
                 }
             }
+
 
             if (peca == 'p' && Pecas.deslocamentoVertical == 1 && Pecas.deslocamentoHorizontal == 0)
             {
@@ -117,7 +122,7 @@ namespace GameHub.JogoDeXadrez.Model
                     Thread.Sleep(2000);
 
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     JogoXadrez.VezJogador1();
                 }
@@ -147,7 +152,7 @@ namespace GameHub.JogoDeXadrez.Model
                     MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
                     Thread.Sleep(2000);
                     Console.Clear();
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
                     JogoXadrez.VezJogador2();
                 }
 
@@ -157,7 +162,7 @@ namespace GameHub.JogoDeXadrez.Model
                     MenuHub.AdicionarTexto("\n\nPeça peão não pode ser movida pros lados ! \n\n", ConsoleColor.DarkRed);
                     Thread.Sleep(2000);
                     Console.Clear();
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
                     JogoXadrez.VezJogador1();
                 }
 
@@ -267,7 +272,7 @@ namespace GameHub.JogoDeXadrez.Model
                     Thread.Sleep(2000);
 
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     JogoXadrez.VezJogador2();
                 }
@@ -297,6 +302,10 @@ namespace GameHub.JogoDeXadrez.Model
                 Cadastro.usuario1.setPontuacaoJogador(1, 2);
                 return;
             }
+
+
+
+
 
             // Se houver torres inimigas
             if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino - 1] == 't' || TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 0, colunaDestino + 1] == 't')
@@ -372,7 +381,7 @@ namespace GameHub.JogoDeXadrez.Model
                     Thread.Sleep(2000);
 
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     JogoXadrez.VezJogador1();
                 }
@@ -381,34 +390,26 @@ namespace GameHub.JogoDeXadrez.Model
 
         public static void MovimentoPromocaoPeao(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
-            if (peca == 'P' && tabuleiroXadrez[0, 0] == 'P' || peca == 'P' && tabuleiroXadrez[0, 1] == 'P' ||
-                peca == 'P' && tabuleiroXadrez[0, 2] == 'P' || peca == 'P' && tabuleiroXadrez[0, 3] == 'P' ||
-                peca == 'P' && tabuleiroXadrez[0, 4] == 'P' || peca == 'P' && tabuleiroXadrez[0, 5] == 'P' ||
-                peca == 'P' && tabuleiroXadrez[0, 6] == 'P' || peca == 'P' && tabuleiroXadrez[0, 7] == 'P')
+            if (peca == 'P' && TabuleiroXadrez.tabuleiroXadrez[0, 0] == 'P' || peca == 'P' && TabuleiroXadrez.tabuleiroXadrez[0, 1] == 'P' ||
+                peca == 'P' && TabuleiroXadrez.tabuleiroXadrez[0, 2] == 'P' || peca == 'P' && TabuleiroXadrez.tabuleiroXadrez[0, 3] == 'P' ||
+                peca == 'P' && TabuleiroXadrez.tabuleiroXadrez[0, 4] == 'P' || peca == 'P' && TabuleiroXadrez.tabuleiroXadrez[0, 5] == 'P' ||
+                peca == 'P' && TabuleiroXadrez.tabuleiroXadrez[0, 6] == 'P' || peca == 'P' && TabuleiroXadrez.tabuleiroXadrez[0, 7] == 'P')
             {
-                // O destino vai receber a peça inimiga vazia
-                TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = pecaInimiga;
+                MenuHub.AdicionarTexto("\n\nPromoção de peão ativada, peão agora é rainha", ConsoleColor.DarkGreen);
 
-                // Depois vai receber a peça atual
-                TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino] = peca;
-
-                // Lugar onde a torre saiu vai ficar vazio
-                TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem] = ' ';
-
-                // - Se quando o peão for pra esquerda ou direita tiver a peça em questão, vou fazer a substituição
-
+                peca = 'Q';
             }
 
 
-            if (peca == 'p' && tabuleiroXadrez[7, 0] == 'p' || peca == 'p' && tabuleiroXadrez[7, 1] == 'p' ||
-                peca == 'p' && tabuleiroXadrez[7, 2] == 'p' || peca == 'p' && tabuleiroXadrez[7, 3] == 'p' ||
-                peca == 'p' && tabuleiroXadrez[7, 4] == 'p' || peca == 'p' && tabuleiroXadrez[7, 5] == 'p' ||
-                peca == 'p' && tabuleiroXadrez[7, 6] == 'p' || peca == 'p' && tabuleiroXadrez[7, 7] == 'p')
+            if (peca == 'p' && TabuleiroXadrez.tabuleiroXadrez[7, 0] == 'p' || peca == 'p' && TabuleiroXadrez.tabuleiroXadrez[7, 1] == 'p' ||
+                peca == 'p' && TabuleiroXadrez.tabuleiroXadrez[7, 2] == 'p' || peca == 'p' && TabuleiroXadrez.tabuleiroXadrez[7, 3] == 'p' ||
+                peca == 'p' && TabuleiroXadrez.tabuleiroXadrez[7, 4] == 'p' || peca == 'p' && TabuleiroXadrez.tabuleiroXadrez[7, 5] == 'p' ||
+                peca == 'p' && TabuleiroXadrez.tabuleiroXadrez[7, 6] == 'p' || peca == 'p' && TabuleiroXadrez.tabuleiroXadrez[7, 7] == 'p')
             {
 
                 MenuHub.AdicionarTexto("\n\nPromoção de peão ativada, peão agora é rainha", ConsoleColor.DarkGreen);
+
                 peca = 'Q';
-                
             }
         }
 

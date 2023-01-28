@@ -7,6 +7,9 @@ namespace GameHub.JogoDeXadrez.Model
 {
     class Rainha : TabuleiroXadrez
     {
+        public static TabuleiroXadrez tabuleiroXadrez = new TabuleiroXadrez();
+
+
         // # Se o movimento da peça Rainha tiver a mesma quantidade de vezes que for o movimento horizontal ou vertical
         public static void VerificarPecaRainha(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
@@ -25,6 +28,8 @@ namespace GameHub.JogoDeXadrez.Model
                 Se o deslocamento vertical for a mesma quantidade de quadradinhos que o deslocamento horizontal = Pode mexer
                 Se o deslocamente horizontal for igual a 0 = pode mexer 
                 Se o deslocamento vertical for igual a 0 = pode mexer
+
+                - Se ela se deslocar só na vertical ta autorizado, só na horizontal também ta autorizado, e se ela se mover na diagonal também é de boa
             */
             if (peca == 'Q' && (Pecas.deslocamentoVertical == Pecas.deslocamentoHorizontal ||
                 Pecas.deslocamentoVertical == 0 || Pecas.deslocamentoHorizontal == 0))
@@ -161,7 +166,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'p' || pecaInimiga == 'T' || pecaInimiga == 'C' || pecaInimiga == 'B' || pecaInimiga == 'Q' || pecaInimiga == 'K')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador1();
@@ -316,7 +321,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'P' || pecaInimiga == 't' || pecaInimiga == 'c' || pecaInimiga == 'b' || pecaInimiga == 'q' || pecaInimiga == 'k')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador2();

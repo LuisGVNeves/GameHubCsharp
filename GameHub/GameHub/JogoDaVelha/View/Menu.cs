@@ -8,6 +8,8 @@ namespace GameHub.JogoDaVelha.View
 {
     internal class Menu : Pecas
     {
+        public static TabuleiroJogoDaVelha tabuleiroJogoDaVelha = new TabuleiroJogoDaVelha();
+
         public static string jogarDeNovo;
         public static void SubMenu()
         {
@@ -31,7 +33,7 @@ namespace GameHub.JogoDaVelha.View
                 MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.DarkRed);
 
                 // # Vai iniciar o jogo e resetar o intervalo [0-9]
-                PreencherTabuleiro();
+                tabuleiroJogoDaVelha.PreencherTabuleiro();
 
                 Controller.JogoDaVelha.IniciarJogoDaVelha();
             }

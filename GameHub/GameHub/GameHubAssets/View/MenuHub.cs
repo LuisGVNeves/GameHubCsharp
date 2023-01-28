@@ -6,6 +6,7 @@ namespace GameHub.HubAssets.View
 {
     class MenuHub
     {
+        
 
         // Menu com Hub inicial
         public static void MenuInicialHub()
@@ -53,12 +54,14 @@ namespace GameHub.HubAssets.View
             Environment.Exit(0);
         }
 
+
         // # Método que adiciona texto recebe parâmetro opcional, caso eu não queira estilizar com outra cor no futuro
         public static void AdicionarTexto(string texto, ConsoleColor corLetra = ConsoleColor.White)
         {
             Console.ForegroundColor = corLetra;
             Console.Write(@$"{texto}");
         }
+
 
         // # Método para estilizar a interface do terminal
         public static void EstilizarMenu(string texto, ConsoleColor corBackGround, ConsoleColor corTexto = ConsoleColor.White)
@@ -68,6 +71,7 @@ namespace GameHub.HubAssets.View
             Console.ForegroundColor = corTexto;
             Console.Write("                     ");
             Console.Write("┌─┐");
+
             Console.Write("└─┘");
             Console.Write($"  {texto}  ");
             Console.Write("┌─┐");
@@ -76,5 +80,6 @@ namespace GameHub.HubAssets.View
             Console.WriteLine("\n");
             Console.ResetColor();
         }
+
     }
 }

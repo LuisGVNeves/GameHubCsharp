@@ -8,12 +8,18 @@ namespace GameHub.JogoDeXadrez.Controller
 {
     class JogoXadrez : Cadastro
     {
+        public static TabuleiroXadrez tabuleiroXadrez = new TabuleiroXadrez();
+
+
         // # Variáveis para manipular o tabuleiro de Xadrex
         public static int linhaOrigemJogador1, linhaDestinoJogador1, colunaOrigemJogador1, colunaDestinoJogador1;
         public static int linhaOrigemJogador2, linhaDestinoJogador2, colunaOrigemJogador2, colunaDestinoJogador2;
 
         public static void VezJogador1()
         {
+
+            // # Verifico se a linha de origem e a coluna de origem está correto no intervalo [0-7]
+
             MenuHub.AdicionarTexto($"\n{usuario1.getNome()}", ConsoleColor.DarkRed);
             MenuHub.AdicionarTexto($" informe a linha da peça vermelha que você vai utilizar: ");
             linhaOrigemJogador1 = int.Parse(Console.ReadLine());
@@ -21,16 +27,18 @@ namespace GameHub.JogoDeXadrez.Controller
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
             linhaOrigemJogador1 = Testes.TratarCaracteresLinha(linhaOrigemJogador1,1);
 
+
             MenuHub.AdicionarTexto($"\n{usuario1.getNome()}", ConsoleColor.DarkRed);
             MenuHub.AdicionarTexto($" informe a coluna da peça vermelha que você vai utilizar: ");
             colunaOrigemJogador1 = int.Parse(Console.ReadLine());
-
 
             // # Tratamento para não deixar o jogador colocar caracteres acima de 8 ou menor que 0
             colunaOrigemJogador1 = Testes.TratarCaracteresColuna(colunaOrigemJogador1,1);
 
 
+
             // # Método vai verificar se o jogador  está pegando alguma peça do tabuleiro adversário
+
             while (Testes.VerificarPecaIgualJogador1(linhaOrigemJogador1, colunaOrigemJogador1, linhaDestinoJogador1, colunaDestinoJogador1) == true)
             {
                 MenuHub.AdicionarTexto("\nA peça do Inimigo não pode ser usada !\n\n", ConsoleColor.DarkRed);
@@ -70,17 +78,18 @@ namespace GameHub.JogoDeXadrez.Controller
 
 
 
-            // # Verificar se a peça que o usuário digitou está no intervalo [0-7] e acontece a lógica de movimentar a peça
+            // # REPLICAÇÃO DE CÓDIGO -- ALTERAR -- Verificar se a peça que o usuário digitou está no intervalo [0-7] e acontece a lógica de movimentar a peça
 
             if (Pecas.MoverPeca(linhaOrigemJogador1, colunaOrigemJogador1, linhaDestinoJogador1, colunaDestinoJogador1) != true)
             {
                 MenuHub.AdicionarTexto("\nERRO Coordenadas inválidas\n\nPressione alguma tecla para digitar as coordenadas novamente: ", ConsoleColor.DarkRed);
                 Console.ReadKey();
             }
+            // REPLICAÇÃO DE CÓDIGO -- ALTERAR -- Verificar se a peça que o usuário digitou está no intervalo [0-7] e acontece a lógica de movimentar a peça
 
 
             // # Mostra o tabuleiro pro usuario a cada peça digitada
-            TabuleiroXadrez.MostrarTabuleiro(8);
+            tabuleiroXadrez.MostrarTabuleiro(8);
         }
 
         public static void VezJogador2()
@@ -119,7 +128,7 @@ namespace GameHub.JogoDeXadrez.Controller
             }
 
 
-            char peca = TabuleiroXadrez.tabuleiroXadrez[linhaOrigemJogador1, colunaOrigemJogador1];
+            char peca = TabuleiroXadrez.tabuleiroXadrez[linhaOrigemJogador2, colunaOrigemJogador2];
 
             MenuHub.AdicionarTexto($"\n{Cadastro.usuario2.getNome()}");
             MenuHub.AdicionarTexto($" Informe a linha que você quer colocar a peça [ {peca} ] branca: ");
@@ -146,7 +155,7 @@ namespace GameHub.JogoDeXadrez.Controller
 
 
             // # Mostra o tabuleiro pro usuario a cada peça digitada
-            TabuleiroXadrez.MostrarTabuleiro(8);
+            tabuleiroXadrez.MostrarTabuleiro(8);
         }
 
         public static void IniciarJogoXadrez()
@@ -155,7 +164,7 @@ namespace GameHub.JogoDeXadrez.Controller
             FazerCadastroXadrez();
 
             // Preencher os valores da matriz
-            TabuleiroXadrez.PreencherTabuleiro();
+            tabuleiroXadrez.PreencherTabuleiro();
 
             while (true)
             {
@@ -163,7 +172,7 @@ namespace GameHub.JogoDeXadrez.Controller
                 MenuHub.EstilizarMenu(" Xadrez", ConsoleColor.Blue);
 
                 // Mostrar o tabuleiro
-                TabuleiroXadrez.MostrarTabuleiro(8);
+                tabuleiroXadrez.MostrarTabuleiro(8);
 
                 // Começa a partida com o jogador 1 e depois jogador2
                 VezJogador1();

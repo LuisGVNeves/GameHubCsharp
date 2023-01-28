@@ -10,11 +10,13 @@ namespace GameHub.JogoDeXadrez.Model
 {
     class Rei : TabuleiroXadrez
     {
+        public static TabuleiroXadrez tabuleiroXadrez = new TabuleiroXadrez();
+
         // # Se o movimento da peça Rei andar apenas 1 casa
         public static void VerificarPecaRei(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
             // # Pegar a peça que o usuário vai alterar no tabuleiro
-            char peca = TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem];
+            char peca = TabuleiroXadrez.tabuleiroXadrez[linhaOrigem, colunaOrigem]; // p
 
             // # Pegar a peça inimiga que vai estar no destino que o usuário vai querer colocar
             char pecaInimiga = TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino];
@@ -153,7 +155,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'p' || pecaInimiga == 'T' || pecaInimiga == 'C' || pecaInimiga == 'B' || pecaInimiga == 'Q' || pecaInimiga == 'K')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador1();
@@ -302,7 +304,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'P' || pecaInimiga == 't' || pecaInimiga == 'c' || pecaInimiga == 'b' || pecaInimiga == 'q' || pecaInimiga == 'k')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador2();

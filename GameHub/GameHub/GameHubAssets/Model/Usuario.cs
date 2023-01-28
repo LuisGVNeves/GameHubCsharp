@@ -28,7 +28,6 @@ namespace GameHub.HubAssets.Model
         }
 
 
-
         public string getLetraJogo()
         {
             return LetraJogo;
@@ -58,6 +57,7 @@ namespace GameHub.HubAssets.Model
             Senha = novaSenha;
         }
         public string getSenha() { return Senha; }
+
 
         public void setCorPecaXadrez(string novaCor)
         {
@@ -93,6 +93,7 @@ namespace GameHub.HubAssets.Model
 
             Pontuacao += novaPontuacao;
         }
+
 
     }
 }

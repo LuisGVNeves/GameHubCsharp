@@ -4,8 +4,10 @@ using GameHub.JogoDaVelha.Controller;
 
 namespace GameHub.JogoDaVelha.Model
 {
-    internal class Pecas : Tabuleiros
+    internal class Pecas
     {
+        public static TabuleiroJogoDaVelha tabuleiroJogoDaVelha = new TabuleiroJogoDaVelha();
+
         // # Método para verificar matriz na horizontal e ver se teve X X X ou O O O  na horizontal
         public static void VerificaVitoriaHorizontal(string jogarDeNovo)
         {
@@ -15,16 +17,20 @@ namespace GameHub.JogoDaVelha.Model
             // # Verifica se a primeira, segunda, terceira linha da matriz teve as linhas prenchidas na ordem orizontal X X X
 
             linhaHorizontalX =
-                (tabuleiroJogoDaVelha[0, 0] == "X" && tabuleiroJogoDaVelha[0, 1] == "X" && tabuleiroJogoDaVelha[0, 2] == "X") ||
-                (tabuleiroJogoDaVelha[1, 0] == "X" && tabuleiroJogoDaVelha[1, 1] == "X" && tabuleiroJogoDaVelha[1, 2] == "X") ||
-                (tabuleiroJogoDaVelha[2, 0] == "X" && tabuleiroJogoDaVelha[2, 1] == "X" && tabuleiroJogoDaVelha[2, 2] == "X");
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 0, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(0, 1, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(0, 2, "X"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(1, 0, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 2, "X"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(2, 0, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 1, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 2, "X"));
 
             // # Verifica se a primeira, segunda, terceira linha da matriz teve as linhas prenchidas na ordem orizontal O O  O
 
             linhaHorizontalO =
-                (tabuleiroJogoDaVelha[0, 0] == "O" && tabuleiroJogoDaVelha[0, 1] == "O" && tabuleiroJogoDaVelha[0, 2] == "O") ||
-                (tabuleiroJogoDaVelha[1, 0] == "O" && tabuleiroJogoDaVelha[1, 1] == "O" && tabuleiroJogoDaVelha[1, 2] == "O") ||
-                (tabuleiroJogoDaVelha[2, 0] == "O" && tabuleiroJogoDaVelha[2, 1] == "O" && tabuleiroJogoDaVelha[2, 2] == "O");
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 0, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(0, 1, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(0, 2, "O"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(1, 0, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 2, "O"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(2, 0, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 1, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 2, "O"));
 
 
             // # Mostra mensagem caso a vitória tenha sido horizontal tanto de X como de O
@@ -35,7 +41,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 Cadastro.usuario1.setPontuacaoJogador(1, 1);
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -48,7 +54,7 @@ namespace GameHub.JogoDaVelha.Model
                 Console.ResetColor();
 
                 Cadastro.usuario1.setPontuacaoJogador(1, 1);
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -61,7 +67,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 Cadastro.usuario2.setPontuacaoJogador(1, 2);
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -74,7 +80,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 Cadastro.usuario2.setPontuacaoJogador(1, 2);
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -91,14 +97,19 @@ namespace GameHub.JogoDaVelha.Model
             bool linhaVerticalO;
 
             linhaVerticalX =
-                (tabuleiroJogoDaVelha[0, 0] == "X" && tabuleiroJogoDaVelha[1, 0] == "X" && tabuleiroJogoDaVelha[2, 0] == "X") ||
-                (tabuleiroJogoDaVelha[0, 1] == "X" && tabuleiroJogoDaVelha[1, 1] == "X" && tabuleiroJogoDaVelha[2, 1] == "X") ||
-                (tabuleiroJogoDaVelha[0, 2] == "X" && tabuleiroJogoDaVelha[1, 2] == "X" && tabuleiroJogoDaVelha[2, 2] == "X");
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 0, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 0, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 0, "X"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 1, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 1, "X"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 2, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 2, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 2, "X"));
+                
 
             linhaVerticalO =
-                (tabuleiroJogoDaVelha[0, 0] == "O" && tabuleiroJogoDaVelha[1, 0] == "O" && tabuleiroJogoDaVelha[2, 0] == "O") ||
-                (tabuleiroJogoDaVelha[0, 1] == "O" && tabuleiroJogoDaVelha[1, 1] == "O" && tabuleiroJogoDaVelha[2, 1] == "O") ||
-                (tabuleiroJogoDaVelha[0, 2] == "O" && tabuleiroJogoDaVelha[1, 2] == "O" && tabuleiroJogoDaVelha[2, 2] == "O");
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 0, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 0, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 0, "O"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 1, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 1, "O"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 2, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 2, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 2, "O"));
 
 
             // # Mostra mensagem caso a vitória tenha sido vertical tanto de X como de O
@@ -110,7 +121,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 Cadastro.usuario1.setPontuacaoJogador(1, 1);
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -124,7 +135,7 @@ namespace GameHub.JogoDaVelha.Model
                 Console.ResetColor();
 
                 Cadastro.usuario1.setPontuacaoJogador(1, 1);
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -138,7 +149,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 Cadastro.usuario2.setPontuacaoJogador(1, 2);
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -153,7 +164,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 Cadastro.usuario2.setPontuacaoJogador(1, 2);
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -170,18 +181,24 @@ namespace GameHub.JogoDaVelha.Model
             bool linhaDiagonalO;
 
             linhaDiagonalX =
-                (tabuleiroJogoDaVelha[2, 0] == "X" && tabuleiroJogoDaVelha[1, 1] == "X" && tabuleiroJogoDaVelha[0, 2] == "X") ||
-                (tabuleiroJogoDaVelha[0, 2] == "X" && tabuleiroJogoDaVelha[1, 1] == "X" && tabuleiroJogoDaVelha[2, 0] == "X") ||
-                (tabuleiroJogoDaVelha[0, 0] == "X" && tabuleiroJogoDaVelha[1, 1] == "X" && tabuleiroJogoDaVelha[2, 2] == "X") ||
-                (tabuleiroJogoDaVelha[2, 2] == "X" && tabuleiroJogoDaVelha[1, 1] == "X" && tabuleiroJogoDaVelha[0, 0] == "X");
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(2, 0, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(0, 2, "X"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 2, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 0, "X"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 0, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 2, "X"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(2, 2, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "X") && tabuleiroJogoDaVelha.getValorLinhasColunas(0, 0, "X"));
+
 
             // Coluna vertical verificando O
             linhaDiagonalO =
-                (tabuleiroJogoDaVelha[2, 0] == "O" && tabuleiroJogoDaVelha[1, 1] == "O" && tabuleiroJogoDaVelha[0, 2] == "O") ||
-                (tabuleiroJogoDaVelha[0, 2] == "O" && tabuleiroJogoDaVelha[1, 1] == "O" && tabuleiroJogoDaVelha[2, 0] == "O") ||
-                (tabuleiroJogoDaVelha[0, 0] == "O" && tabuleiroJogoDaVelha[1, 1] == "O" && tabuleiroJogoDaVelha[2, 2] == "O") ||
-                (tabuleiroJogoDaVelha[2, 2] == "O" && tabuleiroJogoDaVelha[1, 1] == "O" && tabuleiroJogoDaVelha[0, 0] == "O");
-
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(2, 0, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(0, 2, "O"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 2, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 0, "O"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(0, 0, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(2, 2, "O"))
+                ||
+                (tabuleiroJogoDaVelha.getValorLinhasColunas(2, 2, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "O") && tabuleiroJogoDaVelha.getValorLinhasColunas(0, 0, "O"));
 
             // # Mostra mensagem caso a vitória tenha sido vertical tanto de X como de O
             if (Cadastro.usuario1.getLetraJogo() == "X" && linhaDiagonalX)
@@ -192,7 +209,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 Cadastro.usuario1.setPontuacaoJogador(1, 1);
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -207,7 +224,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 Cadastro.usuario1.setPontuacaoJogador(1, 1);
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -224,7 +241,7 @@ namespace GameHub.JogoDaVelha.Model
                 Cadastro.usuario2.setPontuacaoJogador(1, 1);
 
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -239,7 +256,7 @@ namespace GameHub.JogoDaVelha.Model
 
                 Cadastro.usuario2.setPontuacaoJogador(1, 2);
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 System.Threading.Thread.Sleep(3000);
                 Console.Clear();
@@ -258,10 +275,7 @@ namespace GameHub.JogoDaVelha.Model
                - Aqui eu vou percorrer a matriz, e comparar e ver se é igual a escolha do jogador se for, eu vou substituir o número do intervalo [1-9] pela letra
              */
 
-            if ((tabuleiroJogoDaVelha[0, 0] == "1") || (tabuleiroJogoDaVelha[0, 1] == "2") ||
-                (tabuleiroJogoDaVelha[0, 2] == "3") || (tabuleiroJogoDaVelha[1, 0] == "4") ||
-                (tabuleiroJogoDaVelha[1, 1] == "5") || (tabuleiroJogoDaVelha[1, 2] == "6") ||
-                (tabuleiroJogoDaVelha[2, 0] == "7") || (tabuleiroJogoDaVelha[2, 1] == "8"))
+            if(tabuleiroJogoDaVelha.getValorLinhasColunas(0, 0, "1") || tabuleiroJogoDaVelha.getValorLinhasColunas(0, 1, "2") || tabuleiroJogoDaVelha.getValorLinhasColunas(0, 2, "3") || tabuleiroJogoDaVelha.getValorLinhasColunas(1, 0, "4") || tabuleiroJogoDaVelha.getValorLinhasColunas(1, 1, "5") || tabuleiroJogoDaVelha.getValorLinhasColunas(1, 2, "6") || tabuleiroJogoDaVelha.getValorLinhasColunas(2, 0, "7") || tabuleiroJogoDaVelha.getValorLinhasColunas(2, 1, "8"))
             {
                 // Esses métodos logo após a verificação checam o intervalo [0-9] para ver se houve alguma vitória horizontal, vertical ou diagonal antes de cair no else que seria o empate
                 VerificaVitoriaHorizontal(jogarDeNovo);
@@ -274,7 +288,7 @@ namespace GameHub.JogoDaVelha.Model
                 Console.WriteLine("\n***  Deu velha  ***");
                 Console.ResetColor();
 
-                TabuleiroJogoDaVelha.MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 Controller.JogoDaVelha.qtdEmpate++;
 

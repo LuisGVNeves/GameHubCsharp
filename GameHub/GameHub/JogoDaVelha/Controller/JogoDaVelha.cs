@@ -7,8 +7,10 @@ using Newtonsoft.Json;
 
 namespace GameHub.JogoDaVelha.Controller
 {
-    class JogoDaVelha : TabuleiroJogoDaVelha
+    class JogoDaVelha
     {
+        public static TabuleiroJogoDaVelha tabuleiroJogoDaVelha = new TabuleiroJogoDaVelha();
+
         //  Variaveis globais para realizar a substituição do intervalo [0-9] por X ou O do método EscolhaJogador
         static string escolhaJogador1;
         static string escolhaJogador2;
@@ -46,10 +48,10 @@ namespace GameHub.JogoDaVelha.Controller
             {
                 for (int colunas = 0; colunas < 3; colunas++)
                 {
-                    if (tabuleiroJogoDaVelha[linhas, colunas] == escolhaJogador1)
+                    if (tabuleiroJogoDaVelha.getValorLinhasColunas(linhas, colunas,escolhaJogador1))
                     {
 
-                        tabuleiroJogoDaVelha[linhas, colunas] = Cadastro.usuario1.getLetraJogo();
+                        tabuleiroJogoDaVelha.setLetraJogo(linhas, colunas, Cadastro.usuario1.getLetraJogo());
 
                         Thread.Sleep(200);
                         Console.Clear();
@@ -69,7 +71,7 @@ namespace GameHub.JogoDaVelha.Controller
                         // # Método que verifica se a vitória é diagonal e pergunta se deseja jogar de novo
                         Pecas.VerificaVitoriaDiagonal(Menu.jogarDeNovo);
 
-                        MostrarTabuleiro();
+                        tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                     }
 
@@ -104,9 +106,9 @@ namespace GameHub.JogoDaVelha.Controller
                     {
                         for (int colunas = 0; colunas < 3; colunas++)
                         {
-                            if (tabuleiroJogoDaVelha[linhas, colunas] == novoNumero)
+                            if (tabuleiroJogoDaVelha.getValorLinhasColunas(linhas,colunas, novoNumero))
                             {
-                                tabuleiroJogoDaVelha[linhas, colunas] = Cadastro.usuario2.getLetraJogo();
+                                tabuleiroJogoDaVelha.setLetraJogo(linhas, colunas, Cadastro.usuario2.getLetraJogo());
 
                                 // # Método que verifica se deu velha
                                 Pecas.VerificaEmpate(Menu.jogarDeNovo);
@@ -138,9 +140,9 @@ namespace GameHub.JogoDaVelha.Controller
                     {
                         for (int colunas = 0; colunas < 3; colunas++)
                         {
-                            if (tabuleiroJogoDaVelha[linhas, colunas] == novoNumero)
+                            if (tabuleiroJogoDaVelha.getValorLinhasColunas(linhas, colunas, novoNumero))
                             {
-                                tabuleiroJogoDaVelha[linhas, colunas] = Cadastro.usuario1.getLetraJogo();
+                                tabuleiroJogoDaVelha.setLetraJogo(linhas, colunas, Cadastro.usuario1.getLetraJogo());
 
                                 // # Método que verifica se deu velha
                                 Pecas.VerificaEmpate(Menu.jogarDeNovo);
@@ -181,10 +183,10 @@ namespace GameHub.JogoDaVelha.Controller
             {
                 for (int colunas = 0; colunas < 3; colunas++)
                 {
-                    if (tabuleiroJogoDaVelha[linhas, colunas] == escolhaJogador2)
+                    if (tabuleiroJogoDaVelha.getValorLinhasColunas(linhas, colunas, escolhaJogador2))
                     {
 
-                        tabuleiroJogoDaVelha[linhas, colunas] = Cadastro.usuario2.getLetraJogo();
+                        tabuleiroJogoDaVelha.setLetraJogo(linhas, colunas, Cadastro.usuario2.getLetraJogo());
 
                         Thread.Sleep(200);
                         Console.Clear();
@@ -216,7 +218,7 @@ namespace GameHub.JogoDaVelha.Controller
             Cadastro.FazerCadastroJogoDaVelha();
 
             // Preenche a matriz com números [0-9]
-            PreencherTabuleiro();
+            tabuleiroJogoDaVelha.PreencherTabuleiro();
 
             while (true)
             {
@@ -224,7 +226,7 @@ namespace GameHub.JogoDaVelha.Controller
                 MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.Red);
 
                 // # Mostrar tabuleiro
-                MostrarTabuleiro();
+                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
 
                 // # Vez dos jogadores
                 VezJogador1();

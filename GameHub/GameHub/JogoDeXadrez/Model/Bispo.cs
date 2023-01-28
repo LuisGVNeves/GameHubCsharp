@@ -5,8 +5,10 @@ using GameHub.JogoDeXadrez.Controller;
 
 namespace GameHub.JogoDeXadrez.Model
 {
-    class Bispo : TabuleiroXadrez
+    class Bispo
     {
+        public static TabuleiroXadrez tabuleiroXadrez = new TabuleiroXadrez();
+
         public static char peca;
         public static char pecaInimiga;
 
@@ -19,10 +21,15 @@ namespace GameHub.JogoDeXadrez.Model
             // # Pegar a peça inimiga que vai estar no destino que o usuário vai querer colocar
             pecaInimiga = TabuleiroXadrez.tabuleiroXadrez[linhaDestino, colunaDestino];
 
-            // # Movimentos do bispo, se deslocamento vertical for igual ao deslocamento horizontal | bispo pode mexer
-            Pecas.deslocamentoVertical = Math.Abs(linhaDestino - linhaOrigem);
+            
+            // Quantidade de casas que o usuário vai se mover, tanto na linha como na coluna as vezes pode retornar um numero negativo porque o usuário pode se mover pra baixo, então eu utilizo o math.absolute pra sempre retornar um numero positivo e eu ver quantas casas o usuario esta se movendo
+            Pecas.deslocamentoVertical = Math.Abs(linhaDestino - linhaOrigem); 
             Pecas.deslocamentoHorizontal = Math.Abs(colunaDestino - colunaOrigem);
 
+            /*
+                - Pro bispo se mover, o número de casas deslocadas na vertical devem ser iguais aos deslocamentos
+            nas casas horizontais
+            */
 
             VerificarCasaVazia(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
             VerificarMovimentoBispo(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
@@ -32,6 +39,7 @@ namespace GameHub.JogoDeXadrez.Model
         // # Método para verificar se onde o bispo vai se deslocar, está vazio
         static void VerificarCasaVazia(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino)
         {
+            // # Pro bispo se mover, o número de casas deslocadas na vertical devem ser iguais aos deslocamentos nas casas horizontais
             if (peca == 'B' && Pecas.deslocamentoVertical == Pecas.deslocamentoHorizontal)
             {
                 // Se o bispo na movimentação se mover pra uma casa vazia
@@ -61,7 +69,13 @@ namespace GameHub.JogoDeXadrez.Model
         {
             if (peca == 'B' && Pecas.deslocamentoVertical == Pecas.deslocamentoHorizontal)
             {
+                /*
+                    - Quando o bispo se mover, se a peça inimiga estiver uma casa antes, o bispo tem que comer,
+                porque ele só para o movimento quando come a peça, e fica no lugar dela, se a linha e coluna de destino
+                ultrapassar a peça inimiga, ele precisa obrigatóriamente comer a peça que estava no caminho dele, e ficar no lugar dela.
+                */
                 // Quando o bispo se mover, se uma casa anterior na diagonal for a peça inimiga em questão, vou retirar ela substituindo por ' ' vazia e adicionando o B no lugar
+
                 if (TabuleiroXadrez.tabuleiroXadrez[linhaDestino - 1, colunaDestino - 1] == 'P')
                 {
                     Pecas.listaDePecasVermelhas.Add('P');
@@ -573,7 +587,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'p' || pecaInimiga == 'T' || pecaInimiga == 'C' || pecaInimiga == 'B' || pecaInimiga == 'Q' || pecaInimiga == 'K')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador1();
@@ -592,7 +606,7 @@ namespace GameHub.JogoDeXadrez.Model
                 while (pecaInimiga == 'P' || pecaInimiga == 't' || pecaInimiga == 'c' || pecaInimiga == 'b' || pecaInimiga == 'q' || pecaInimiga == 'k')
                 {
                     // Mostrar o tabuleiro
-                    TabuleiroXadrez.MostrarTabuleiro(8);
+                    tabuleiroXadrez.MostrarTabuleiro(8);
 
                     // Input do usuario novamente
                     JogoXadrez.VezJogador2();

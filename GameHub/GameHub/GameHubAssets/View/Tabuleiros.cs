@@ -10,24 +10,32 @@ namespace GameHub.HubAssets.View
     // @ Assinaturas de métodos para as classes TabuleiroJogoDaVelha e TabuleiroXadrez
     public abstract class Tabuleiros
     {
-        // # Criar a Matriz - 8 linhas e 8 colunas
-        public static char[,] tabuleiroXadrez = new char[8, 8];
-        public static string[,] tabuleiroJogoDaVelha = new string[3, 3];
+        public abstract void PreencherTabuleiro();
 
-        // Classe abstrata não tem métodos estáticos, eu teria que declarar esses métodos como abstratos e fazer um override lá no tabuleiroXadrez, mas como eu preciso da assinatura desses métodos em outras classes, e não vai ser necessário criar um objeto pra pegar esses métodos, então eu setei a assinatura desses aqui como static.
-
-        // https://methodpoet.com/abstract-static-methods/
-
-        public static void PreencherTabuleiro() { }
-
-        public static void MostrarTabuleiro(int linhas) { }
+        public abstract void MostrarTabuleiro(int linhas);
 
     }
 
     public class TabuleiroJogoDaVelha : Tabuleiros
     {
+        // Construtor vazio para utilizar os métodos do tabuleiro sem precisar utilizar static
+        public TabuleiroJogoDaVelha() { }
+
+        // Matriz do tabuleiro
+        public static string[,] tabuleiroJogoDaVelha = new string[3, 3];
+
+        public bool getValorLinhasColunas(int linhas, int colunas, string letraJogo)
+        {
+            return tabuleiroJogoDaVelha[linhas, colunas] == letraJogo ? true : false;
+        }
+
+        public void setLetraJogo(int linhas, int colunas, string letraJogo)
+        {
+            tabuleiroJogoDaVelha[linhas, colunas] = letraJogo;
+        }
+
         // # Método que preenche tabuleiro com números, para o usuário preencher com X ou O
-        public static void PreencherTabuleiro()
+        public override void PreencherTabuleiro()
         {
             // # Linha 1
             tabuleiroJogoDaVelha[0, 0] = "1";
@@ -47,7 +55,7 @@ namespace GameHub.HubAssets.View
         }
 
         // # Método Mostrar Tabuleiros
-        public static void MostrarTabuleiro()
+        public override void MostrarTabuleiro(int linhas)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(@"
@@ -75,8 +83,14 @@ namespace GameHub.HubAssets.View
 
     public class TabuleiroXadrez : Tabuleiros
     {
+        // Construtor vazio para utilizar os métodos do tabuleiro sem precisar utilizar static
+        public TabuleiroXadrez() { }
+
+        // # Criar a Matriz - 8 linhas e 8 colunas
+        public static char[,] tabuleiroXadrez = new char[8, 8];
+
         // # Método para preencher o tabuleiro de Xadrez
-        public static void PreencherTabuleiro()
+        public override void PreencherTabuleiro()
         {
             // # Linha 1
             tabuleiroXadrez[0, 0] = 'T'; // Torre
@@ -161,7 +175,7 @@ namespace GameHub.HubAssets.View
         }
 
         // # Método que exibe o tabuleiro de Xadrez
-        public static void MostrarTabuleiro(int linhas)
+        public override void MostrarTabuleiro(int linhas)
         {
 
             Ranking.MostrarPontuacaoJogoDeXadrez();
