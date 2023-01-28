@@ -83,6 +83,7 @@ namespace GameHub.HubAssets.View
         }
     }
 
+
     // # Classe TabuleiroXadrez herda da classe Tabuleiro para preencher as assinaturas da classe abstrata
     public class TabuleiroXadrez : Tabuleiros
     {
@@ -241,6 +242,7 @@ namespace GameHub.HubAssets.View
 
     }
 
+
     // # Classe TabuleiroXadrez herda da classe Tabuleiro para preencher as assinaturas da classe abstrata
     public class TabuleiroNaval : Tabuleiros
     {
@@ -337,69 +339,68 @@ namespace GameHub.HubAssets.View
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine(@"
-                              ╔═══════════════════════════════════════╗");
+                ╔════════════════════════════════════════╗", ConsoleColor.DarkGray);
             Console.ResetColor();
+            Console.WriteLine("");
+
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine($"               0   {tabuleiroNavalBase[0, 0]} | {tabuleiroNavalBase[0, 1]} | {tabuleiroNavalBase[0, 2]} | {tabuleiroNavalBase[0, 3]} | {tabuleiroNavalBase[0, 4]} | {tabuleiroNavalBase[0, 5]} | {tabuleiroNavalBase[0, 6]} | {tabuleiroNavalBase[0, 7]} | {tabuleiroNavalBase[0, 8]} | {tabuleiroNavalBase[0, 9]}");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("                  ---------------------------------------");
 
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"                                {tabuleiroNavalBase[0, 0]} | {tabuleiroNavalBase[0, 1]} | {tabuleiroNavalBase[0, 2]} | {tabuleiroNavalBase[0, 3]} | {tabuleiroNavalBase[0, 4]} | {tabuleiroNavalBase[0, 5]} | {tabuleiroNavalBase[0, 6]} | {tabuleiroNavalBase[0, 7]} | {tabuleiroNavalBase[0, 8]} | {tabuleiroNavalBase[0, 9]}");
+            Console.WriteLine($"               1   {tabuleiroNavalBase[1, 0]} | {tabuleiroNavalBase[1, 1]} | {tabuleiroNavalBase[1, 2]} | {tabuleiroNavalBase[1, 3]} | {tabuleiroNavalBase[1, 4]} | {tabuleiroNavalBase[1, 5]} | {tabuleiroNavalBase[1, 6]} | {tabuleiroNavalBase[1, 7]} | {tabuleiroNavalBase[1, 8]} | {tabuleiroNavalBase[1, 9]}");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("                               ---------------------------------------");
+            Console.WriteLine("                  ---------------------------------------");
 
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"                                {tabuleiroNavalBase[1, 0]} | {tabuleiroNavalBase[1, 1]} | {tabuleiroNavalBase[1, 2]} | {tabuleiroNavalBase[1, 3]} | {tabuleiroNavalBase[1, 4]} | {tabuleiroNavalBase[1, 5]} | {tabuleiroNavalBase[1, 6]} | {tabuleiroNavalBase[1, 7]} | {tabuleiroNavalBase[1, 8]} | {tabuleiroNavalBase[1, 9]}");
+            Console.WriteLine($"               2   {tabuleiroNavalBase[2, 0]} | {tabuleiroNavalBase[2, 1]} | {tabuleiroNavalBase[2, 2]} | {tabuleiroNavalBase[2, 3]} | {tabuleiroNavalBase[2, 4]} | {tabuleiroNavalBase[2, 5]} | {tabuleiroNavalBase[2, 6]} | {tabuleiroNavalBase[2, 7]} | {tabuleiroNavalBase[2, 8]} | {tabuleiroNavalBase[2, 9]}");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("                               ---------------------------------------");
+            Console.WriteLine("                  ---------------------------------------");
+
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine($"               3   {tabuleiroNavalBase[3, 0]} | {tabuleiroNavalBase[3, 1]} | {tabuleiroNavalBase[3, 2]} | {tabuleiroNavalBase[3, 3]} | {tabuleiroNavalBase[3, 4]} | {tabuleiroNavalBase[3, 5]} | {tabuleiroNavalBase[3, 6]} | {tabuleiroNavalBase[3, 7]} | {tabuleiroNavalBase[3, 8]} | {tabuleiroNavalBase[3, 9]}");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("                  ---------------------------------------");
+
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine($"               4   {tabuleiroNavalBase[4, 0]} | {tabuleiroNavalBase[4, 1]} | {tabuleiroNavalBase[4, 2]} | {tabuleiroNavalBase[4, 3]} | {tabuleiroNavalBase[4, 4]} | {tabuleiroNavalBase[4, 5]} | {tabuleiroNavalBase[4, 6]} | {tabuleiroNavalBase[4, 7]} | {tabuleiroNavalBase[4, 8]} | {tabuleiroNavalBase[4, 9]}");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("                  ---------------------------------------");
 
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"                                {tabuleiroNavalBase[2, 0]} | {tabuleiroNavalBase[2, 1]} | {tabuleiroNavalBase[2, 2]} | {tabuleiroNavalBase[2, 3]} | {tabuleiroNavalBase[2, 4]} | {tabuleiroNavalBase[2, 5]} | {tabuleiroNavalBase[2, 6]} | {tabuleiroNavalBase[2, 7]} | {tabuleiroNavalBase[2, 8]} | {tabuleiroNavalBase[2, 9]}");
+            Console.WriteLine($"               5   {tabuleiroNavalBase[5, 0]} | {tabuleiroNavalBase[5, 1]} | {tabuleiroNavalBase[5, 2]} | {tabuleiroNavalBase[5, 3]} | {tabuleiroNavalBase[5, 4]} | {tabuleiroNavalBase[5, 5]} | {tabuleiroNavalBase[5, 6]} | {tabuleiroNavalBase[5, 7]} | {tabuleiroNavalBase[5, 8]} | {tabuleiroNavalBase[5, 9]}");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("                               ---------------------------------------");
+            Console.WriteLine("                  ---------------------------------------");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"                                {tabuleiroNavalBase[3, 0]} | {tabuleiroNavalBase[3, 1]} | {tabuleiroNavalBase[3, 2]} | {tabuleiroNavalBase[3, 3]} | {tabuleiroNavalBase[3, 4]} | {tabuleiroNavalBase[3, 5]} | {tabuleiroNavalBase[3, 6]} | {tabuleiroNavalBase[3, 7]} | {tabuleiroNavalBase[3, 8]} | {tabuleiroNavalBase[3, 9]}");
+            Console.WriteLine($"               6   {tabuleiroNavalBase[6, 0]} | {tabuleiroNavalBase[6, 1]} | {tabuleiroNavalBase[6, 2]} | {tabuleiroNavalBase[6, 3]} | {tabuleiroNavalBase[6, 4]} | {tabuleiroNavalBase[6, 5]} | {tabuleiroNavalBase[6, 6]} | {tabuleiroNavalBase[6, 7]} | {tabuleiroNavalBase[6, 8]} | {tabuleiroNavalBase[6, 9]}");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("                               ---------------------------------------");
+            Console.WriteLine("                  ---------------------------------------");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"                                {tabuleiroNavalBase[4, 0]} | {tabuleiroNavalBase[4, 1]} | {tabuleiroNavalBase[4, 2]} | {tabuleiroNavalBase[4, 3]} | {tabuleiroNavalBase[4, 4]} | {tabuleiroNavalBase[4, 5]} | {tabuleiroNavalBase[4, 6]} | {tabuleiroNavalBase[4, 7]} | {tabuleiroNavalBase[4, 8]} | {tabuleiroNavalBase[4, 9]}");
+            Console.WriteLine($"               7   {tabuleiroNavalBase[7, 0]} | {tabuleiroNavalBase[7, 1]} | {tabuleiroNavalBase[7, 2]} | {tabuleiroNavalBase[7, 3]} | {tabuleiroNavalBase[7, 4]} | {tabuleiroNavalBase[7, 5]} | {tabuleiroNavalBase[7, 6]} | {tabuleiroNavalBase[7, 7]} | {tabuleiroNavalBase[7, 8]} | {tabuleiroNavalBase[7, 9]}");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("                               ---------------------------------------");
-
-
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"                                {tabuleiroNavalBase[5, 0]} | {tabuleiroNavalBase[5, 1]} | {tabuleiroNavalBase[5, 2]} | {tabuleiroNavalBase[5, 3]} | {tabuleiroNavalBase[5, 4]} | {tabuleiroNavalBase[5, 5]} | {tabuleiroNavalBase[5, 6]} | {tabuleiroNavalBase[5, 7]} | {tabuleiroNavalBase[5, 8]} | {tabuleiroNavalBase[5, 9]}");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("                               ---------------------------------------");
-
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"                                {tabuleiroNavalBase[6, 0]} | {tabuleiroNavalBase[6, 1]} | {tabuleiroNavalBase[6, 2]} | {tabuleiroNavalBase[6, 3]} | {tabuleiroNavalBase[6, 4]} | {tabuleiroNavalBase[6, 5]} | {tabuleiroNavalBase[6, 6]} | {tabuleiroNavalBase[6, 7]} | {tabuleiroNavalBase[6, 8]} | {tabuleiroNavalBase[6, 9]}");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("                               ---------------------------------------");
-
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"                                {tabuleiroNavalBase[7, 0]} | {tabuleiroNavalBase[7, 1]} | {tabuleiroNavalBase[7, 2]} | {tabuleiroNavalBase[7, 3]} | {tabuleiroNavalBase[7, 4]} | {tabuleiroNavalBase[7, 5]} | {tabuleiroNavalBase[7, 6]} | {tabuleiroNavalBase[7, 7]} | {tabuleiroNavalBase[7, 8]} | {tabuleiroNavalBase[7, 9]}");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("                               ---------------------------------------");
+            Console.WriteLine("                  ---------------------------------------");
 
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"                                {tabuleiroNavalBase[8, 0]} | {tabuleiroNavalBase[8, 1]} | {tabuleiroNavalBase[8, 2]} | {tabuleiroNavalBase[8, 3]} | {tabuleiroNavalBase[8, 4]} | {tabuleiroNavalBase[8, 5]} | {tabuleiroNavalBase[8, 6]} | {tabuleiroNavalBase[8, 7]} | {tabuleiroNavalBase[8, 8]} | {tabuleiroNavalBase[8, 9]}");
+            Console.WriteLine($"               8   {tabuleiroNavalBase[8, 0]} | {tabuleiroNavalBase[8, 1]} | {tabuleiroNavalBase[8, 2]} | {tabuleiroNavalBase[8, 3]} | {tabuleiroNavalBase[8, 4]} | {tabuleiroNavalBase[8, 5]} | {tabuleiroNavalBase[8, 6]} | {tabuleiroNavalBase[8, 7]} | {tabuleiroNavalBase[8, 8]} | {tabuleiroNavalBase[8, 9]}");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("                               ---------------------------------------");
+            Console.WriteLine("                  ---------------------------------------");
 
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.Write($"                                {tabuleiroNavalBase[9, 0]} | {tabuleiroNavalBase[9, 1]} | {tabuleiroNavalBase[9, 2]} | {tabuleiroNavalBase[9, 3]} | {tabuleiroNavalBase[9, 4]} | {tabuleiroNavalBase[9, 5]} | {tabuleiroNavalBase[9, 6]} | {tabuleiroNavalBase[9, 7]} | {tabuleiroNavalBase[9, 8]} | {tabuleiroNavalBase[9, 9]}");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write($"               9   {tabuleiroNavalBase[9, 0]} | {tabuleiroNavalBase[9, 1]} | {tabuleiroNavalBase[9, 2]} | {tabuleiroNavalBase[9, 3]} | {tabuleiroNavalBase[9, 4]} | {tabuleiroNavalBase[9, 5]} | {tabuleiroNavalBase[9, 6]} | {tabuleiroNavalBase[9, 7]} | {tabuleiroNavalBase[9, 8]} | {tabuleiroNavalBase[9, 9]}");
 
+            Console.WriteLine("\n\n                   0   1   2   3   4   5   6   7   8   9");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine(@"
-                              ╚═══════════════════════════════════════╝");
+            Console.Write(@"
+                ╚════════════════════════════════════════╝", ConsoleColor.DarkGray);
             Console.ResetColor();
-
         }
 
 
@@ -910,4 +911,5 @@ namespace GameHub.HubAssets.View
         }
 
     }
+
 }

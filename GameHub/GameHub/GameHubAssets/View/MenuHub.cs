@@ -1,13 +1,11 @@
 ﻿using GameHub.GameHubAssets.View;
-using GameHub.HubAssets.Model;
 using GameHub.JogoDeXadrez.Controller;
+using GameHub.JogoBatalhaNaval.Controller;
 
 namespace GameHub.HubAssets.View
 {
     class MenuHub
     {
-        
-
         // Menu com Hub inicial
         public static void MenuInicialHub()
         {
@@ -25,10 +23,10 @@ namespace GameHub.HubAssets.View
             AdicionarTexto("                                       2 - Xadrez ");
 
             AdicionarTexto("\n                                   ════════════════════════\n");
-            AdicionarTexto("                                       3 - Ranking ");
+            AdicionarTexto("                                       3 - Batalha Naval ");
 
             AdicionarTexto("\n                                   ════════════════════════\n");
-            AdicionarTexto("                                       4 - Outro jogo ");
+            AdicionarTexto("                                       4 - Ranking ");
 
             AdicionarTexto("\n                                   ════════════════════════\n");
             AdicionarTexto("                                       5 - Sair");
@@ -48,10 +46,13 @@ namespace GameHub.HubAssets.View
             }
             if(respostaUsuario == 3)
             {
-                Ranking.MostrarRankingGlobal();
-
+                JogoBatalhaNaval.Controller.jogoBatalhaNaval.IniciarJogoBatalhaNaval();
             }
-            Environment.Exit(0);
+            if (respostaUsuario == 4)
+            {
+                Ranking.MostrarRankingGlobal();
+            }
+                Environment.Exit(0);
         }
 
 
