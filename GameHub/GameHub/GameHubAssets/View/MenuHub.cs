@@ -1,6 +1,6 @@
 ﻿using GameHub.GameHubAssets.View;
 using GameHub.JogoDeXadrez.Controller;
-using GameHub.JogoBatalhaNaval.Controller;
+using GameHub.JogoBatalhaNaval;
 
 namespace GameHub.HubAssets.View
 {
@@ -46,7 +46,7 @@ namespace GameHub.HubAssets.View
             }
             if(respostaUsuario == 3)
             {
-                JogoBatalhaNaval.Controller.jogoBatalhaNaval.IniciarJogoBatalhaNaval();
+                jogoBatalhaNaval.IniciarJogoBatalhaNaval();
             }
             if (respostaUsuario == 4)
             {

@@ -246,13 +246,14 @@ namespace GameHub.HubAssets.View
     // # Classe TabuleiroXadrez herda da classe Tabuleiro para preencher as assinaturas da classe abstrata
     public class TabuleiroNaval : Tabuleiros
     {
-        public char[,] tabuleiroNavalBase = new char[10, 10];
-        public char[,] tabuleiroNavalInimigo1 = new char[10, 10];
-        public char[,] tabuleiroNavalInimigo2 = new char[10, 10];
-
-
         // Construtor vazio
         public TabuleiroNaval() { }
+      
+        
+        public char[,] tabuleiroNavalBase = new char[10, 10];
+        public static char[,] tabuleiroNavalInimigo1 = new char[10, 10];
+        public static char[,] tabuleiroNavalInimigo2 = new char[10, 10];
+
 
         // Sobreescrita dos métodos da classe abstrata tabuleiro
         public override void PreencherTabuleiro()
@@ -335,15 +336,16 @@ namespace GameHub.HubAssets.View
 
         }
 
+        // Mostrar o tabuleiro base
         public override void MostrarTabuleiro(int linhas)
         {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine(@"
-                ╔════════════════════════════════════════╗", ConsoleColor.DarkGray);
+            MenuHub.AdicionarTexto(@"
+                ╔════════════════════════════════════════╗", ConsoleColor.Blue);
             Console.ResetColor();
             Console.WriteLine("");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("              Lin");
             Console.WriteLine($"               0   {tabuleiroNavalBase[0, 0]} | {tabuleiroNavalBase[0, 1]} | {tabuleiroNavalBase[0, 2]} | {tabuleiroNavalBase[0, 3]} | {tabuleiroNavalBase[0, 4]} | {tabuleiroNavalBase[0, 5]} | {tabuleiroNavalBase[0, 6]} | {tabuleiroNavalBase[0, 7]} | {tabuleiroNavalBase[0, 8]} | {tabuleiroNavalBase[0, 9]}");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("                  ---------------------------------------");
@@ -396,10 +398,10 @@ namespace GameHub.HubAssets.View
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write($"               9   {tabuleiroNavalBase[9, 0]} | {tabuleiroNavalBase[9, 1]} | {tabuleiroNavalBase[9, 2]} | {tabuleiroNavalBase[9, 3]} | {tabuleiroNavalBase[9, 4]} | {tabuleiroNavalBase[9, 5]} | {tabuleiroNavalBase[9, 6]} | {tabuleiroNavalBase[9, 7]} | {tabuleiroNavalBase[9, 8]} | {tabuleiroNavalBase[9, 9]}");
 
-            Console.WriteLine("\n\n                   0   1   2   3   4   5   6   7   8   9");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(@"
-                ╚════════════════════════════════════════╝", ConsoleColor.DarkGray);
+            Console.WriteLine("\n\n             col   0   1   2   3   4   5   6   7   8   9");
+            MenuHub.AdicionarTexto(@"
+                ╚════════════════════════════════════════╝", ConsoleColor.Blue);
             Console.ResetColor();
         }
 
@@ -657,7 +659,6 @@ namespace GameHub.HubAssets.View
             Console.ResetColor();
 
         }
-
         public void MostrarTabuleiroInimigo2()
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -909,7 +910,6 @@ namespace GameHub.HubAssets.View
             Console.ResetColor();
 
         }
-
     }
 
 }
