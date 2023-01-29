@@ -1,4 +1,5 @@
 ﻿using GameHub.GameHubAssets.View;
+using GameHub.HubAssets.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -249,12 +250,13 @@ namespace GameHub.HubAssets.View
         // Construtor vazio
         public TabuleiroNaval() { }
       
-        // Criar mais um tabuleiroNavalBase1 para servir de espelho para o outro tabuleiro
-        
+        // Matrizes "Espelhadas"
         public char[,] tabuleiroNavalBase1 = new char[10, 10];
         public char[,] tabuleiroNavalBase2 = new char[10, 10];
-        public static char[,] tabuleiroNavalInimigo1 = new char[10, 10];
-        public static char[,] tabuleiroNavalInimigo2 = new char[10, 10];
+
+        // @ Matrizes originais
+        public char[,] tabuleiroNavalInimigo1 = new char[10, 10];
+        public char[,] tabuleiroNavalInimigo2 = new char[10, 10];
 
 
         // Sobreescrita dos métodos da classe abstrata tabuleiro
@@ -325,16 +327,20 @@ namespace GameHub.HubAssets.View
                         tabuleiroNavalInimigo2[0, 1] = 'N';
                         tabuleiroNavalInimigo2[0, 2] = 'N';
                         tabuleiroNavalInimigo2[0, 3] = 'N';
+
                         tabuleiroNavalInimigo2[1, 3] = 'N';
                         tabuleiroNavalInimigo2[2, 3] = 'N';
                         tabuleiroNavalInimigo2[3, 3] = 'N';
+
                         tabuleiroNavalInimigo2[5, 4] = 'N';
                         tabuleiroNavalInimigo2[5, 5] = 'N';
                         tabuleiroNavalInimigo2[5, 6] = 'N';
+
                         tabuleiroNavalInimigo2[8, 6] = 'N';
                         tabuleiroNavalInimigo2[8, 7] = 'N';
                         tabuleiroNavalInimigo2[8, 8] = 'N';
                         tabuleiroNavalInimigo2[8, 9] = 'N';
+
                         tabuleiroNavalInimigo2[9, 0] = 'N';
                         tabuleiroNavalInimigo2[9, 1] = 'N';
                         tabuleiroNavalInimigo2[9, 2] = 'N';
@@ -420,7 +426,7 @@ namespace GameHub.HubAssets.View
         public void MostrarTabuleiroBase2()
         {
             MenuHub.AdicionarTexto(@"
-                ╔════════════════════════════════════════╗", ConsoleColor.DarkCyan);
+                ╔════════════════════════════════════════╗", ConsoleColor.DarkGray);
             Console.ResetColor();
             Console.WriteLine("");
 
@@ -481,7 +487,7 @@ namespace GameHub.HubAssets.View
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("\n\n             col   0   1   2   3   4   5   6   7   8   9");
             MenuHub.AdicionarTexto(@"
-                ╚════════════════════════════════════════╝", ConsoleColor.DarkCyan);
+                ╚════════════════════════════════════════╝", ConsoleColor.DarkGray);
             Console.ResetColor();
         }
 
@@ -490,6 +496,8 @@ namespace GameHub.HubAssets.View
         // Métodos para mostrar o tabuleiro dos inimigos com navios em diferentes lugares
         public void MostrarTabuleiroInimigo1()
         {
+            MenuHub.EstilizarMenu($"        Tabuleiro do {Cadastro.usuario1.getNome()}      ", ConsoleColor.Green, ConsoleColor.Black);
+
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine(@"
                               ╔═══════════════════════════════════════╗");
@@ -742,6 +750,8 @@ namespace GameHub.HubAssets.View
         }
         public void MostrarTabuleiroInimigo2()
         {
+            MenuHub.EstilizarMenu($"        Tabuleiro do {Cadastro.usuario2.getNome()}      ", ConsoleColor.Green, ConsoleColor.Black);
+
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine(@"
                               ╔═══════════════════════════════════════╗");

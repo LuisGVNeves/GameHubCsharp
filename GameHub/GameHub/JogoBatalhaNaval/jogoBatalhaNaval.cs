@@ -10,6 +10,9 @@ namespace GameHub.JogoBatalhaNaval
 
         public static int linhaDestino, colunaDestino = 0;
 
+        // # Variável para incrementar cada vez que o usuário conseguir atingir uma parte do navio e identificar as vitórias
+        public static int contagemTirosJogador1, contagemTirosJogador2;
+
         public static void VezJogador1()
         {
             Console.Write($"\n{Cadastro.usuario1.getNome()} Digite a linha do possível barco inimigo: ");
@@ -19,62 +22,49 @@ namespace GameHub.JogoBatalhaNaval
             colunaDestino = int.Parse(Console.ReadLine());
 
 
-            if (tabuleiroNavalInimigo2[linhaDestino, colunaDestino] == 'N')
-            {
+            // Se a matriz rival tiver um pedaço do navio N, vou trocar por *
 
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                tabuleiroNavalInimigo2[linhaDestino, colunaDestino] = '*';
+            if (tabuleiroNaval.tabuleiroNavalInimigo2[linhaDestino, colunaDestino] == 'N')
+            {
+                tabuleiroNaval.tabuleiroNavalInimigo2[linhaDestino, colunaDestino] = '*';
                 tabuleiroNaval.tabuleiroNavalBase1[linhaDestino, colunaDestino] = '*';
-                Console.ResetColor();
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($"\n\nJogador {Cadastro.usuario1.getNome()} acertou uma bomba no návio !");
                 Console.ResetColor();
 
+                // Incrementa a qtd de tiros do jogador
+                contagemTirosJogador1++;
 
-                Console.WriteLine("\n\nDeseja olhar seu tabuleiro ? 1 - Sim 2 - Não");
-                Console.Write("\n               Digite aqui: ");
-                short resposta = short.Parse(Console.ReadLine());
-                if(resposta == 1)
-                {
-                    Console.Clear();
+                // Incremento a pontuação do jogador em + 1
+                Cadastro.usuario1.setPontuacaoJogador(contagemTirosJogador1,1);
 
-                    tabuleiroNaval.MostrarTabuleiroInimigo1();
-                    Console.Write($"\n\nAperte uma tecla pra alternar pro outro jogador ! ");
-                    Console.ReadKey();
-                }
-                else
+                // 17 É a contagem total dos navios, na verdade são 5 navios, porém eles se estendem na matriz, então acaba aumentando o valor
+                if(contagemTirosJogador1 == 17)
                 {
-                    Console.Write($"\n\nAperte uma tecla pra alternar pro outro jogador ! ");
+                    Console.WriteLine($"\n\n                 Todos os navios do inimigo {Cadastro.usuario2.getNome()} foram atingidos !!");
+                    Console.WriteLine("\n\n                 Aperte uma tecla para voltar ao menu");
                     Console.ReadKey();
+
+                    MenuHub.MenuInicialHub();
                 }
+
+
+                Console.Write($"\n\nAperte uma tecla pra alternar pro outro jogador ! ");
+                Console.ReadKey();
             }
             else
             {
-                tabuleiroNavalInimigo2[linhaDestino, colunaDestino] = ' ';
+                tabuleiroNaval.tabuleiroNavalInimigo2[linhaDestino, colunaDestino] = ' ';
                 tabuleiroNaval.tabuleiroNavalBase1[linhaDestino, colunaDestino] = ' ';
 
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.Write($"\n\nErrou ! ");
                 Console.ResetColor();
 
+                Console.Write($"\n\nVez do jogador {Cadastro.usuario2.getNome()} aperte uma tecla pra iniciar jogada !");
+                Console.ReadKey();
 
-                Console.WriteLine("\n\nDeseja olhar seu tabuleiro ? 1 - Sim 2 - Não");
-                Console.Write("\n               Digite aqui: ");
-
-                short resposta = short.Parse(Console.ReadLine());
-                if (resposta == 1)
-                {
-                    Console.Clear();
-                    tabuleiroNaval.MostrarTabuleiroInimigo1();
-                    Console.Write($"\n\nVez do jogador {Cadastro.usuario2.getNome()} aperte uma tecla pra iniciar jogada !");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    Console.Write($"\n\nVez do jogador {Cadastro.usuario2.getNome()} aperte uma tecla pra iniciar jogada !");
-                    Console.ReadKey();
-                }
             }
 
         }
@@ -93,62 +83,46 @@ namespace GameHub.JogoBatalhaNaval
             colunaDestino = int.Parse(Console.ReadLine());
 
 
-            if (tabuleiroNavalInimigo1[linhaDestino, colunaDestino] == 'N')
+            if (tabuleiroNaval.tabuleiroNavalInimigo1[linhaDestino, colunaDestino] == 'N')
             {
-
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                tabuleiroNavalInimigo1[linhaDestino, colunaDestino] = '*';
+                tabuleiroNaval.tabuleiroNavalInimigo1[linhaDestino, colunaDestino] = '*';
                 tabuleiroNaval.tabuleiroNavalBase2[linhaDestino, colunaDestino] = '*';
-                Console.ResetColor();
+
+                // Incrementa a qtd de tiros do jogador
+                contagemTirosJogador2++;
+
+                // Incremento a pontuação do jogador em + 1
+                Cadastro.usuario2.setPontuacaoJogador(contagemTirosJogador2, 2);
+
+                // 17 É a contagem total dos navios, na verdade são 5 navios, porém eles se estendem na matriz, então acaba aumentando o valor
+                if (contagemTirosJogador2 == 17)
+                {
+                    Console.WriteLine($"\n\n                 Todos os navios do inimigo {Cadastro.usuario1.getNome()} foram atingidos !!");
+                    Console.WriteLine("\n\n                 Aperte uma tecla para voltar ao menu");
+                    Console.ReadKey();
+
+                    MenuHub.MenuInicialHub();
+                }
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($"\n\nJogador {Cadastro.usuario2.getNome()} acertou uma bomba no návio !");
                 Console.ResetColor();
 
 
-                Console.WriteLine("\n\nDeseja olhar seu tabuleiro ? 1 - Sim 2 - Não");
-                Console.Write("\n               Digite aqui: ");
-                short resposta = short.Parse(Console.ReadLine());
-                if (resposta == 1)
-                {
-                    Console.Clear();
-
-                    tabuleiroNaval.MostrarTabuleiroInimigo2();
-                    Console.Write($"\n\nAperte uma tecla pra alternar pro outro jogador ! ");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    Console.Write($"\n\nAperte uma tecla pra alternar pro outro jogador ! ");
-                    Console.ReadKey();
-                }
+                Console.Write($"\n\nAperte uma tecla pra alternar pro outro jogador ! ");
+                Console.ReadKey();
             }
             else
             {
-                tabuleiroNavalInimigo1[linhaDestino, colunaDestino] = ' ';
+                tabuleiroNaval.tabuleiroNavalInimigo1[linhaDestino, colunaDestino] = ' ';
                 tabuleiroNaval.tabuleiroNavalBase2[linhaDestino, colunaDestino] = ' ';
 
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.Write($"\n\nErrou ! ");
                 Console.ResetColor();
-
-
-                Console.WriteLine("\n\nDeseja olhar seu tabuleiro ? 1 - Sim 2 - Não");
-                Console.Write("\n               Digite aqui: ");
-
-                short resposta = short.Parse(Console.ReadLine());
-                if (resposta == 1)
-                {
-                    Console.Clear();
-                    tabuleiroNaval.MostrarTabuleiroInimigo2();
-                    Console.Write($"\n\nVez do jogador {Cadastro.usuario1.getNome()} aperte uma tecla pra iniciar jogada !");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    Console.Write($"\n\nVez do jogador {Cadastro.usuario1.getNome()} aperte uma tecla pra iniciar jogada !");
-                    Console.ReadKey();
-                }
+             
+                Console.Write($"\n\nVez do jogador {Cadastro.usuario1.getNome()} aperte uma tecla pra iniciar jogada !");
+                Console.ReadKey();
             }
 
         }
