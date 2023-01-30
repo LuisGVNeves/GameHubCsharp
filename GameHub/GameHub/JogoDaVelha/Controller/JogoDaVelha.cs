@@ -234,7 +234,5 @@ namespace GameHub.JogoDaVelha.Controller
             }
 
         }
-
-
     }
 }

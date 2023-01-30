@@ -178,11 +178,6 @@ namespace GameHub.JogoDeXadrez.Controller
                 VezJogador1();
                 VezJogador2();
             }
-
-
-
         }
-
-
     }
 }

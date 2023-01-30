@@ -266,7 +266,7 @@ namespace GameHub.HubAssets.View
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
-                {
+                {         
                     tabuleiroNavalBase1[i, j] += '~';
                 }
             }
@@ -506,6 +506,7 @@ namespace GameHub.HubAssets.View
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             if (tabuleiroNavalInimigo1[0, 5] == 'N')
             {
+                
                 Console.Write($"                                {tabuleiroNavalInimigo1[0, 0]} | {tabuleiroNavalInimigo1[0, 1]} | {tabuleiroNavalInimigo1[0, 2]} | {tabuleiroNavalInimigo1[0, 3]} | {tabuleiroNavalInimigo1[0, 4]} | ");
 
                 Console.ForegroundColor = ConsoleColor.DarkRed;

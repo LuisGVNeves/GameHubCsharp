@@ -177,6 +177,7 @@ namespace GameHub.HubAssets.Model
 
             Thread.Sleep(2000);
             Console.Clear();
+
         }
 
         public static void FazerCadastroJogoNaval()
