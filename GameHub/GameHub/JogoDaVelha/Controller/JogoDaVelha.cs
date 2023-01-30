@@ -212,7 +212,7 @@ namespace GameHub.JogoDaVelha.Controller
         }
 
 
-        // # Método que inicia o jogo
+        /* # Método que inicia o jogo
         public static void IniciarJogoDaVelha()
         {
             Cadastro.FazerCadastroJogoDaVelha();
@@ -231,6 +231,121 @@ namespace GameHub.JogoDaVelha.Controller
                 // # Vez dos jogadores
                 VezJogador1();
                 VezJogador2();
+            }
+
+        }
+        */
+
+        public static void IniciarJogoDaVelha()
+        {
+            // Verificar se já tem algum nome preenchido no JSON
+            if (Cadastro.usuario1.getNome() != "")
+            {
+                MenuHub.EstilizarMenu("Login player 1", ConsoleColor.Blue);
+                Console.Write("Digite o nome do player 1: ");
+                string resposta = Console.ReadLine();
+
+                while (resposta != Cadastro.usuario1.getNome())
+                {
+                    Console.WriteLine("\n\nUsuário inválido. Deseja voltar ao menu principal?");
+                    Console.WriteLine("\n               1 - SIM | 2 - NÃO");
+                    Console.Write("\n\n                    Digite aqui: ");
+                    short respostaUsuario = short.Parse(Console.ReadLine());
+
+                    if (respostaUsuario == 1)
+                    {
+                        MenuHub.MenuInicialHub();
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        MenuHub.EstilizarMenu("Login player 1", ConsoleColor.Blue);
+                        Console.Write("\n\nDigite novamente o nome do usuário: ");
+                        resposta = Console.ReadLine();
+                    }
+
+                    if (resposta == Cadastro.usuario1.getNome())
+                    {
+                        Console.WriteLine($"\n\nUsuário {Cadastro.usuario1.getNome()} logado com sucesso ! ");
+                        Console.WriteLine("\n\nAperte alguma tecla para ir pro login do segundo jogador: ");
+                        Console.ReadKey();
+                    }
+                }
+
+
+                if (Cadastro.usuario2.getNome() != "")
+                {
+                    MenuHub.EstilizarMenu("Login player 2", ConsoleColor.DarkBlue);
+                    Console.Write("Digite o nome do player 2: ");
+                    string respostaUsuario2 = Console.ReadLine();
+
+                    while (respostaUsuario2 != Cadastro.usuario2.getNome())
+                    {
+                        Console.WriteLine("\n\nUsuário inválido. Deseja voltar ao menu principal?");
+                        Console.WriteLine("\n               1 - SIM | 2 - NÃO");
+                        Console.Write("\n\n                    Digite aqui: ");
+                        short respostaUsuario = short.Parse(Console.ReadLine());
+
+                        if (respostaUsuario == 1)
+                        {
+                            MenuHub.MenuInicialHub();
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            MenuHub.EstilizarMenu("Login player 2", ConsoleColor.DarkBlue);
+                            Console.Write("\n\nDigite novamente o nome do usuário: ");
+                            respostaUsuario2 = Console.ReadLine();
+                        }
+
+                        if (resposta == Cadastro.usuario2.getNome())
+                        {
+                            Console.WriteLine($"\n\nUsuário {Cadastro.usuario2.getNome()} logado com sucesso ! ");
+                        }
+                    }
+                }
+
+
+
+
+
+
+                // Preenche a matriz com números [0-9]
+                tabuleiroJogoDaVelha.PreencherTabuleiro();
+
+                while (true)
+                {
+                    // # Decorar o menu antes de iniciar o game
+                    MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.Red);
+
+                    // # Mostrar tabuleiro
+                    tabuleiroJogoDaVelha.MostrarTabuleiro(3);
+
+                    // # Vez dos jogadores
+                    VezJogador1();
+                    VezJogador2();
+                }
+            }
+            else
+            {
+                // @ Cadastro jogador1 e jogador2
+                Cadastro.FazerCadastroJogoDaVelha();
+
+                // Preenche a matriz com números [0-9]
+                tabuleiroJogoDaVelha.PreencherTabuleiro();
+
+                while (true)
+                {
+                    // # Decorar o menu antes de iniciar o game
+                    MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.Red);
+
+                    // # Mostrar tabuleiro
+                    tabuleiroJogoDaVelha.MostrarTabuleiro(3);
+
+                    // # Vez dos jogadores
+                    VezJogador1();
+                    VezJogador2();
+                }
             }
 
         }

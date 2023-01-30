@@ -219,8 +219,28 @@ namespace GameHub.JogoBatalhaNaval
                     VezJogador2();
                 }
             }
-            // @ Cadastro jogador1 e jogador2
-            Cadastro.FazerCadastroJogoNaval();
+            else
+            {
+                // @ Cadastro jogador1 e jogador2
+                Cadastro.FazerCadastroJogoNaval();
+
+                // Preencher os valores da matriz
+                tabuleiroNaval.PreencherTabuleiro();
+
+                while (true)
+                {
+                    // # Decorar o menu antes de iniciar o game
+                    MenuHub.EstilizarMenu("Jogo naval", ConsoleColor.Blue);
+
+                    // Mostrar o tabuleiro
+                    tabuleiroNaval.MostrarTabuleiro(10);
+
+                    // Começa a partida com o jogador 1 e depois jogador2
+                    VezJogador1();
+
+                    VezJogador2();
+                }
+            }
 
         }
     }
