@@ -15,12 +15,36 @@ namespace GameHub.JogoBatalhaNaval
 
         public static void VezJogador1()
         {
+            MenuHub.EstilizarMenu($"Vez jogador {Cadastro.usuario1.getNome()}", ConsoleColor.Blue);
+            
+            // Mostrar o tabuleiro
+            tabuleiroNaval.MostrarTabuleiro(10);
+
             Console.Write($"\n{Cadastro.usuario1.getNome()} Digite a linha do possível barco inimigo: ");
             linhaDestino = int.Parse(Console.ReadLine());
-            
+
+            while(linhaDestino < 0 || linhaDestino > 9)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Número maior do que o intervalo do tabuleiro entre [0-9]");
+                Console.ResetColor();
+
+                Console.WriteLine("\n\nDigite a o número da linha novamente: ");
+                linhaDestino = int.Parse(Console.ReadLine());
+            }
+
             Console.Write($"\n{Cadastro.usuario1.getNome()} Digite a coluna do possível barco inimigo: ");
             colunaDestino = int.Parse(Console.ReadLine());
 
+            while (colunaDestino < 0 || colunaDestino > 9)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Número maior do que o intervalo do tabuleiro entre [0-9]");
+                Console.ResetColor();
+
+                Console.WriteLine("\n\nDigite a o número da coluna novamente: ");
+                colunaDestino = int.Parse(Console.ReadLine());
+            }
 
             // Se a matriz rival tiver um pedaço do navio N, vou trocar por *
 
@@ -73,14 +97,38 @@ namespace GameHub.JogoBatalhaNaval
         {
             Console.Clear();
 
+            // # Decorar o menu antes de iniciar o game
+            MenuHub.EstilizarMenu($"Vez jogador {Cadastro.usuario2.getNome()}", ConsoleColor.Blue);
+
             // Mostrar o tabuleiro
             tabuleiroNaval.MostrarTabuleiroBase2();
 
+
             Console.Write($"\n{Cadastro.usuario2.getNome()} Digite a linha do possível barco inimigo: ");
             linhaDestino = int.Parse(Console.ReadLine());
+            while (linhaDestino < 0 || linhaDestino > 9)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Número maior do que o intervalo do tabuleiro entre [0-9]");
+                Console.ResetColor();
+
+                Console.WriteLine("\n\nDigite a o número da linha novamente: ");
+                linhaDestino = int.Parse(Console.ReadLine());
+            }
+
 
             Console.Write($"\n{Cadastro.usuario2.getNome()} Digite a coluna do possível barco inimigo: ");
             colunaDestino = int.Parse(Console.ReadLine());
+
+            while (colunaDestino < 0 || colunaDestino > 9)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Número maior do que o intervalo do tabuleiro entre [0-9]");
+                Console.ResetColor();
+
+                Console.WriteLine("\n\nDigite a o número da coluna novamente: ");
+                colunaDestino = int.Parse(Console.ReadLine());
+            }
 
 
             if (tabuleiroNaval.tabuleiroNavalInimigo1[linhaDestino, colunaDestino] == 'N')
@@ -126,7 +174,6 @@ namespace GameHub.JogoBatalhaNaval
             }
 
         }
-
 
         public static void IniciarJogoBatalhaNaval()
         {

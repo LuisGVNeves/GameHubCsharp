@@ -211,31 +211,6 @@ namespace GameHub.JogoDaVelha.Controller
             }
         }
 
-
-        /* # Método que inicia o jogo
-        public static void IniciarJogoDaVelha()
-        {
-            Cadastro.FazerCadastroJogoDaVelha();
-
-            // Preenche a matriz com números [0-9]
-            tabuleiroJogoDaVelha.PreencherTabuleiro();
-
-            while (true)
-            {
-                // # Decorar o menu antes de iniciar o game
-                MenuHub.EstilizarMenu("Jogo da Velha", ConsoleColor.Red);
-
-                // # Mostrar tabuleiro
-                tabuleiroJogoDaVelha.MostrarTabuleiro(3);
-
-                // # Vez dos jogadores
-                VezJogador1();
-                VezJogador2();
-            }
-
-        }
-        */
-
         public static void IniciarJogoDaVelha()
         {
             // Verificar se já tem algum nome preenchido no JSON
