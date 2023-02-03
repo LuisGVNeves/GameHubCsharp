@@ -145,3 +145,5 @@ $ ctrl + f5
 - [ ] As peças Torre, Cavalo, Rainha e Rei comem as peças simplesmente se a peça inimiga tiver na matriz, exemplo: se eu fizer o movimento de L do cavalo, e a peça inimiga tiver onde o cavalo vai ficar, automaticamente a peça inimiga é pega, porém, se a peça inimiga tivesse uma casa pra frente ou pra baixo, o cavalo ou qualquer outra peça não conseguiria pegar, então um dos problemas é que eu só estou conseguindo pegar a peça, se a coluna de destino e a linha de destino forem iguais a peça adversária
 - [ ] Checkmate no rei só funciona nas peças Peão e Bispo que é onde eu foquei mais, por serem movimentos mais complexos
 
+
+## Autor : Luis Guilherme Vieira Neves
